@@ -3,24 +3,24 @@ import java.util.Scanner;
 public class Perpustakaan {
     public static void main(String[] args) {
         Scanner input2 = new Scanner(System.in);
+        Scanner input3 = new Scanner(System.in);
         String username, password;
 
         System.out.print("Masukkan Username Anda: ");
-        username = input2.next().toString();
+        username = input2.nextLine();
         System.out.print("Masukkan Password Anda: ");
-        password = input2.next().toString();
+        password = input2.nextLine();
 
-        if (username.equals("Admin1") && password.equals("4DM1NC4NT1K")) {
+        if (username.equals("Admin1") && password.equals("admin")) {
             System.out.println("Anda berhasil login!");
-        } else {
-            System.out.println("Username dan password salah silahkan login ulang!");
-        }
-
-        char kondisi;
+            char kondisi;
         System.out.println("Pilih aktivitas yang akan anda lakukan");
         System.out.println("1. Meminjam buku");
         System.out.println("2. Mengembalikan buku");
         System.out.println("3. Mengubah stok");
+        System.out.println("4. Tambah buku baru");
+        System.out.println("5. Tambah member/anggota");
+        
         kondisi = input2.next().charAt(0);
 
         switch (kondisi) {
@@ -28,15 +28,15 @@ public class Perpustakaan {
                 String nama, judul, tanggal, nim;
                 int jumlah, hari, telat;
                 System.out.print("Masukkan Nama peminjam              : ");
-                nama = input2.next();
+                nama = input3.nextLine();
                 System.out.print("Masukkan NIM peminjam               : ");
-                nim = input2.next();
+                nim = input3.nextLine();
                 System.out.print("Masukkan judul buku yang dipinjam   : ");
-                judul = input2.next();
+                judul = input3.nextLine();
                 System.out.print("Masukkan jumlah buku yang dipinjam  : ");
-                jumlah = input2.nextInt();
+                jumlah = input3.nextInt();
                 System.out.print("Masukkan tanggal pengembalian       : ");
-                tanggal = input2.next();
+                tanggal = input3.nextLine();
                 System.out.println("Nama peminjam " + nama);
                 System.out.println("NIM peminjam " + nim);
                 System.out.println("Judul buku yang dipinjam " + judul);
@@ -46,15 +46,15 @@ public class Perpustakaan {
 
             case '2':
                 System.out.print("Masukkan nama peminjam               : ");
-                nama = input2.next();
+                nama = input3.nextLine();
                 System.out.print("Masukkan nim peminjam                : ");
-                nim = input2.next();
+                nim = input3.nextLine();
                 System.out.print("Masukkan judul buku yang dipinjam    : ");
-                judul = input2.next();
+                judul = input3.nextLine();
                 System.out.print("Masukkan jumlah buku yang dipinjam   : ");
-                jumlah = input2.nextInt();
+                jumlah = input3.nextInt();
                 System.out.print("Masukkan jumlah hari peminjaman      : ");
-                hari = input2.nextInt();
+                hari = input3.nextInt();
                 telat = hari - 7;
                 if (hari > 7) {
 
@@ -72,7 +72,7 @@ public class Perpustakaan {
                 stokawal = input2.nextInt();
                 System.out.print("Masukkan jumlah buku yang dipinjam    : ");
                 pinjam = input2.nextInt();
-                System.out.print("Masukkan jumlah buku yang hilang      :   ");
+                System.out.print("Masukkan jumlah buku yang hilang      : ");
                 hilang = input2.nextInt();
                 System.out.print("Masukkan jumlah buku yang rusak       : ");
                 rusak = input2.nextInt();
@@ -80,6 +80,66 @@ public class Perpustakaan {
                 System.out.println("Berhasil update stok!");
                 System.out.println("Stok buku saat ini adalah " + stokakhir + " buku");
                 break;
+            case '4':
+                String buku, buku1, buku2, buku3, buku4;
+                System.out.print("Masukkan judul buku baru: ");
+                buku = input3.nextLine();
+                System.out.println("Buku dengan judul "+buku+" berhasil di masukkan");
+                System.out.println("Apakah anda ingin memasukkan judul buku baru lagi? ");
+                System.out.println("1. Ya");
+                System.out.println("2. Tidak");
+                char kondisi2;
+                kondisi2 = input2.next().charAt(0);
+                switch (kondisi2) {
+                    case '1':
+                        System.out.println("Masukkan judul buku baru: ");
+                        buku1 = input3.nextLine();
+                        System.out.println("Buku dengan judul: ");
+                        System.out.println("1. "+buku);
+                        System.out.println("2. "+buku1);
+                        System.out.println("Berhasil dimasukkan!");
+                        System.out.println("Apakah anda ingin memasukkan judul buku baru lagi? ");
+                        System.out.println("1. Ya");
+                        System.out.println("2. Tidak");
+                        char kondisi3;
+                        kondisi3 = input2.next().charAt(0);
+                        switch (kondisi3) {
+                            case '1':
+                                System.out.println("Masukkan judul buku baru: (jangan diberi spasi, ganti dengan '_')");
+                                buku2 = input2.next();
+                                System.out.println("Buku dengan judul: ");
+                                System.out.println("1. "+buku);
+                                System.out.println("2. "+buku1);
+                                System.out.println("2. "+buku2);
+                                System.out.println("Berhasil dimasukkan!");
+                                System.out.println("Apakah anda ingin memasukkan judul buku baru lagi? ");
+                                System.out.println("1. Ya");
+                                System.out.println("2. Tidak");
+                                String kondisi4;
+                                kondisi4 = input2.nextLine();
+                                if(kondisi4.equals("ya")){}
+                                break;
+                        
+                            case '2':
+                                System.out.println("Terima kasih sudah menambah buku baru");
+                                break;
+                        }
+                        break;
+                
+                    case '2':
+                        System.out.println("Terimakasih sudah menambah buku baru");
+                        break;
+                        default:
+                        System.out.println("Maaf belum bisa diakses");
+                }
+                break;
+                default:
+                System.out.println("Maaf belum bisa diakses");
         }
+        } else {
+            System.out.println("Username dan password salah silahkan login ulang!");
+        }
+
+        
     }
 }
