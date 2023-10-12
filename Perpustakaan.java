@@ -11,8 +11,11 @@ public class Perpustakaan {
         System.out.print("Masukkan Password Anda: ");
         password = input2.nextLine();
 
-        if (username.equals("Admin1") && password.equals("admin")) {
+        if ((username.equals("Admin1") && password.equals("admin")) || (username.equals("Admin2") && password.equals("admin2"))){ 
+
+            System.out.println("Anda berhasil login!");            
             System.out.println("Anda berhasil login!");
+        
             char kondisi;
         System.out.println("Pilih aktivitas yang akan anda lakukan");
         System.out.println("1. Meminjam buku");
@@ -135,11 +138,9 @@ public class Perpustakaan {
                 break;
                 default:
                 System.out.println("Maaf belum bisa diakses");
+            }
+        }else {
+            System.out.println("Username dan password salah silahkan login ulang!");    
         }
-        } else {
-            System.out.println("Username dan password salah silahkan login ulang!");
-        }
-
-        
-    }
+}
 }
