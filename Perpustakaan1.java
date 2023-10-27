@@ -7,15 +7,15 @@ public class Perpustakaan1 {
         // inputan login superadmin
         Scanner loginsuper = new Scanner(System.in);
         // inputan proses di admin
-        Scanner input2 = new Scanner(System.in);
-        Scanner input3 = new Scanner(System.in);
-        Scanner input4 = new Scanner(System.in);
+        Scanner inputangka = new Scanner(System.in);
+        Scanner inputhuruf = new Scanner(System.in);
+        Scanner inputhuruff = new Scanner(System.in);
         String username, password, level;
         boolean masuk = false;
-        String[] buku = new String[1000];
-                                    int[] jml = new int[1000];
-                                    int p = 1; 
-                                    int l = 1;
+        // String[] buku = new String[1000];
+        // int[] jml = new int[1000];
+        // int p = 1;
+        // int l = 1;
         do {
             System.out.println("=====================================");
             System.out.println("Pilih level anda: ");
@@ -24,19 +24,20 @@ public class Perpustakaan1 {
             // System.out.println("2. Admin");
             // System.out.println("3. Pengunjung");
             level = levellogin.nextLine();
-            System.out.println("=====================================");
+            System.out.println("=============================================");
 
             if (level.equalsIgnoreCase("super admin")) {
                 do {
-                    System.out.println("=====================================");
+                    System.out.println("=============================================");
                     System.out.print("Masukkan username: ");
                     username = loginsuper.nextLine();
                     System.out.print("Masukkan password: ");
                     password = loginsuper.nextLine();
-                    System.out.println("=====================================");
+                    
                     if (username.equalsIgnoreCase("superadmin") && password.equalsIgnoreCase("super123")) {
                         masuk = true;
                         while (true) {
+                            System.out.println("=============================================");
                             System.out.println("Berhasil masuk sebagai Super Admin");
                             System.out.println("Pilih aktivitas yang akan anda lakukan (1/2/3/4/5)");
                             System.out.println("1. Meminjam buku");
@@ -49,22 +50,22 @@ public class Perpustakaan1 {
 
                             char kondisi;
 
-                            kondisi = input2.next().charAt(0);
+                            kondisi = inputangka.next().charAt(0);
 
                             switch (kondisi) {
                                 case '1':
                                     String nama, judul, tanggal, nim;
                                     int jumlah, hari, telat;
                                     System.out.print("Masukkan Nama peminjam              : ");
-                                    nama = input3.nextLine();
+                                    nama = inputhuruf.nextLine();
                                     System.out.print("Masukkan NIM peminjam               : ");
-                                    nim = input3.nextLine();
+                                    nim = inputhuruf.nextLine();
                                     System.out.print("Masukkan judul buku yang dipinjam   : ");
-                                    judul = input3.nextLine();
+                                    judul = inputhuruf.nextLine();
                                     System.out.print("Masukkan jumlah buku yang dipinjam  : ");
-                                    jumlah = input3.nextInt();
+                                    jumlah = inputhuruf.nextInt();
                                     System.out.print("Masukkan tanggal pengembalian       : ");
-                                    tanggal = input3.nextLine();
+                                    tanggal = inputhuruf.nextLine();
                                     System.out.println("Nama peminjam " + nama);
                                     System.out.println("NIM peminjam " + nim);
                                     System.out.println("Judul buku yang dipinjam " + judul);
@@ -79,19 +80,19 @@ public class Perpustakaan1 {
 
                                     do {
                                         System.out.print("Apakah anda ingin mengembalikan buku (y/t)? ");
-                                        konfirmasi = input2.next();
+                                        konfirmasi = inputhuruf.next();
 
                                         if (konfirmasi.equalsIgnoreCase("y")) {
                                             System.out.print("Masukkan nama peminjam               : ");
-                                            nama = input3.nextLine();
+                                            nama = inputhuruf.nextLine();
                                             System.out.print("Masukkan nim peminjam                : ");
-                                            nim = input3.nextLine();
+                                            nim = inputhuruf.nextLine();
                                             System.out.print("Masukkan judul buku yang dipinjam    : ");
-                                            judul = input3.nextLine();
+                                            judul = inputhuruf.nextLine();
                                             System.out.print("Masukkan jumlah buku yang dipinjam   : ");
-                                            jumlah = input3.nextInt();
+                                            jumlah = inputangka.nextInt();
                                             System.out.print("Masukkan jumlah hari peminjaman      : ");
-                                            hari = input3.nextInt();
+                                            hari = inputangka.nextInt();
 
                                             telat = hari - 7;
                                             tenggat = 7;
@@ -115,56 +116,61 @@ public class Perpustakaan1 {
                                 case '3':
                                     int stokawal, pinjam, hilang, rusak, stokakhir;
                                     System.out.print("Masukkan Stok buku awal               : ");
-                                    stokawal = input2.nextInt();
+                                    stokawal = inputangka.nextInt();
                                     System.out.print("Masukkan jumlah buku yang dipinjam    : ");
-                                    pinjam = input2.nextInt();
+                                    pinjam = inputangka.nextInt();
                                     System.out.print("Masukkan jumlah buku yang hilang      : ");
-                                    hilang = input2.nextInt();
+                                    hilang = inputangka.nextInt();
                                     System.out.print("Masukkan jumlah buku yang rusak       : ");
-                                    rusak = input2.nextInt();
+                                    rusak = inputangka.nextInt();
                                     stokakhir = stokawal - pinjam - hilang - rusak;
                                     System.out.println("Berhasil update stok!");
                                     System.out.println("Stok buku saat ini adalah " + stokakhir + " buku");
                                     break;
                                 case '4':
-                                    System.out.println("=====================================");
+                                    System.out.println("=============================================");
                                     System.out.println("          Tambah buku baru           ");
-                                    
-                                    for (int a = 1; a < buku.length;) {
+                                    System.out.println("Masukkan jumlah buku yang akan ditambah: ");
+                                    // deklarasi
+                                    int ele = inputangka.nextInt();
+                                    String[] buku = new String[ele];
+                                    int[] jml = new int[ele];
 
-                                        System.out.print("Masukkan judul buku: ");
-                                        buku[a] = input3.nextLine();
+                                    for (int a = 0; a < buku.length;a++) {
+
+                                        System.out.print("Masukkan judul buku ke-" + (a + 1) + ": ");
+                                        buku[a] = inputhuruf.nextLine();
                                         System.out.print("Masukkan jumlah buku: ");
-                                        jml[a] = input2.nextInt();
+                                        jml[a] = inputangka.nextInt();
 
-                                        System.out.println("Apakah anda ingin menambah buku baru? (y/t)");
-                                        String tanyabuku = input4.nextLine();
-                                        if (tanyabuku.equalsIgnoreCase("y")) {
-                                            a++;
-                                            //  p++;
-                                            
-                                        } else {
-                                            for (int i = 1; i < buku.length; l++) {
-                                                if(i<a+1){
-                                                    System.out.print("Judul buku: " + buku[i]+"Jumlah buku:" + jml[i]);
-                                                System.out.println();
-                                                    i++;
-                                                }else {
-                                                break;
-                                                }
-                                            }
-                                            break;
+                                        // System.out.println("Apakah anda ingin menambah buku baru? (y/t)");
+                                        // String tanyabuku = inputhuruff.nextLine();
 
-                                        }
+                                        // if (tanyabuku.equalsIgnoreCase("y")) {
+                                        // a++;
+
+                                        // } else {
+                                        // for (int i = 1; i < buku.length; i++) {
+
+                                        //
+
+                                        // }
+                                        // break;
+
+                                        // }
                                     }
+                                    for(int i = 0; i < buku.length; i++){
+                                        System.out.println("Judul buku ke-"+(i+1)+": " + buku[i] + " Jumlah buku:" + jml[i]);
+                                    }
+                                    
 
                                     // do {
                                     // System.out.println("Apakah anda ingin memasukkan judul buku baru (y/t)? ");
-                                    // konfirmasi = input3.nextLine();
+                                    // konfirmasi = inputhuruf.nextLine();
                                     // if (konfirmasi.equalsIgnoreCase("y")) {
                                     // jumlah++;
                                     // System.out.print("Masukkan judul buku baru: ");
-                                    // buku = input3.nextLine();
+                                    // buku = inputhuruf.nextLine();
 
                                     // System.out.println("Buku dengan judul " + buku + " berhasil di masukkan");
                                     // } else {
@@ -177,42 +183,54 @@ public class Perpustakaan1 {
 
                                     break;
                                 case '5':
-                                    int member = 0;
-                                    do {
-                                        System.out.println("Apakah anda ingin menambah member (y/t)?");
-                                        konfirmasi = input3.nextLine();
-                                        member++;
-                                        if (konfirmasi.equalsIgnoreCase("y")) {
-                                            System.out.print("Masukkan nama member baru : ");
-                                            nama = input4.nextLine();
-                                            System.out.print("Masukkan NIM member baru  : ");
-                                            nim = input4.nextLine();
-                                            System.out.println(
-                                                    "Nama member " + nama + " dengan NIM " + nim
-                                                            + " berhasil dimasukkan");
-                                        } else {
-                                            System.out.println("Terima kasih sudah menambah member");
-                                        }
-                                    } while (member > 0);
+                                    System.out.print("Masukkan jumlah member: ");
+                                    int member = inputangka.nextInt();
+                                    String[] nama1 = new String[member];
+                                    String[] nim1 = new String[member];
+                                    for(int i = 0; i<nama1.length; i++){
+                                        System.out.print("Masukkan nama member ke-"+(i+1)+": ");
+                                        nama1 [i] = inputhuruf.nextLine();
+                                        System.out.print("Masukkan NIM member ke-"+(i+1)+": ");
+                                        nim1 [1] = inputhuruf.nextLine();
+                                    }
+                                    for(int j = 0; j < nama1.length; j++){
+                                        System.out.println("Nama member ke-"+(j+1)+": " + nama1[j] + " dengan NIM " + nim1[j]+ " berhasil dimasukkan");
+                                    }
+                                    // do {
+                                    //     System.out.println("Apakah anda ingin menambah member (y/t)?");
+                                    //     konfirmasi = inputhuruf.nextLine();
+                                    //     member++;
+                                    //     if (konfirmasi.equalsIgnoreCase("y")) {
+                                    //         System.out.print("Masukkan nama member baru : ");
+                                    //         nama = inputhuruff.nextLine();
+                                    //         System.out.print("Masukkan NIM member baru  : ");
+                                    //         nim = inputhuruff.nextLine();
+                                    //         System.out.println(
+                                    //                 "Nama member " + nama + " dengan NIM " + nim
+                                    //                         + " berhasil dimasukkan");
+                                    //     } else {
+                                    //         System.out.println("Terima kasih sudah menambah member");
+                                    //     }
+                                    // } while (member > 0);
                                     break;
                                 default:
                                     System.out.println("Maaf belum bisa diakses");
                             }
                             System.out.println("Apakah anda ingin melakukan aktivitas lain? (y/t)");
-                    String akt = input4.nextLine();
-                    if (akt.equalsIgnoreCase("y")){
-                        masuk = true;
-                    }
+                            String akt = inputhuruff.nextLine();
+                            if (akt.equalsIgnoreCase("y")) {
+                                masuk = true;
+                            }
                         }
                     }
-                    
+
                 } while (true);
             } else if (level.equalsIgnoreCase("admin")) {
                 do {
                     System.out.print("Masukkan username: ");
-                    username = input3.nextLine();
+                    username = inputhuruf.nextLine();
                     System.out.print("Masukkan password: ");
-                    password = input3.nextLine();
+                    password = inputhuruf.nextLine();
                     if (username.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin123")) {
                         System.out.println("Berhasil masuk sebagai Admin");
                         do {
@@ -223,7 +241,7 @@ public class Perpustakaan1 {
                             System.out.println("3. Transaksi pengembalian");
                             System.out.println("4. Menambah member");
                             char kondisi2;
-                            kondisi2 = input2.next().charAt(0);
+                            kondisi2 = inputangka.next().charAt(0);
                             switch (kondisi2) {
                                 case '1':
 
@@ -239,9 +257,9 @@ public class Perpustakaan1 {
             } else if (level.equalsIgnoreCase("pengunjung")) {
                 do {
                     System.out.print("Masukkan username: ");
-                    username = input3.nextLine();
+                    username = inputhuruf.nextLine();
                     System.out.print("Masukkan password: ");
-                    password = input3.nextLine();
+                    password = inputhuruf.nextLine();
                     if (username.equalsIgnoreCase("pengunjung") && password.equalsIgnoreCase("pengunjung123")) {
                         System.out.println("Berhasil masuk sebagai Pengunjung");
                     }
@@ -249,9 +267,9 @@ public class Perpustakaan1 {
             }
 
             // System.out.print("Masukkan Username Anda: ");
-            // username = input2.nextLine();
+            // username = inputangka.nextLine();
             // System.out.print("Masukkan Password Anda: ");
-            // password = input2.nextLine();
+            // password = inputangka.nextLine();
 
             // if (username.equals("Admin1") && password.equals("admin")) {
             // System.out.println("Anda berhasil login!");
