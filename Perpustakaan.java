@@ -118,7 +118,7 @@ public class Perpustakaan{
                                                 System.out.println("Buku dengan judul: ");
                                                 System.out.println("1. " + buku);
                                                 System.out.println("2. " + buku1);
-                                                System.out.println("2. " + buku2);
+                                                System.out.println("3. " + buku2);
                                                 System.out.println("Berhasil dimasukkan!");
                                                 System.out
                                                         .println("Apakah anda ingin memasukkan judul buku baru lagi? ");
