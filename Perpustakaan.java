@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Perpustakaan {
+public class Perpustakaan{
     public static void main(String[] args) {
         Scanner input2 = new Scanner(System.in);
         Scanner input3 = new Scanner(System.in);
@@ -11,26 +11,9 @@ public class Perpustakaan {
             System.out.println("1. Super Admin");
             System.out.println("2. Admin");
             System.out.println("3. Pengunjung");
-            level = input2.nextLine();
-
-<<<<<<< HEAD
-        if ((username.equals("Admin1") && password.equals("admin")) || (username.equals("Admin2") && password.equals("admin2"))){ 
-
-            System.out.println("Anda berhasil login!");            
-            System.out.println("Anda berhasil login!");
-        
-            char kondisi;
-        System.out.println("Pilih aktivitas yang akan anda lakukan");
-        System.out.println("1. Meminjam buku");
-        System.out.println("2. Mengembalikan buku");
-        System.out.println("3. Mengubah stok");
-        System.out.println("4. Tambah buku baru");
-        System.out.println("5. Tambah member/anggota");
-        
-        kondisi = input2.next().charAt(0);
-=======
-            if (level.equalsIgnoreCase("super admin")) {
-                do {
+            char kondisiLevel = input2.next().charAt(0);
+            switch (kondisiLevel){
+                case'1' :
                     System.out.print("Masukkan username: ");
                     username = input3.nextLine();
                     System.out.print("Masukkan password: ");
@@ -44,7 +27,6 @@ public class Perpustakaan {
                         System.out.println("4. Tambah buku baru");
                         System.out.println("5. Tambah member/anggota");
                         char kondisi;
->>>>>>> f1c1c48fd037ae404d65a6e83f0859e61339d8b5
 
                         kondisi = input2.next().charAt(0);
 
@@ -113,33 +95,6 @@ public class Perpustakaan {
                                 System.out.println("Apakah anda ingin memasukkan judul buku baru lagi? ");
                                 System.out.println("1. Ya");
                                 System.out.println("2. Tidak");
-<<<<<<< HEAD
-                                String kondisi4;
-                                kondisi4 = input2.nextLine();
-                                if(kondisi4.equals("ya")){}
-                                break;
-                        
-                            case '2':
-                                System.out.println("Terima kasih sudah menambah buku baru");
-                                break;
-                        }
-                        break;
-                
-                    case '2':
-                        System.out.println("Terimakasih sudah menambah buku baru");
-                        break;
-                        default:
-                        System.out.println("Maaf belum bisa diakses");
-                }
-                break;
-                default:
-                System.out.println("Maaf belum bisa diakses");
-            }
-        }else {
-            System.out.println("Username dan password salah silahkan login ulang!");    
-        }
-}
-=======
                                 char kondisi2;
                                 kondisi2 = input2.next().charAt(0);
                                 switch (kondisi2) {
@@ -192,9 +147,7 @@ public class Perpustakaan {
                                 System.out.println("Maaf belum bisa diakses");
                         }
                     }
-                } while (true);
-            } else if (level.equalsIgnoreCase("admin")) {
-                do {
+                    case'2':
                     System.out.print("Masukkan username: ");
                     username = input3.nextLine();
                     System.out.print("Masukkan password: ");
@@ -211,9 +164,7 @@ public class Perpustakaan {
 
                         } while (true);
                     }
-                } while (true);
-            } else if (level.equalsIgnoreCase("pengunjung")) {
-                do {
+                    case '3' :      
                     System.out.print("Masukkan username: ");
                     username = input3.nextLine();
                     System.out.print("Masukkan password: ");
@@ -221,8 +172,7 @@ public class Perpustakaan {
                     if (username.equalsIgnoreCase("pengunjung") && password.equalsIgnoreCase("pengunjung123")) {
                         System.out.println("Berhasil masuk sebagai Pengunjung");
                     }
-                } while (true);
-            }
+            } 
 
             // System.out.print("Masukkan Username Anda: ");
             // username = input2.nextLine();
@@ -238,5 +188,4 @@ public class Perpustakaan {
             // }
         } while (true);
     }
->>>>>>> f1c1c48fd037ae404d65a6e83f0859e61339d8b5
 }
