@@ -37,7 +37,6 @@ public class pengunjung {
                                break;
                             } else if (kegiatan.equalsIgnoreCase("mencari buku")) {
                                 System.out.println("Anda memasuki laman pencarian buku");
-                                String keyJudul;
                                 System.out.println("Masukkan Judul buku");
                                 jdlBuku = scan.nextLine();
 
@@ -46,12 +45,13 @@ public class pengunjung {
                                 String[] terbit ={"2002", "2003", "2005"};
                                 boolean tersedia = false;
                                 for (int j=0; j < judul.length; j++) {
-                                    if (jdlBuku  == judul[j]) {
+                                    if (judul[j].equalsIgnoreCase(jdlBuku)) {
+                                        tersedia = true;
                                         System.out.println("=== Buku Tersedia ===");
                                         System.out.println("Judul : "+judul[j]);
                                         System.out.println("Penulis : "+penulis[j]);
                                         System.out.println("Tahun Terbit : "+terbit[j]);
-                                        tersedia = true;
+                                        
                                         break;
                                     } if (!tersedia){
                                         System.out.println("Buku tidak tersedia");
