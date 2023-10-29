@@ -46,7 +46,7 @@ public class pengunjung {
                                 String[] terbit ={"2002", "2003", "2005"};
                                 boolean tersedia = false;
                                 for (int j=0; j < judul.length; j++) {
-                                    if (judul[j].equalsIgnoreCase(keyJudul)) {
+                                    if (jdlBuku  == judul[j]) {
                                         System.out.println("=== Buku Tersedia ===");
                                         System.out.println("Judul : "+judul[j]);
                                         System.out.println("Penulis : "+penulis[j]);
@@ -57,10 +57,10 @@ public class pengunjung {
                                         System.out.println("Buku tidak tersedia");
                                     }
                                 } 
-                                }
+                                
                                 System.out.println("Apakah nda ingin melakukan transaksi lain (Ya / Tidak)");
                                 pilihan1 = scan1.nextLine();
-                            }
+                    
                         } 
                             else {
                                 System.out.println("Anda tidak memiliki wewenang untuk mengakses laman lain");
@@ -74,34 +74,41 @@ public class pengunjung {
                     }
                 } while (true);
             }
-        }
-//             } else if (pilihan.equalsIgnoreCase("tidak")) {
-//                 do {
-//                     System.out.print("apakah anda ingin mendaftarkan diri sebagai member (ya/tidak)");
-//                     pilihan = scan.nextLine();
-//                     if (pilihan.equals("ya")) {
-//                         System.out.println(
-//                                 "silahkan melakukan pendataan dan verifikasi di meja admin untuk pendaftaran member");
-//                         break;
-//                     } else if (pilihan.equals("tidak")) {
-//                         System.out.print("anda berhasil memasuki laman sebagai guest");
-//                         System.out.println("Silahkan melakukan pencarian buku");
-//                         System.out.println("masukkan judul buku : ");
-//                         jdlBuku = scan.nextLine();
-//                         if (jdlBuku.equals("mencari tito di pasar")) {
-//                             System.out
-//                                     .print("Buku tersedia silahkan lakukan verifikasi di meja admin untuk peminjaman");
-//                             break;
-//                         } else {
-//                             System.out.println("Buku tidak tersedia");
-//                         }
-//                     } else {
-//                         System.out.println("pastikan pilihan benar");
-//                     }
-//                 } while (true);
-//             } else {
-//                 System.out.println("Pastikan pilihan anda benar");
-//             }
-//         } while (true);
-//     }
+        } while (true);
+    }
+}       
+        
+
+// } else if (pilihan.equalsIgnoreCase("tidak")) {
+// do {
+// System.out.print("apakah anda ingin mendaftarkan diri sebagai member
+// (ya/tidak)");
+// pilihan = scan.nextLine();
+// if (pilihan.equals("ya")) {
+// System.out.println(
+// "silahkan melakukan pendataan dan verifikasi di meja admin untuk pendaftaran
+// member");
+// break;
+// } else if (pilihan.equals("tidak")) {
+// System.out.print("anda berhasil memasuki laman sebagai guest");
+// System.out.println("Silahkan melakukan pencarian buku");
+// System.out.println("masukkan judul buku : ");
+// jdlBuku = scan.nextLine();
+// if (jdlBuku.equals("mencari tito di pasar")) {
+// System.out
+// .print("Buku tersedia silahkan lakukan verifikasi di meja admin untuk
+// peminjaman");
+// break;
+// } else {
+// System.out.println("Buku tidak tersedia");
+// }
+// } else {
+// System.out.println("pastikan pilihan benar");
+// }
+// } while (true);
+// } else {
+// System.out.println("Pastikan pilihan anda benar");
+// }
+// } while (true);
+// }
 // }
