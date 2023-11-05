@@ -13,20 +13,29 @@ public class percobaan {
         Scanner bukuAngka = new Scanner(System.in);
         Scanner bukuHuruf = new Scanner(System.in);
         /// deklarasi inputan buku ///
-        String buku[][] = new String[10][2];
+        String buku[][] = new String[10][5];
         int bukuInt[][] = new int[10][2];
-        String kodeBuku, judulBuku, penulis;
-        int jumlahBuku, tahunTerbit;
+        String kodeBuku, judulBuku, penulis, tahunTerbit, jumlahBuku;
+
         //////////////// buku selesai ////////////////
+
+        /////////////// input member mulai ///////////////
+        /// scanner input member ///
+        Scanner memberSH = new Scanner(System.in);
+
+        /// deklarasi input member ///
+        String nim, nama;
+        String[][] memberArray = new String[100][2];
+        /////////////// input member selesai ///////////////
 
         //////////////// peminjam mulai ////////////////
         /// scanner peminjaman ///
         Scanner peminjamHuruf = new Scanner(System.in);
         Scanner peminjamAngka = new Scanner(System.in);
         /// deklarasi inputan peminjaman ///
-        String peminjamStr[][] = new String[100][3];
-        int peminjamInt[][] = new int[100][1];
-        String nim, nama, tenggat;
+        String peminjamStr[][] = new String[100][7];
+
+        String nim1, nama1 = null, tenggat, kodeBuku1;
         int jumlah;
         boolean found = false;
         //////////////// peminjam selesai ////////////////
@@ -34,7 +43,8 @@ public class percobaan {
         while (true) {
             System.out.println("Silahkan Pilih Menu (1/2)");
             System.out.println("1. Input buku");
-            System.out.println("2. Peminjaman");
+            System.out.println("2. Input member");
+            System.out.println("3. Peminjaman");
             int menu = menuPil.nextInt();
 
             if (menu == 1) {
@@ -49,14 +59,14 @@ public class percobaan {
                         System.out.print("Masukkan nama penulis: ");
                         penulis = bukuHuruf.nextLine();
                         System.out.print("Masukkan jumlah buku: ");
-                        jumlahBuku = bukuAngka.nextInt();
+                        jumlahBuku = bukuAngka.nextLine();
                         System.out.print("Masukkan tahun terbit: ");
-                        tahunTerbit = bukuAngka.nextInt();
+                        tahunTerbit = bukuAngka.nextLine();
 
-                        buku[i][0] = judulBuku;
-                        buku[i][1] = penulis;
-                        bukuInt[i][0] = jumlahBuku;
-                        bukuInt[i][1] = tahunTerbit;
+                        buku[i][1] = judulBuku;
+                        buku[i][2] = penulis;
+                        buku[i][3] = tahunTerbit;
+                        buku[i][4] = jumlahBuku;
 
                         break;
                     }
@@ -74,43 +84,105 @@ public class percobaan {
                         System.out.println((i + 1) + ". Kode buku: " + buku[i][0]);
                         for (int j = 0; j < buku[i].length; j++) {
                             System.out.println("   Judul buku: " + buku[i][1]);
-                            System.out.println("   Jumlah buku: " + bukuInt[i][0]);
-                            System.out.println("   Tahun terbit: " + bukuInt[i][1]);
+                            System.out.println("   Penulis: " + buku[i][2]);
+                            System.out.println("   Tahun terbit: " + buku[i][3]);
+                            System.out.println("   Jumlah buku: " + buku[i][4]);
+
                             break;
                         }
                     }
                 }
             } else if (menu == 2) {
-                System.out.println("Anda memasuki menu peminjaman buku");
-                for (int i = 0; i < peminjamStr.length; i++) {
-                    System.out.println("Masukkan NIM peminjaman: ");
-                    nim = peminjamHuruf.nextLine();
-                    peminjamStr[i][0] = nim;
-                    for (int j = 0; j < peminjamStr[i].length; j++) {
-                        System.out.println("Masukkan nama peminjam: ");
-                        nama = peminjamHuruf.nextLine();
-                        System.out.println("Masukkan kode buku: ");
-                        kodeBuku = peminjamHuruf.nextLine();
-                        System.out.println("Masukkan tahun terbit: ");
-                        tahunTerbit = peminjamAngka.nextInt();
-                        if (buku[i][j] == kodeBuku && bukuInt[i][j] == tahunTerbit) {
-                            System.out.println("Judul buku: " + buku[i][1]);
-                            System.out.println("Jumlah buku: " + buku[i][0]);
-                            System.out.println("Tahun terbit: " + bukuInt[i][1]);
+                System.out.println("Anda berada pada menu input member");
+                for (int i = 0; i < memberArray.length;) {
+                    System.out.println("Masukkan NIM: ");
+                    nim = memberSH.nextLine();
+                    System.out.println("Masukkan Nama: ");
+                    nama = memberSH.nextLine();
+                    memberArray[i][0] = nim;
+                    memberArray[i][1] = nama;
+
+                    System.out.println("Apakah anda ingin menambah member lagi? (y/t): ");
+                    String membertanya = memberSH.nextLine();
+                    ;
+                    if (membertanya.equalsIgnoreCase("y")) {
+                        i++;
+                    } else {
+                        break;
+                    }
+                }
+                System.out.println("Data Member");
+                for (int i = 0; i < memberArray.length; i++) {
+                    if (memberArray[i][0] != null) {
+                        System.out.println((i + 1) + ". NIM: " + memberArray[i][0]);
+                        for (int j = 0; j < memberArray[i].length; j++) {
+                            System.out.println("   Nama: " + memberArray[i][1]);
+                            break;
                         }
-                        System.out.println("Masukkan jumlah buku: ");
-                        jumlah = peminjamAngka.nextInt();
-                        System.out.println("Masukkan tenggat: ");
-                        tenggat = peminjamHuruf.nextLine();
-                        peminjamStr[i][1] = nama;
-                        peminjamStr[i][2] = kodeBuku;
-                        peminjamInt[i][0] = jumlah;
-                        peminjamStr[i][3] = tenggat;
-                        bukuInt[i][0] = -jumlah;
 
                     }
                 }
 
+            } else if (menu == 3) {
+                System.out.println("Anda memasuki menu peminjaman buku");
+                for (int i = 0; i < peminjamStr.length; i++) {
+                    System.out.print("Apakah sudah terdaftar sebagai member? (y/t): ");
+                    String tanyaDaftar = peminjamHuruf.nextLine();
+                    if (tanyaDaftar.equalsIgnoreCase("y")) {
+                        System.out.print("Masukkan NIM peminjaman: ");
+                        nim1 = peminjamHuruf.nextLine();
+                        peminjamStr[i][0] = nim1;
+                        boolean nimketemu = false;
+                        for (int b = 0; b < peminjamStr.length; b++) {
+                            if (memberArray[b][0].equalsIgnoreCase(nim1)) {
+                                nama1 = memberArray[b][1];
+                                nimketemu = true;
+                                break;
+                            }
+                        }
+                        if (nimketemu) {
+                            System.out.println("Nama: " + nama1);
+                            System.out.print("Masukkan kode buku: ");
+                            kodeBuku1 = peminjamHuruf.nextLine();
+                            System.out.println("Masukkan jumlah buku: ");
+                            jumlah = peminjamAngka.nextInt();
+                            boolean bukuketemu = false;
+                            for (int a = 0; a < peminjamStr.length; a++) {
+                                if (buku[a][0].equalsIgnoreCase(kodeBuku1) && Integer.parseInt(buku[i][4]) > 0) {
+                                    System.out.println("Judul buku: " + buku[a][1]);
+                                    System.out.println("Penulis buku: " + buku[a][2]);
+                                    System.out.println("Tahun terbit: " + buku[a][3]);
+                                    System.out.println("Jumlah buku: " + buku[a][4]);
+
+                                    int stok = Integer.parseInt(buku[a][4]);
+                                    if (stok <= jumlah) {
+                                        stok -= jumlah;
+                                        buku[a][4] = String.valueOf(stok);
+
+                                    }
+
+                                    bukuketemu = true;
+                                    System.out.println("Masukkan tenggat: ");
+                                    tenggat = peminjamHuruf.nextLine();
+                                    peminjamStr[i][1] = memberArray[i][1];
+                                    peminjamStr[i][2] = kodeBuku1;
+                                    peminjamStr[i][3] = buku[i][1];
+                                    peminjamStr[i][4] = tenggat;
+                                    peminjamStr[i][5] = buku[i][2];
+                                    peminjamStr[i][6] = String.valueOf(jumlah);
+                                    break;
+                                }
+
+                            }
+                        }
+
+                    } else {
+                        System.out.println("Silahkan daftar terlebih dahulu");
+                        break;
+                    }
+                }
+            } else {
+                System.out.println("Mohon maaf belum bisa diakses");
             }
             System.out.println("Apakah anda ingin melanjutkan menu lain? (y/t): ");
             String konf = konfirmasi.nextLine();
@@ -118,6 +190,7 @@ public class percobaan {
                 konfir = true;
             } else {
                 System.out.println("Terimakasih, have a nice day:)");
+                break;
             }
         }
 
