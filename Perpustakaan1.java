@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class Perpustakaan1 {
     public static void main(String[] args) {
         // inputan level
@@ -18,13 +17,13 @@ public class Perpustakaan1 {
         Scanner inputKembaliAngka = new Scanner(System.in);
         String username, password, level;
         boolean masuk = false;
-        // inputan username member
+        // array username member
         String nama,nim;
         for (int m=0 ; m < 4 ; m++){
         String [] usernameMember = {"Daped","Tito","keysha"};
         String [] nimMember = {"2341760076","2341760052","2341760193"};
         int [] dendaMember = new int[4];
-        // inputan pengembalian (superadmin case '2')
+        // array pengembalian (superadmin case '2')
         int hariKembali = 0;
         double denda[] = new double[50];
         double tenggat;
@@ -83,8 +82,10 @@ public class Perpustakaan1 {
                                     nama = inputPinjamHuruf.nextLine();
                                     System.out.print("Masukkan NIM peminjam               : ");
                                     nim = inputPinjamHuruf.nextLine();
-                                    if (nama.equalsIgnoreCase(usernameMember[m])&&nim.equalsIgnoreCase(nimMember[m])&&denda[m]<=0){
-                                    for (int i = 0 ; i < judulPinjam.length ;i++){
+
+                                    if (nama.equalsIgnoreCase(usernameMember[m])==nim.equalsIgnoreCase(nimMember[m])&&dendaMember[m]<=0){
+                                        
+                                    for (int i = 0 ; i < judulPinjam.length ;){
                                     System.out.print("Masukkan judul buku yang dipinjam   : ");
                                     judulPinjam[i] = inputPinjamHuruf.nextLine();
                                     System.out.print("Masukkan jumlah buku yang dipinjam  : ");
@@ -109,7 +110,7 @@ public class Perpustakaan1 {
                                     
                                     }
                                 }else{
-                                    System.out.println("Member "+usernameMember[m]+" memiliki denda sebesar-"+denda[m]+" yang harus dibayar");
+                                    System.out.println("Member "+usernameMember[m]+" memiliki denda sebesar-"+dendaMember[m]+" yang harus dibayar");
                                 }
                                     break;
 
@@ -123,6 +124,7 @@ public class Perpustakaan1 {
                                             nama = inputKembaliHuruf.nextLine();
                                             System.out.print("Masukkan nim peminjam                : ");
                                             nim  = inputKembaliHuruf.nextLine();
+
                                             if ((nama.equalsIgnoreCase(usernameMember[m]))&& nim.equalsIgnoreCase(nimMember[m])){
                                             for (int j=0; j <judulKembali.length;j++){
                                             System.out.print("Masukkan judul buku yang akan dikembalikan   : ");
@@ -135,10 +137,11 @@ public class Perpustakaan1 {
                                             hari = inputKembaliAngka.nextInt();
                                             telat = hari - 7;
                                             tenggat = 7;
+
                                             if (hari > tenggat){
-                                                denda [m]= (hari - 7) * 500;
+                                                dendaMember [m]= (hari - 7) * 500;
                                                 System.out.println("Peminjam " + usernameMember[m] + " terkena denda sebesar "
-                                                        + denda[m]
+                                                        + dendaMember[m]
                                                         + " karena terlambat mengembalikan buku " + telat + " hari. ");
                                             } else if(denda[m] == 0 && status[j].equalsIgnoreCase("baik")){
                                                 System.out.println("=========================================");
@@ -157,6 +160,8 @@ public class Perpustakaan1 {
                                                 break;
                                             }
                                         }
+                                    }else {
+                                        System.out.println("Username atau Password yang anda masukkan salah, mohon masukkan dengan teliti");
                                     }
                                         } else {
                                             System.out.println("Terima kasih sudah mengembalikan buku");
@@ -264,7 +269,15 @@ public class Perpustakaan1 {
                                     // } while (member > 0);
                                     break;
                                 case '6':
-                                        System.out.println("");
+                                System.out.println(" ____________________________________");        
+                                System.out.println("|Anda memasuki laman pembayaran denda|");
+                                System.out.println("|____________________________________|");
+                                System.out.println("/n");
+                                System.out.println("Masukkan nama anda ");
+                                nama = inputhuruf.nextLine();
+                                System.out.println("Masukkan NIM anda ");
+                                nim = inputhuruf. nextLine();
+                                        
                                         break;
                                 case '7':
                                 default:
