@@ -41,10 +41,11 @@ public class percobaan {
         //////////////// peminjam selesai ////////////////
 
         while (true) {
-            System.out.println("Silahkan Pilih Menu (1/2)");
+            System.out.println("Silahkan Pilih Menu (1/2/3)");
             System.out.println("1. Input buku");
             System.out.println("2. Input member");
             System.out.println("3. Peminjaman");
+            System.out.print("Pilihan Anda : ");
             int menu = menuPil.nextInt();
 
             if (menu == 1) {
@@ -90,6 +91,7 @@ public class percobaan {
 
                             break;
                         }
+                    
                     }
                 }
             } else if (menu == 2) {
@@ -174,10 +176,23 @@ public class percobaan {
                                     peminjamStr[i][5] = buku[i][2];
                                     peminjamStr[i][6] = String.valueOf(jumlah);
                                     break;
+                                } else if(Integer.parseInt(buku[i][4]) ==0){
+                                    System.out.println("stok buku tidak mencukupi");
                                 }
 
-                            }
+                            } for(int l = 0 ; l < peminjamStr.length ; l++){
+                                if ( peminjamStr[i][0] != null ){
+                                System.out.println("Nim : " + peminjamStr[l][0]);
+                                System.out.println("Nama : " + peminjamStr[l][1]);
+                                System.out.println("kode Buku : " + peminjamStr[l][2]);
+                                System.out.println("Judul : " + peminjamStr[l][3]);
+                                System.out.println("Penulis : " + peminjamStr[l][4]);
+                                System.out.println("Tahun Terbit : " + peminjamStr[l][5]);
+                                System.out.println("Tenggat : " + peminjamStr[l][6]);
+                                break;
+                                }
                         }
+                    }
 
                     } else {
                         System.out.println("Silahkan daftar terlebih dahulu");
@@ -193,7 +208,6 @@ public class percobaan {
                 konfir = true;
             } else {
                 System.out.println("Terimakasih, have a nice day:)");
-                break;
             }
         }
 
