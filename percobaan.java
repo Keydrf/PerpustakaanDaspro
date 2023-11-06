@@ -120,6 +120,9 @@ public class percobaan {
                             break;
                         }
 
+                    } else{
+                        System.out.println("Member masih belum terisi");
+                        break;
                     }
                 }
 
