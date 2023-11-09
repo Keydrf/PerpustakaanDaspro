@@ -139,14 +139,12 @@ public class PerpustakaanRapi {
                                                 System.out.println("   Penulis: " + buku[i][2]);
                                                 System.out.println("   Tahun terbit: " + buku[i][3]);
                                                 System.out.println("   Jumlah buku: " + buku[i][4]);
-
                                                 break;
                                             }
-
-                                        } else if (buku[1][0] == null) {
+                                        } else {
                                             System.out.println("Data buku kosong ");
-                                            break;
                                         }
+                                        break;
 
                                     }
 
@@ -232,7 +230,9 @@ public class PerpustakaanRapi {
                                     System.out.println("Data yang anda masukkan salah!");
                                 }
                             } while (true);
-                        } else if (menu == 8) {
+                        } else if (menu == 4){
+                             
+                    }else if (menu == 8) {
                             break;
                         }
                     } while (true);
