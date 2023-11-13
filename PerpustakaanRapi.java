@@ -411,9 +411,6 @@ public class PerpustakaanRapi {
                         //     System.out.println("Kode buku: ");
                         // }
 
-                    } else{
-                        System.out.println("Maaf buku masih kosong!");
-                        break;
                     }
 
                 }

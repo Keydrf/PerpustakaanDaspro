@@ -244,7 +244,7 @@ public class percobaan {
                 for (int i = 0; i < peminjamStr.length; i++) {
                     if (peminjamStr[0][0] != null) {
                         System.out.println("Masukkan Nim Peminjam : ");
-                        nim2 = pengembaliHuruf.nextLine();
+                        nim1 = pengembaliHuruf.nextLine();
                         pengembalianStr[i][0] = nim1;
                         boolean bukuketemu = false;
                         for (i = 0; i < pengembalianStr.length; i++) {
