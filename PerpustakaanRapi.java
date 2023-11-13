@@ -114,7 +114,7 @@ public class PerpustakaanRapi {
                                             penulis = bukuHuruf.nextLine();
                                             System.out.print("Masukkan tahun terbit: ");
                                             tahunTerbit = bukuAngka.nextLine();
-                                            System.out.print("Masukkan jumlah buku: ");
+                                            System.out.print("Masukkan jumlah buku: "); 
                                             jumlahBuku = bukuAngka.nextLine();
 
                                             buku[i][1] = judulBuku;
@@ -172,23 +172,15 @@ public class PerpustakaanRapi {
                                 int confirm2 = konfirmasiAngka.nextInt();
                                 if (confirm2 == 1) {
                                     System.out.println("Input Member");
-                                    for (int i = 0; i < memberArray.length;) {
+                                    
                                         System.out.print("Masukkan NIM: ");
                                         nim = memberSH.nextLine();
                                         System.out.print("Masukkan Nama: ");
                                         nama = memberSH.nextLine();
-                                        memberArray[i][0] = nim;
-                                        memberArray[i][1] = nama;
+                                        memberArray[membercount][0] = nim;
+                                        memberArray[membercount][1] = nama;
                                         membercount++;
-                                        System.out.println("Apakah anda ingin menambah member lagi? (y/t): ");
-                                        String membertanya = memberSH.nextLine();
                                         
-                                        if (membertanya.equalsIgnoreCase("y")) {
-                                            i++;
-                                        } else {
-                                            break;
-                                        }
-                                    }
                                 } else if (confirm2 == 2) {
                                     System.out.println("Data Member");
                                     
@@ -199,6 +191,7 @@ public class PerpustakaanRapi {
                                             
                                                 System.out.println("NIM: "+memberArray[i][0]);
                                                 System.out.println("Nama: " + memberArray[i][1]);
+                                                
                                                 
                                             
                                             // break;
