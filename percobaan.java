@@ -150,11 +150,11 @@ public class percobaan {
                                     nama1 = memberArray[b][1];
                                     nimketemu = true;
                                     break;
+                                }else{
+                                    break;
                                 }
                             }
-                            if (nimketemu) {
-
-                                
+                            if (nimketemu) { 
                                     System.out.println("Nama: " + nama1);
                                     for (int c = 0; c < peminjamStr[i].length; c++) {
                                         System.out.print("Masukkan kode buku: ");
@@ -193,7 +193,7 @@ public class percobaan {
                                                 }
                                             } else {
                                                 System.out.println("Buku tidak Tersedia");
-                                            } break ;
+                                            }break;
                                             
                                         }
                                         break;
@@ -212,18 +212,26 @@ public class percobaan {
                                         }
                                         break;
 
+                                    } 
+                            } System.out.println("apakah anda ingin meminjam buku lagi (y/t)?");
+                                    String Confirm = konfirmasi.nextLine();
+                                    if(Confirm.equalsIgnoreCase("y")){
+                                        i++;
+                                    } else {
+                                    break;
                                     }
-                                
-                            } else {
+                        }else {
                                 System.out.println("Silahkan daftar terlebih dahulu");
                                 break;
                             }
-                        }
+                            break;
                     }
-                } else {
+                } else if (buku[0][0]==null){
                     System.out.println("=====================");
                     System.out.println("Tidak Tersedia Buku");
                     System.out.println("=====================");
+                } else {
+                    break;
                 }
 
             } else if (menu == 4) {

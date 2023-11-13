@@ -230,8 +230,7 @@ public class PerpustakaanRapi {
                                     System.out.println("Data yang anda masukkan salah!");
                                 }
                             } while (true);
-                        } else if (menu == 4){
-                             
+                        } else if (menu == 4){ 
                     }else if (menu == 8) {
                             break;
                         }
