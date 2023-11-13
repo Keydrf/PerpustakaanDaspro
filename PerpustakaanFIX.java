@@ -60,7 +60,7 @@ public class PerpustakaanFIX {
             System.out.println("|           Pilih level pengguna            |");
             System.out.println("|===========================================|");
             System.out.println("| 1. Admin                                  |");
-            System.out.println("| 2. Pelanggan                              |");
+            System.out.println("| 2. Pengguna                               |");
             System.out.println("|===========================================|");
             System.out.print("   Pilihan anda: ");
             levelPengguna = pilLevel.nextLine();
@@ -380,6 +380,7 @@ public class PerpustakaanFIX {
                     System.out.println("|===========================================|");
 
                     if (bukucount > 0) {
+                        System.out.println("  Masukkan judul buku: ");
                         cariJudul = judul.nextLine();
                         boolean cariBuku = false;
                         for (int a = 0; a < bukucount; a++) {
