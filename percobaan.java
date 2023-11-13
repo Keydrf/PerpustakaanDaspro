@@ -7,7 +7,7 @@ public class percobaan {
         Scanner menuPil = new Scanner(System.in);
         Scanner konfirmasi = new Scanner(System.in);
         boolean konfir = false;
-
+        Scanner menuLap = new Scanner(System.in);
         //////////////// buku mulai ////////////////
         /// scanner input buku ///
         Scanner bukuAngka = new Scanner(System.in);
@@ -39,18 +39,19 @@ public class percobaan {
         String peminjamStr[][] = new String[100][8];
         /// deklarasi inputan pengembalian ///
         String pengembalianStr[][] = new String[100][8];
+        
 
         String nim1, nama1 = null, tenggat, kodeBuku1;
         int jumlah;
         boolean found = false;
         //////////////// peminjam selesai ////////////////
-
         while (true) {
             System.out.println("Silahkan Pilih Menu (1/2/3)");
             System.out.println("1. Input buku");
             System.out.println("2. Input member");
             System.out.println("3. Peminjaman");
             System.out.println("4. pengembalian");
+            System.out.println("5. Laporan ");
             System.out.print("Pilihan Anda : ");
             int menu = menuPil.nextInt();
 
@@ -261,6 +262,40 @@ public class percobaan {
                     break;
                 }
 
+            } else if (menu == 5) {
+                while (true) {
+                    System.out.println("Anda memasuki menu laporan");
+                    System.out.println("Silahkan pilih laporan");
+                    System.out.println("1. Laporan Peminjaman");
+                    System.out.println("2. Laporan pengembalian");
+                    System.out.println("3. Kemblali ke menu utama");
+                    System.out.print("Masukkan pilihan anda : ");
+                    int menu1 = menuLap.nextInt();
+                    if (menu1 == 1) {
+                        for (int l = 0; l < peminjamStr.length; l++) {
+                            if (buku [0][0] != null){
+                            System.out.println("Nim : " + peminjamStr[l][0]);
+                            System.out.println("Nama : " + peminjamStr[l][1]);
+                            System.out.println("kode Buku : " + peminjamStr[l][2]);
+                            System.out.println("Judul : " + peminjamStr[l][3]);
+                            System.out.println("Penulis : " + peminjamStr[l][4]);
+                            System.out.println("Tahun Terbit : " + peminjamStr[l][5]);
+                            System.out.println("Jumlah : " + peminjamStr[l][6]);
+                            System.out.println("Tenggat : " + peminjamStr[l][7]);
+                            break;
+                            }else {
+                                System.out.println("==================================");
+                                System.out.println("tidak terdapat buku yang dipinjam");
+                                System.out.println("==================================");
+                                break;
+                            }
+                        }
+                    } else if (menu1 == 2) {
+
+                    }else {
+                        break;
+                    }
+                }
             } else {
                 System.out.println("Mohon maaf belum bisa diakses");
             }
