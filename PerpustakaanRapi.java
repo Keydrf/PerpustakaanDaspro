@@ -355,7 +355,7 @@ public class PerpustakaanRapi {
                                 System.out.println("Silahkan pilih laporan");
                                 System.out.println("1. Laporan Peminjaman");
                                 System.out.println("2. Laporan pengembalian");
-                                System.out.println("3. Kemblali ke menu utama");
+                                System.out.println("3. Kembali ke menu utama");
                                 System.out.print("Masukkan pilihan anda : ");
                                 int menu1 = menuLap.nextInt();
                                 if (menu1 == 1) {
@@ -371,9 +371,11 @@ public class PerpustakaanRapi {
                                         System.out.println("Tenggat : " + peminjamStr[l][7]);
                                         break;
                                         }else {
-                                            System.out.println("==================================");
-                                            System.out.println("tidak terdapat buku yang dipinjam");
-                                            System.out.println("==================================");
+                                            System.out.println("|=======================================|");
+                                            System.out.println("|                                       |");
+                                            System.out.println("|   tidak terdapat buku yang dipinjam   |");
+                                            System.out.println("|                                       |");
+                                            System.out.println("|=======================================|");
                                             break;
                                         }
                                     }
