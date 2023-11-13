@@ -7,7 +7,6 @@ public class percobaan {
         Scanner menuPil = new Scanner(System.in);
         Scanner konfirmasi = new Scanner(System.in);
         boolean konfir = false;
-        Scanner menuLap = new Scanner(System.in);
         //////////////// buku mulai ////////////////
         /// scanner input buku ///
         Scanner bukuAngka = new Scanner(System.in);
@@ -35,16 +34,21 @@ public class percobaan {
         /// scanner pengembalian ///
         Scanner pengembaliHuruf = new Scanner(System.in);
         Scanner pengembaliAngka = new Scanner(System.in);
+        /// scanner laporan ///
+        Scanner laporanHuruf = new Scanner (System.in);
+        Scanner laporanAngka = new Scanner (System.in);
+        Scanner menuLap = new Scanner(System.in);
         /// deklarasi inputan peminjaman ///
         String peminjamStr[][] = new String[100][8];
-        /// deklarasi inputan pengembalian ///
-        String pengembalianStr[][] = new String[100][8];
-        
-
         String nim1, nama1 = null, tenggat, kodeBuku1;
         int jumlah;
         boolean found = false;
         //////////////// peminjam selesai ////////////////
+        /// deklarasi inputan pengembalian ///
+        String pengembalianStr[][] = new String[100][8];
+        /////////////// pengembali selesai ///////////////
+        /// deklarasi inputan laporan ///
+
         while (true) {
             System.out.println("Silahkan Pilih Menu (1/2/3)");
             System.out.println("1. Input buku");
@@ -238,13 +242,13 @@ public class percobaan {
             } else if (menu == 4) {
                 System.out.println("Anda memasuki menu pengembalian buku");
                 for (int i = 0; i < peminjamStr.length; i++) {
-                    if (buku != null) {
+                    if (peminjamStr[0][0] != null) {
                         System.out.println("Masukkan Nim Peminjam : ");
-                        nim1 = pengembaliHuruf.nextLine();
+                        nim2 = pengembaliHuruf.nextLine();
                         pengembalianStr[i][0] = nim1;
                         boolean bukuketemu = false;
                         for (i = 0; i < pengembalianStr.length; i++) {
-                            if (memberArray[i][0].equalsIgnoreCase(nim1)) {
+                            if (peminjamStr[i][0].equalsIgnoreCase(nim1)) {
                                 nama1 = memberArray[i][1];
                                 bukuketemu = true;
                                 break;
