@@ -50,6 +50,8 @@ public class PerpustakaanRapi {
         int jumlah;
         boolean found = false;
         //////////////// peminjam selesai ////////////////
+        //////////////// laporan peminjaman /////////////
+        Scanner menuLap = new Scanner(System.in);
 
         do {
             System.out.println("|===========================================|");
@@ -81,9 +83,8 @@ public class PerpustakaanRapi {
                         System.out.println("| 3. Transaksi Peminjaman                   |");
                         System.out.println("| 4. Transaksi Pengembalian                 |");
                         System.out.println("| 5. Pembayaran Denda                       |");
-                        System.out.println("| 6. Laporan Peminjaman                     |");
-                        System.out.println("| 7. Laporan Pengembalian                   |");
-                        System.out.println("| 8. Kembali                                |");
+                        System.out.println("| 6. Laporan                                |");
+                        System.out.println("| 7. Kembali                                |");
                         System.out.println("|===========================================|");
                         System.out.print(" Pilihan anda: ");
                         int menu = konfirmasiAngka.nextInt();
@@ -335,9 +336,45 @@ public class PerpustakaanRapi {
                                     System.out.println("Data yang anda masukkan salah!");
                                 }
                             } while (true);
-                        } else if (menu == 4) {
+                       
 
-                        } else if (menu == 8) {
+                        } else if (menu == 6) {
+                            while (true) {
+                                System.out.println("Anda memasuki menu laporan");
+                                System.out.println("Silahkan pilih laporan");
+                                System.out.println("1. Laporan Peminjaman");
+                                System.out.println("2. Laporan pengembalian");
+                                System.out.println("3. Kemblali ke menu utama");
+                                System.out.print("Masukkan pilihan anda : ");
+                                int menu1 = menuLap.nextInt();
+                                if (menu1 == 1) {
+                                    for (int l = 0; l < peminjamStr.length; l++) {
+                                        if (buku [0][0] != null){
+                                        System.out.println("Nim : " + peminjamStr[l][0]);
+                                        System.out.println("Nama : " + peminjamStr[l][1]);
+                                        System.out.println("kode Buku : " + peminjamStr[l][2]);
+                                        System.out.println("Judul : " + peminjamStr[l][3]);
+                                        System.out.println("Penulis : " + peminjamStr[l][4]);
+                                        System.out.println("Tahun Terbit : " + peminjamStr[l][5]);
+                                        System.out.println("Jumlah : " + peminjamStr[l][6]);
+                                        System.out.println("Tenggat : " + peminjamStr[l][7]);
+                                        break;
+                                        }else {
+                                            System.out.println("==================================");
+                                            System.out.println("tidak terdapat buku yang dipinjam");
+                                            System.out.println("==================================");
+                                            break;
+                                        }
+                                    }
+                                } else if (menu1 == 2) {
+            
+                                }else {
+                                    break;
+                                }
+                            }
+            
+                        } else if (menu == 7) {
+
                             break;
                         }
                     } while (true);
