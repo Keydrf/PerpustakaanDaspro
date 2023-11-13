@@ -346,9 +346,14 @@ public class PerpustakaanRapi {
                                     System.out.println("Data yang anda masukkan salah!");
                                 }
                             } while (true);
+<<<<<<< HEAD
+                        } else if (menu == 4){ 
+                    }else if (menu == 8) {
+=======
                         } else if (menu == 4) {
 
                         } else if (menu == 8) {
+>>>>>>> 1b53d6a55963450564283fe312be89a46a591f39
                             break;
                         }
                     } while (true);
