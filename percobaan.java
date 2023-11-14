@@ -39,7 +39,7 @@ public class percobaan {
         Scanner menuLap = new Scanner(System.in);
         /// deklarasi inputan peminjaman ///
         String peminjamStr[][] = new String[100][8];
-        String nim1, nama1 = null, tenggat, kodeBuku1;
+        String nim1, nama1 = null, tenggat, kodeBuku1, nim2;
         int jumlah;
         boolean found = false;
         int peminjamancount = 0;
@@ -250,7 +250,7 @@ public class percobaan {
                 for (int i = 0; i < peminjamStr.length; i++) {
                     if (peminjamStr[0][0] != null) {
                         System.out.println("Masukkan Nim Peminjam : ");
-                        nim2 = pengembaliHuruf.nextLine();
+                        nim1 = pengembaliHuruf.nextLine();
                         pengembalianStr[i][0] = nim1;
                         boolean bukuketemu = false;
                         for (i = 0; i < pengembalianStr.length; i++) {
@@ -285,7 +285,7 @@ public class percobaan {
                         if (peminjamancount > 0) {
                             for (int l = 0; l < peminjamancount; l++) {
                                 if (buku [0][0] != null){
-                                System.out.println("Member ke : "+ (l+i));
+                                System.out.println("Member ke : "+ (l+1));
                                 System.out.println("Nim : " + peminjamStr[l][0]);
                                 System.out.println("Nama : " + peminjamStr[l][1]);
                                 System.out.println("kode Buku : " + peminjamStr[l][2]);

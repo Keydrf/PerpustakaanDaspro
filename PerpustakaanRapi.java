@@ -243,12 +243,14 @@ public class PerpustakaanRapi {
                                                                     System.out.println("Judul buku: " + buku[a][1]);
                                                                     System.out.println("Penulis buku: " + buku[a][2]);
                                                                     System.out.println("Tahun terbit: " + buku[a][3]);
-                                                                    System.out.println("Jumlah buku: " + buku[a][4]);
+                                                                    System.out.println("Stok buku: " + buku[a][4]);
 
                                                                     int stok = Integer.parseInt(buku[a][4]);
-                                                                    if (stok <= jumlah) {
+                                                                    if (jumlah <= stok) {
                                                                         stok -= jumlah;
                                                                         buku[a][4] = String.valueOf(stok);
+                                                                    } else{
+                                                                        System.out.println("Stok buku tidak mencukupi");
                                                                     }
 
                                                                     bukuketemu = true;
@@ -312,6 +314,8 @@ public class PerpustakaanRapi {
                                                 break;
                                             }
                                         }
+                                    } else{
+                                        System.out.println("Tidak tersedia buku");
                                     }
                                 } else if (confirm3 == 2) {
                                     for (int l = 0; l < peminjamStr.length; l++) {
