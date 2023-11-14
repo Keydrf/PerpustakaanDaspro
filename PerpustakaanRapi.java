@@ -130,9 +130,10 @@ public class PerpustakaanRapi {
 
                                 } else if (confirm1 == 2) {
                                     // for (int i = 0; i < bukucount; i++) {
-                                    if (membercount > 0) {
-                                        System.out.println("Buku ke-" + (membercount + 1));
+                                    if (bukucount > 0) {
+                                        
                                         for (int j = 0; j < bukucount; j++) {
+                                            System.out.println("Buku ke-" + (bukucount));
                                             System.out.println("   Kode buku: " + buku[j][0]);
                                             System.out.println("   Judul buku: " + buku[j][1]);
                                             System.out.println("   Penulis: " + buku[j][2]);
@@ -162,16 +163,24 @@ public class PerpustakaanRapi {
                                 System.out.println("|===========================================|");
                                 System.out.print("  Pilihan anda: ");
                                 int confirm2 = konfirmasiAngka.nextInt();
-                                if (confirm2 == 1) {
-                                    System.out.println("Input Member");
 
-                                    System.out.print("Masukkan NIM: ");
-                                    nim = memberSH.nextLine();
-                                    System.out.print("Masukkan Nama: ");
-                                    nama = memberSH.nextLine();
-                                    memberArray[membercount][0] = nim;
-                                    memberArray[membercount][1] = nama;
-                                    membercount++;
+                                if (confirm2 == 1) {
+                                    do {
+                                        System.out.println("Input Member");
+
+                                        System.out.print("Masukkan NIM: ");
+                                        nim = memberSH.nextLine();
+                                        System.out.print("Masukkan Nama: ");
+                                        nama = memberSH.nextLine();
+                                        memberArray[membercount][0] = nim;
+                                        memberArray[membercount][1] = nama;
+                                        membercount++;
+                                        System.out.println("Apakah anda ingin menambah lagi? (y/t)");
+                                        String cnf = konfirmasiHuruf.nextLine();
+                                        if(cnf.equalsIgnoreCase("t")){
+                                            break;
+                                        }
+                                    } while (true);
 
                                 } else if (confirm2 == 2) {
                                     System.out.println("Data Member");
@@ -209,7 +218,8 @@ public class PerpustakaanRapi {
                                 System.out.print("  Pilihan anda: ");
                                 int confirm3 = konfirmasiAngka.nextInt();
                                 if (confirm3 == 1) {
-                                    if (buku[0][0] != null) {
+                                    if (bukucount>0){
+                                        if (membercount>0) {
                                         for (int i = 0; i < peminjamStr.length;) {
                                             System.out.print("Apakah sudah terdaftar sebagai member? (y/t): ");
                                             String tanyaDaftar = peminjamHuruf.nextLine();
@@ -218,7 +228,7 @@ public class PerpustakaanRapi {
                                                 nim1 = peminjamHuruf.nextLine();
                                                 peminjamStr[i][0] = nim1;
                                                 boolean nimketemu = false;
-                                                for (int b = 0; b < peminjamStr.length; b++) {
+                                                for (int b = 0; b < membercount; b++) {
                                                     if (memberArray[b][0].equalsIgnoreCase(nim1)) {
                                                         nama1 = memberArray[b][1];
                                                         nimketemu = true;
@@ -235,7 +245,7 @@ public class PerpustakaanRapi {
                                                         System.out.print("Masukkan jumlah buku: ");
                                                         jumlah = peminjamAngka.nextInt();
                                                         boolean bukuketemu = false;
-                                                        for (int a = 0; a < peminjamStr.length; a++) {
+                                                        for (int a = 0; a < bukucount; a++) {
                                                             if (buku[a][0].equalsIgnoreCase(kodeBuku1)) {
                                                                 if (Integer.parseInt(buku[i][4]) > 0) {
                                                                     System.out.println("Judul buku: " + buku[a][1]);
@@ -310,7 +320,13 @@ public class PerpustakaanRapi {
                                                 break;
                                             }
                                         }
+                                    } else{
+                                        System.out.println("Member tidak tersedia");
                                     }
+                                    } else{
+                                        System.out.println("Buku tidak tersedia");
+                                    }
+                                    
                                 } else if (confirm3 == 2) {
                                     for (int l = 0; l < peminjamStr.length; l++) {
                                         System.out.println("Peminjam ke-" + (l + 1));
@@ -399,16 +415,16 @@ public class PerpustakaanRapi {
                             if (buku[a][1].equalsIgnoreCase(cariJudul)) {
                                 // nama1 = buku[b][1];
                                 cariBuku = true;
-                                System.out.println("Kode Buku: "+buku[a][0]);
-                                System.out.println("Judul Buku: "+buku[a][1]);
-                                System.out.println("Nama Penulis: "+buku[a][2]);
-                                System.out.println("Tahun terbit: "+buku[a][3]);
-                                System.out.println("Stok buku: "+buku[a][4]);
+                                System.out.println("Kode Buku: " + buku[a][0]);
+                                System.out.println("Judul Buku: " + buku[a][1]);
+                                System.out.println("Nama Penulis: " + buku[a][2]);
+                                System.out.println("Tahun terbit: " + buku[a][3]);
+                                System.out.println("Stok buku: " + buku[a][4]);
                                 break;
                             }
                         }
                         // if(cariBuku=true){
-                        //     System.out.println("Kode buku: ");
+                        // System.out.println("Kode buku: ");
                         // }
 
                     }
