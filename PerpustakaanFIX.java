@@ -164,7 +164,8 @@ public class PerpustakaanFIX {
                                 System.out.print("  Pilihan anda: ");
                                 int confirm2 = konfirmasiAngka.nextInt();
                                 if (confirm2 == 1) {
-                                    System.out.println("Input Member");
+                                    do{
+                                        System.out.println("Input Member");
                                     
                                         System.out.print("Masukkan NIM: ");
                                         nim = memberSH.nextLine();
@@ -173,6 +174,13 @@ public class PerpustakaanFIX {
                                         memberArray[membercount][0] = nim;
                                         memberArray[membercount][1] = nama;
                                         membercount++;
+                                        System.out.println("Apakah ingin menambahkan member lagi?");
+                                        String cnf = konfirmasiHuruf.nextLine();
+                                        if(cnf.equalsIgnoreCase("t")){
+                                            break;
+                                        }
+                                    } while(true);
+                                    
                                         
                                 } else if (confirm2 == 2) {
                                     System.out.println("Data Member");
@@ -218,7 +226,8 @@ public class PerpustakaanFIX {
                 System.out.println("|  Anda memasuki menu peminjaman buku  |");
                 System.out.println("|======================================|");
                 if (bukucount>0) {
-                    for (int i = 0; i < peminjamArray.length; i++) {
+                    if(membercount>0){
+                      for (int i = 0; i < peminjamArray.length; i++) {
                         System.out.print("Apakah sudah terdaftar sebagai member? (y/t): ");
                         String tanyaDaftar = peminjamHuruf.nextLine();
                         if (tanyaDaftar.equalsIgnoreCase("y")){
@@ -230,12 +239,6 @@ public class PerpustakaanFIX {
                                 if (memberArray[b][0].equalsIgnoreCase(nim1)) {
                                     nama1 = memberArray[b][1];
                                     nimketemu = true;
-                                    break;
-                                }else{
-                                    break;
-                                }
-                            }
-                            if (nimketemu) { 
                                     System.out.println("Nama: " + nama1);
                                     for (int c = 0; c < peminjamArray[i].length; c++) {
                                         System.out.print("Masukkan kode buku: ");
@@ -243,7 +246,7 @@ public class PerpustakaanFIX {
                                         System.out.print("Masukkan jumlah buku: ");
                                         jumlah = peminjamAngka.nextInt();
                                         boolean bukuketemu = false;
-                                        for (int a = 0; a < peminjamArray.length; a++) {
+                                        for (int a = 0; a < bukucount; a++) {
                                             if (bukuArray[a][0].equalsIgnoreCase(kodeBuku1)) {
                                                 if (Integer.parseInt(bukuArray[i][4]) > 0) {
                                                     System.out.println("Judul buku: " + bukuArray[a][1]);
@@ -252,7 +255,7 @@ public class PerpustakaanFIX {
                                                     System.out.println("Jumlah buku: " + bukuArray[a][4]);
 
                                                     int stok = Integer.parseInt(bukuArray[a][4]);
-                                                    if (stok <= jumlah) {
+                                                    if (stok >= jumlah) {
                                                         stok -= jumlah;
                                                         bukuArray[a][4] = String.valueOf(stok);
                                                     }
@@ -280,13 +283,27 @@ public class PerpustakaanFIX {
                                         }
                                         break;
                                     } 
+                                    break;
+                                } else{
+                                    System.out.println("NIM tidak ditemukan");
+                                    break;
+                                }
+                                
+                            }
+                            if (nimketemu = true) { 
+                                    
                             } 
+                            
                         }else {
                                 System.out.println("Silahkan daftar terlebih dahulu");
                                 break;
                             }
                             break;
+                    }  
+                    }else{
+                        System.out.println("Member tidak tersedia");
                     }
+                    
                 } else {
                     System.out.println("Tidak terdapat buku di perpustakaan");
                     break;
