@@ -51,7 +51,12 @@ public class PerpustakaanRapi {
         boolean found = false;
         //////////////// peminjam selesai ////////////////
         //////////////// laporan peminjaman /////////////
+
         Scanner menuLap = new Scanner(System.in);
+        //////////////// PENGGUNA ////////////////
+        /// scanner ///
+        Scanner judul = new Scanner(System.in);
+        String cariJudul;
 
         do {
             System.out.println("|===========================================|");
@@ -102,45 +107,43 @@ public class PerpustakaanRapi {
                                 int confirm1 = konfirmasiAngka.nextInt();
                                 if (confirm1 == 1) {
                                     System.out.println("Anda memasuki menu input buku");
-                                    
-                                        System.out.print("Masukkan kode buku: ");
-                                        
-                                        kodeBuku = bukuHuruf.nextLine();
-                                        
-                                        
-                                            System.out.print("Masukkan judul buku: ");
-                                            judulBuku = bukuHuruf.nextLine();
-                                            System.out.print("Masukkan nama penulis: ");
-                                            penulis = bukuHuruf.nextLine();
-                                            System.out.print("Masukkan tahun terbit: ");
-                                            tahunTerbit = bukuAngka.nextLine();
-                                            System.out.print("Masukkan jumlah buku: "); 
-                                            jumlahBuku = bukuAngka.nextLine();
 
-                                            buku[bukucount][0] = kodeBuku;
-                                            buku[bukucount][1] = judulBuku;
-                                            buku[bukucount][2] = penulis;
-                                            buku[bukucount][3] = tahunTerbit;
-                                            buku[bukucount][4] = jumlahBuku;
-                                            bukucount++;
+                                    System.out.print("Masukkan kode buku: ");
 
-                                       
+                                    kodeBuku = bukuHuruf.nextLine();
+
+                                    System.out.print("Masukkan judul buku: ");
+                                    judulBuku = bukuHuruf.nextLine();
+                                    System.out.print("Masukkan nama penulis: ");
+                                    penulis = bukuHuruf.nextLine();
+                                    System.out.print("Masukkan tahun terbit: ");
+                                    tahunTerbit = bukuAngka.nextLine();
+                                    System.out.print("Masukkan jumlah buku: ");
+                                    jumlahBuku = bukuAngka.nextLine();
+
+                                    buku[bukucount][0] = kodeBuku;
+                                    buku[bukucount][1] = judulBuku;
+                                    buku[bukucount][2] = penulis;
+                                    buku[bukucount][3] = tahunTerbit;
+                                    buku[bukucount][4] = jumlahBuku;
+                                    bukucount++;
+
                                 } else if (confirm1 == 2) {
                                     // for (int i = 0; i < bukucount; i++) {
-                                        if (membercount>0) {
-                                            System.out.println("Buku ke-"+(membercount + 1) );
-                                            for (int j = 0; j < bukucount; j++) {
-                                                System.out.println("   Kode buku: "+buku[j][0]);
-                                                System.out.println("   Judul buku: " + buku[j][1]);
-                                                System.out.println("   Penulis: " + buku[j][2]);
-                                                System.out.println("   Tahun terbit: " + buku[j][3]);
-                                                System.out.println("   Jumlah buku: " + buku[j][4]);
-                                                break;
-                                            }
-                                        } else {
-                                            System.out.println("Data buku kosong ");
+                                    if (bukucount > 0) {
+                                        
+                                        for (int j = 0; j < bukucount; j++) {
+                                            System.out.println("Buku ke-" + (bukucount));
+                                            System.out.println("   Kode buku: " + buku[j][0]);
+                                            System.out.println("   Judul buku: " + buku[j][1]);
+                                            System.out.println("   Penulis: " + buku[j][2]);
+                                            System.out.println("   Tahun terbit: " + buku[j][3]);
+                                            System.out.println("   Jumlah buku: " + buku[j][4]);
+                                            break;
                                         }
-                                    
+                                    } else {
+                                        System.out.println("Data buku kosong ");
+                                    }
 
                                 } else if (confirm1 == 3) {
                                     break;
@@ -160,9 +163,11 @@ public class PerpustakaanRapi {
                                 System.out.println("|===========================================|");
                                 System.out.print("  Pilihan anda: ");
                                 int confirm2 = konfirmasiAngka.nextInt();
+
                                 if (confirm2 == 1) {
-                                    System.out.println("Input Member");
-                                    
+                                    do {
+                                        System.out.println("Input Member");
+
                                         System.out.print("Masukkan NIM: ");
                                         nim = memberSH.nextLine();
                                         System.out.print("Masukkan Nama: ");
@@ -170,27 +175,29 @@ public class PerpustakaanRapi {
                                         memberArray[membercount][0] = nim;
                                         memberArray[membercount][1] = nama;
                                         membercount++;
-                                        
+                                        System.out.println("Apakah anda ingin menambah lagi? (y/t)");
+                                        String cnf = konfirmasiHuruf.nextLine();
+                                        if(cnf.equalsIgnoreCase("t")){
+                                            break;
+                                        }
+                                    } while (true);
+
                                 } else if (confirm2 == 2) {
                                     System.out.println("Data Member");
-                                    
 
-                                        if (membercount>0) {
-                                            for (int i = 0; i < membercount; i++) {
-                                            System.out.println("Member ke-"+(i+1) );
-                                            
-                                                System.out.println("NIM: "+memberArray[i][0]);
-                                                System.out.println("Nama: " + memberArray[i][1]);
-                                                
-                                                
-                                            
+                                    if (membercount > 0) {
+                                        for (int i = 0; i < membercount; i++) {
+                                            System.out.println("Member ke-" + (i + 1));
+
+                                            System.out.println("NIM: " + memberArray[i][0]);
+                                            System.out.println("Nama: " + memberArray[i][1]);
+
                                             // break;
-                                            }
-                                        } else {
-                                            System.out.println("Member member kosong");
-                                            
                                         }
-                                    
+                                    } else {
+                                        System.out.println("Member member kosong");
+
+                                    }
 
                                 } else if (confirm2 == 3) {
                                     break;
@@ -211,7 +218,8 @@ public class PerpustakaanRapi {
                                 System.out.print("  Pilihan anda: ");
                                 int confirm3 = konfirmasiAngka.nextInt();
                                 if (confirm3 == 1) {
-                                    if (buku[0][0] != null) {
+                                    if (bukucount>0){
+                                        if (membercount>0) {
                                         for (int i = 0; i < peminjamStr.length;) {
                                             System.out.print("Apakah sudah terdaftar sebagai member? (y/t): ");
                                             String tanyaDaftar = peminjamHuruf.nextLine();
@@ -220,7 +228,7 @@ public class PerpustakaanRapi {
                                                 nim1 = peminjamHuruf.nextLine();
                                                 peminjamStr[i][0] = nim1;
                                                 boolean nimketemu = false;
-                                                for (int b = 0; b < peminjamStr.length; b++) {
+                                                for (int b = 0; b < membercount; b++) {
                                                     if (memberArray[b][0].equalsIgnoreCase(nim1)) {
                                                         nama1 = memberArray[b][1];
                                                         nimketemu = true;
@@ -237,20 +245,18 @@ public class PerpustakaanRapi {
                                                         System.out.print("Masukkan jumlah buku: ");
                                                         jumlah = peminjamAngka.nextInt();
                                                         boolean bukuketemu = false;
-                                                        for (int a = 0; a < peminjamStr.length; a++) {
+                                                        for (int a = 0; a < bukucount; a++) {
                                                             if (buku[a][0].equalsIgnoreCase(kodeBuku1)) {
                                                                 if (Integer.parseInt(buku[i][4]) > 0) {
                                                                     System.out.println("Judul buku: " + buku[a][1]);
                                                                     System.out.println("Penulis buku: " + buku[a][2]);
                                                                     System.out.println("Tahun terbit: " + buku[a][3]);
-                                                                    System.out.println("Stok buku: " + buku[a][4]);
+                                                                    System.out.println("Jumlah buku: " + buku[a][4]);
 
                                                                     int stok = Integer.parseInt(buku[a][4]);
-                                                                    if (jumlah <= stok) {
+                                                                    if (stok <= jumlah) {
                                                                         stok -= jumlah;
                                                                         buku[a][4] = String.valueOf(stok);
-                                                                    } else{
-                                                                        System.out.println("Stok buku tidak mencukupi");
                                                                     }
 
                                                                     bukuketemu = true;
@@ -268,12 +274,11 @@ public class PerpustakaanRapi {
                                                                     System.out.println("stok buku tidak mencukupi");
                                                                     break;
                                                                 }
-                                                            } else if(buku[0][0]==null){
+                                                            } else if (buku[0][0] == null) {
                                                                 System.out.println("Buku tidak Tersedia");
-                                                            } else{
+                                                            } else {
                                                                 break;
                                                             }
-                                                            
 
                                                         }
 
@@ -295,7 +300,8 @@ public class PerpustakaanRapi {
                                                                 System.out.println("kode Buku : " + peminjamStr[l][2]);
                                                                 System.out.println("Judul : " + peminjamStr[l][3]);
                                                                 System.out.println("Penulis : " + peminjamStr[l][4]);
-                                                                System.out.println("Tahun Terbit : " + peminjamStr[l][5]);
+                                                                System.out
+                                                                        .println("Tahun Terbit : " + peminjamStr[l][5]);
                                                                 System.out.println("Jumlah : " + peminjamStr[l][6]);
                                                                 System.out.println("Tenggat : " + peminjamStr[l][7]);
                                                                 break;
@@ -304,7 +310,7 @@ public class PerpustakaanRapi {
 
                                                         }
                                                     } else {
-                                                        
+
                                                         break;
                                                     }
 
@@ -315,11 +321,15 @@ public class PerpustakaanRapi {
                                             }
                                         }
                                     } else{
-                                        System.out.println("Tidak tersedia buku");
+                                        System.out.println("Member tidak tersedia");
                                     }
+                                    } else{
+                                        System.out.println("Buku tidak tersedia");
+                                    }
+                                    
                                 } else if (confirm3 == 2) {
                                     for (int l = 0; l < peminjamStr.length; l++) {
-                                        System.out.println("Peminjam ke-"+(l+1));
+                                        System.out.println("Peminjam ke-" + (l + 1));
                                         if (peminjamStr[l][0] != null) {
                                             System.out.println("Nim : " + peminjamStr[l][0]);
                                             System.out.println("Nama : " + peminjamStr[l][1]);
@@ -340,7 +350,6 @@ public class PerpustakaanRapi {
                                     System.out.println("Data yang anda masukkan salah!");
                                 }
                             } while (true);
-                       
 
                         } else if (menu == 6) {
                             while (true) {
@@ -348,37 +357,35 @@ public class PerpustakaanRapi {
                                 System.out.println("Silahkan pilih laporan");
                                 System.out.println("1. Laporan Peminjaman");
                                 System.out.println("2. Laporan pengembalian");
-                                System.out.println("3. Kembali ke menu utama");
+                                System.out.println("3. Kemblali ke menu utama");
                                 System.out.print("Masukkan pilihan anda : ");
                                 int menu1 = menuLap.nextInt();
                                 if (menu1 == 1) {
                                     for (int l = 0; l < peminjamStr.length; l++) {
-                                        if (buku [0][0] != null){
-                                        System.out.println("Nim : " + peminjamStr[l][0]);
-                                        System.out.println("Nama : " + peminjamStr[l][1]);
-                                        System.out.println("kode Buku : " + peminjamStr[l][2]);
-                                        System.out.println("Judul : " + peminjamStr[l][3]);
-                                        System.out.println("Penulis : " + peminjamStr[l][4]);
-                                        System.out.println("Tahun Terbit : " + peminjamStr[l][5]);
-                                        System.out.println("Jumlah : " + peminjamStr[l][6]);
-                                        System.out.println("Tenggat : " + peminjamStr[l][7]);
-                                        break;
-                                        }else {
-                                            System.out.println("|=======================================|");
-                                            System.out.println("|                                       |");
-                                            System.out.println("|   tidak terdapat buku yang dipinjam   |");
-                                            System.out.println("|                                       |");
-                                            System.out.println("|=======================================|");
+                                        if (buku[0][0] != null) {
+                                            System.out.println("Nim : " + peminjamStr[l][0]);
+                                            System.out.println("Nama : " + peminjamStr[l][1]);
+                                            System.out.println("kode Buku : " + peminjamStr[l][2]);
+                                            System.out.println("Judul : " + peminjamStr[l][3]);
+                                            System.out.println("Penulis : " + peminjamStr[l][4]);
+                                            System.out.println("Tahun Terbit : " + peminjamStr[l][5]);
+                                            System.out.println("Jumlah : " + peminjamStr[l][6]);
+                                            System.out.println("Tenggat : " + peminjamStr[l][7]);
+                                            break;
+                                        } else {
+                                            System.out.println("==================================");
+                                            System.out.println("tidak terdapat buku yang dipinjam");
+                                            System.out.println("==================================");
                                             break;
                                         }
                                     }
                                 } else if (menu1 == 2) {
-            
-                                }else {
+
+                                } else {
                                     break;
                                 }
                             }
-            
+
                         } else if (menu == 7) {
 
                             break;
@@ -389,7 +396,40 @@ public class PerpustakaanRapi {
                     System.out.println("Username dan password salah silahkan login kembali!");
                 }
             } else if (levelPengguna.equalsIgnoreCase("pengguna")) {
+                System.out.println("|===========================================|");
+                System.out.println("|      Silahkan login terlebih dahulu       |");
+                System.out.println("|===========================================|");
+                System.out.print("  Username: ");
+                username = login.nextLine();
+                System.out.print("  Password: ");
+                password = login.nextLine();
+                if (username.equals("pengguna") && password.equals("pengguna123")) {
+                    System.out.println("|===========================================|");
+                    System.out.println("|       Anda hanya bisa mencari buku        |");
+                    System.out.println("|===========================================|");
 
+                    if (bukucount > 0) {
+                        cariJudul = judul.nextLine();
+                        boolean cariBuku = false;
+                        for (int a = 0; a < bukucount; a++) {
+                            if (buku[a][1].equalsIgnoreCase(cariJudul)) {
+                                // nama1 = buku[b][1];
+                                cariBuku = true;
+                                System.out.println("Kode Buku: " + buku[a][0]);
+                                System.out.println("Judul Buku: " + buku[a][1]);
+                                System.out.println("Nama Penulis: " + buku[a][2]);
+                                System.out.println("Tahun terbit: " + buku[a][3]);
+                                System.out.println("Stok buku: " + buku[a][4]);
+                                break;
+                            }
+                        }
+                        // if(cariBuku=true){
+                        // System.out.println("Kode buku: ");
+                        // }
+
+                    }
+
+                }
             }
         } while (true);
 
