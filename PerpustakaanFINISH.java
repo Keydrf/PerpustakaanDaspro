@@ -2,25 +2,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
-public class PerpustakaanFIX {
+public class PerpustakaanFINISH {
 
     static Scanner peminjamHuruf = new Scanner(System.in);
-    
+
     static String bukuArray[][] = new String[10][5];
     static String memberArray[][] = new String[100][2];
     static int membercount = 1, bukucount = 1;
     static String cariJudul, cariNim, cariKode, jmlPinjam;
     static boolean nimketemu = false;
-
-    // Membuat objek Calendar
-        static Calendar calendar = Calendar.getInstance();
-
-        // Menambahkan 7 hari ke waktu saat ini
-        static calendar.add(Calendar.DAY_OF_YEAR, 7);
-
-        // Mengonversi Calendar kembali ke tipe Date
-        static Date sevenDaysLater = calendar.getTime();
-
 
     public static void main(String[] args) {
         ////////////////////// SCANNER ///////////////////////////
@@ -532,6 +522,7 @@ public class PerpustakaanFIX {
                 nimketemu = true;
 
                 System.out.println("Nama: " + memberArray[i][1]);
+                peminjamArray[i][1] = memberArray[i][1];
 
             }
         }
@@ -577,15 +568,40 @@ public class PerpustakaanFIX {
                 System.out.println("Nama Penulis: " + bukuArray[b][2]);
                 System.out.println("Tahun terbit: " + bukuArray[b][3]);
                 System.out.println("Stok buku: " + bukuArray[b][4]);
-                
-                
-                    System.out.print("Masukkan jumlah: ");
-                    jmlPinjam = peminjamHuruf.nextLine();
-                    hitungJumlah();
-                    System.out.println("Tenggat: "+sevenDaysLater);
 
-                    
+                System.out.print("Masukkan jumlah: ");
+                jmlPinjam = peminjamHuruf.nextLine();
+
+                int stok = hitungJumlah(Integer.parseInt(jmlPinjam), b);
+                System.out.println("Stok buku sisa: " + stok);
+
+                Date currentDate = new Date();
+                // Membuat objek Calendar
+                Calendar calendar = Calendar.getInstance();
+
+                // Menetapkan waktu awal menggunakan waktu saat ini
+                calendar.setTime(currentDate);
+
+                // Menambahkan 7 hari ke waktu awal
+                calendar.add(Calendar.DAY_OF_YEAR, 7);
+
+                // Mengonversi Calendar kembali ke tipe Date
+                Date tenggat = calendar.getTime();
+                System.out.println("Tenggat pengembalian: " + tenggat);
+                System.out.println("Berhasil Transaksi Peminjaman! ");
+
                 
+                peminjamArray[peminjamanCount][2] = kodeBuku1;
+                peminjamArray[peminjamanCount][3] = bukuArray[i][1];
+                peminjamArray[peminjamanCount][4] = bukuArray[i][2];
+                peminjamArray[peminjamanCount][5] = bukuArray[i][3];
+                // peminjamArray[peminjamanCount][6] =
+                // String
+                // .valueOf(jumlah);
+                peminjamArray[peminjamanCount][7] = tenggat;
+                peminjamanCount++;
+                break;
+
             }
         }
         if (!cariCode) {
@@ -593,15 +609,31 @@ public class PerpustakaanFIX {
         }
 
     }
-    static int hitungJumlah(int stok, int jml){
-        int jumlah = Integer.parseInt(jmlPinjam);
-        int stock = Integer.parseInt(bukuArray[b][4]);
-        if(stock <= jumlah){
-            stock -= jumlah;
-            bukuArray[b][4] = String.valueOf(stok);
-        } else{
-            System.out.println("Stok buku tidak mencukupi")
+
+    static int hitungJumlah(int jumlahPinjam, int index) {
+        int stock = Integer.parseInt(bukuArray[index][4]);
+        if (stock >= jumlahPinjam) {
+            stock -= jumlahPinjam;
+        } else {
+            System.out.println("Stok buku tidak mencukupi");
         }
+        bukuArray[index][4] = String.valueOf(stock);
+        return stock;
+
     }
-    
+
+    static date tenggat(Date startDate) {
+        // Membuat objek Calendar
+        Calendar calendar = Calendar.getInstance();
+
+        // Menetapkan waktu awal menggunakan input startDate
+        calendar.setTime(startDate);
+
+        // Menambahkan 7 hari ke waktu awal
+        calendar.add(Calendar.DAY_OF_YEAR, 7);
+
+        // Mengonversi Calendar kembali ke tipe Date
+        return calendar.getTime();
+    }
+
 }
