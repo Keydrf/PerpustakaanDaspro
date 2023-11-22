@@ -612,6 +612,7 @@ public class PerpustakaanFINISH {
     static void lanjutanPengembali(){
         boolean cocokKode = false;
         for (int c = 0 ; c<bukuArray.length;c++){
+            
             if (bukuArray[c][0].equals(peminjamArray[c][0]))
             System.out.println("================================");
             System.out.println("     Data buku yang dipinjam    ");
@@ -620,6 +621,7 @@ public class PerpustakaanFINISH {
             System.out.println("Kode Buku : "+peminjamArray[c][2]);
             System.out.println("Penulis Buku : "+peminjamArray[c][4]);
             System.out.println("Tahun Terbit : "+peminjamArray[c][5]);
+            System.out.println("Jumlah : "+peminjamArray[c][6]);
            
             System.out.print("Masukkan jumlah buku yang dikembalikan : ");
             String jumlahBukuKembali = pengembaliHuruf.nextLine();
@@ -634,19 +636,31 @@ public class PerpustakaanFINISH {
             }
             int stokKembali = hitungStokKembali(Integer.parseInt(jumlahBukuKembali),c);
             bukuArray[c][4]=String.valueOf(stokKembali);
+
+            int kurangJumlahPinjam = kurangStokPinjam(Integer.parseInt(jumlahBukuKembali), c);
+            peminjamArray [c][6] = String.valueOf(kurangJumlahPinjam);
             break;
+            
             
         }
         
     }
+
     static int hitungBukuKembali(int jumlahDiKembalikan, int index  ){
         int jumlahDiPinjam=Integer.parseInt(peminjamArray[index][6]);
         int bukuKurang = jumlahDiPinjam-jumlahDiKembalikan;
         return bukuKurang;
     }
+
     static int hitungStokKembali(int jumlahDiKembali , int index){
         int stok = Integer.parseInt(bukuArray[index][4]);
         stok+=jumlahDiKembali;
         return stok;
+        
+    }
+    static int kurangStokPinjam(int jumlahBoekoe,int index){
+        int joemlahPinjam = Integer.parseInt(peminjamArray[index][6]);
+        joemlahPinjam-=jumlahBoekoe;
+        return joemlahPinjam;
     }
 }
