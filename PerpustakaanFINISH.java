@@ -627,11 +627,13 @@ public class PerpustakaanFINISH {
 
             if(bukuKurang==0){
                 System.out.println("Buku berhasil dikembalikan ");
+                peminjamArray[c][8] = "Kembali";
             } else if(bukuKurang>0){
                 System.out.println("Buku berhasil dikembalikan ");
                 System.out.println(" Member "+peminjamArray[c][1]+" memiliki tanggungan buku yang belum dikembalikan berjumlah -"+bukuKurang);
             }
-            bukuArray[c][4]+=jumlahBukuKembali;
+            int stokKembali = hitungStokKembali(Integer.parseInt(jumlahBukuKembali),c);
+            bukuArray[c][4]=String.valueOf(stokKembali);
             break;
             
         }
@@ -639,7 +641,12 @@ public class PerpustakaanFINISH {
     }
     static int hitungBukuKembali(int jumlahDiKembalikan, int index  ){
         int jumlahDiPinjam=Integer.parseInt(peminjamArray[index][6]);
-        int bukuKurang = jumlahDiPinjam-=jumlahDiKembalikan;
+        int bukuKurang = jumlahDiPinjam-jumlahDiKembalikan;
         return bukuKurang;
+    }
+    static int hitungStokKembali(int jumlahDiKembali , int index){
+        int stok = Integer.parseInt(bukuArray[index][4]);
+        stok+=jumlahDiKembali;
+        return stok;
     }
 }
