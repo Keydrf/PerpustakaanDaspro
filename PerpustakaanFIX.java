@@ -228,10 +228,9 @@ public class PerpustakaanFIX {
                                     System.out.println("|=============================================|");
                                     if (bukucount > 0) {
                                         if (membercount > 0) {
-                                            for (int i = 0; i < peminjamArray.length;) {
+                                            for (int i = 0; i < peminjamArray.length;i++) {
                                                 System.out.println("|=============================================|");
-                                                System.out
-                                                        .print("|Apakah sudah terdaftar sebagai member?(y/t): " + "|");
+                                                System.out.print("|Apakah sudah terdaftar sebagai member?(y/t): " + "|");
                                                 String tanyaDaftar = peminjamHuruf.nextLine();
                                                 if (tanyaDaftar.equalsIgnoreCase("y")) {
                                                     System.out.print("Masukkan NIM peminjaman: ");
@@ -274,7 +273,7 @@ public class PerpustakaanFIX {
 
                                                                                 int stok = Integer
                                                                                         .parseInt(bukuArray[a][4]);
-                                                                                if (stok <= jumlah) {
+                                                                                if (stok >= jumlah) {
                                                                                     stok -= jumlah;
                                                                                     bukuArray[a][4] = String
                                                                                             .valueOf(stok);
