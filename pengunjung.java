@@ -45,13 +45,12 @@ public class pengunjung {
                                 String[] terbit ={"2002", "2003", "2005"};
                                 boolean tersedia = false;
                                 for (int j=0; j < judul.length; j++) {
-                                    if (judul[j].equalsIgnoreCase(jdlBuku)) {
-                                        tersedia = true;
+                                    if (jdlBuku.equalsIgnoreCase(judul[j])) {
                                         System.out.println("=== Buku Tersedia ===");
                                         System.out.println("Judul : "+judul[j]);
                                         System.out.println("Penulis : "+penulis[j]);
                                         System.out.println("Tahun Terbit : "+terbit[j]);
-                                        
+                                        tersedia = false;
                                         break;
                                     } if (!tersedia){
                                         System.out.println("Buku tidak tersedia");
@@ -60,7 +59,6 @@ public class pengunjung {
                                 
                                 System.out.println("Apakah nda ingin melakukan transaksi lain (Ya / Tidak)");
                                 pilihan1 = scan1.nextLine();
-                    
                         } 
                             else {
                                 System.out.println("Anda tidak memiliki wewenang untuk mengakses laman lain");

@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class Perpustakaan1 {
     public static void main(String[] args) {
         // inputan level
@@ -10,8 +9,28 @@ public class Perpustakaan1 {
         Scanner inputangka = new Scanner(System.in);
         Scanner inputhuruf = new Scanner(System.in);
         Scanner inputhuruff = new Scanner(System.in);
+        // inputan scanner peminjaman
+        Scanner inputPinjamHuruf = new Scanner(System.in);
+        Scanner inputPinjamAngka = new Scanner(System.in);
+        // inputan scanner pengembalian
+        Scanner inputKembaliHuruf = new Scanner(System.in);
+        Scanner inputKembaliAngka = new Scanner(System.in);
         String username, password, level;
         boolean masuk = false;
+        // array username member
+        String nama,nim;
+        for (int m=0 ; m < 4 ; m++){
+        String [] usernameMember = {"Daped","Tito","keysha"};
+        String [] nimMember = {"2341760076","2341760052","2341760193"};
+        int [] dendaMember = new int[4];
+        // array pengembalian (superadmin case '2')
+        int hariKembali = 0;
+        double denda[] = new double[50];
+        double tenggat;
+        String konfirmasi;
+        String [] judulKembali = new String[50];
+        int [] jumlahKembali = new int [50];
+        String [] status = new String[50];
         // String[] buku = new String[1000];
         // int[] jml = new int[1000];
         // int p = 1;
@@ -48,70 +67,107 @@ public class Perpustakaan1 {
                             System.out.println("6. Laporan peminjaman");
                             System.out.println("7. Laporan pengembalian");
 
+
                             char kondisi;
 
                             kondisi = inputangka.next().charAt(0);
 
                             switch (kondisi) {
-                                case '1':
-                                    String nama, judul, tanggal, nim;
-                                    int jumlah, hari, telat;
+                                case '1':    
+                                String tanggal, pemilihan;
+                                int hari, telat;
+                                String[]judulPinjam = new String[50];
+                                int []jumlahPinjam = new int[50];
                                     System.out.print("Masukkan Nama peminjam              : ");
-                                    nama = inputhuruf.nextLine();
+                                    nama = inputPinjamHuruf.nextLine();
                                     System.out.print("Masukkan NIM peminjam               : ");
-                                    nim = inputhuruf.nextLine();
+                                    nim = inputPinjamHuruf.nextLine();
+
+                                    if (nama.equalsIgnoreCase(usernameMember[m])==nim.equalsIgnoreCase(nimMember[m])&&dendaMember[m]<=0){
+                                        
+                                    for (int i = 0 ; i < judulPinjam.length ;){
                                     System.out.print("Masukkan judul buku yang dipinjam   : ");
-                                    judul = inputhuruf.nextLine();
+                                    judulPinjam[i] = inputPinjamHuruf.nextLine();
                                     System.out.print("Masukkan jumlah buku yang dipinjam  : ");
-                                    jumlah = inputhuruf.nextInt();
+                                    jumlahPinjam[i] = inputPinjamAngka.nextInt();
                                     System.out.print("Masukkan tanggal pengembalian       : ");
-                                    tanggal = inputhuruf.nextLine();
-                                    System.out.println("Nama peminjam " + nama);
-                                    System.out.println("NIM peminjam " + nim);
-                                    System.out.println("Judul buku yang dipinjam " + judul);
-                                    System.out.println("Jumlah buku yang dipinjam " + jumlah);
-                                    System.out.println("Tanggal pengembalian " + tanggal);
+                                    tanggal = inputPinjamHuruf.nextLine();
+                                    System.out.println("============================================="); 
+                                    System.out.println("Nama peminjam : " + nama);
+                                    System.out.println("NIM peminjam : " + nim);
+                                    System.out.println("Judul buku yang dipinjam : " + judulPinjam[i]);
+                                    System.out.println("Jumlah buku yang dipinjam : " + jumlahPinjam[i]);
+                                    System.out.println("Tanggal pengembalian : " + tanggal);
+                                    System.out.println("=============================================");
+                                    System.out.println("Apakah anda ingin meminjam buku lain (Ya/Tidak)");
+                                    pemilihan = inputPinjamHuruf.nextLine();
+
+                                    if (pemilihan.equalsIgnoreCase("ya")){
+                                        i++;
+                                    }else{
+                                    break;
+                                    }
+                                    
+                                    }
+                                }else{
+                                    System.out.println("Member "+usernameMember[m]+" memiliki denda sebesar-"+dendaMember[m]+" yang harus dibayar");
+                                }
                                     break;
 
                                 case '2':
-                                    hari = 0;
-                                    double denda, tenggat;
-                                    String konfirmasi;
-
+                                    
                                     do {
-                                        System.out.print("Apakah anda ingin mengembalikan buku (y/t)? ");
+                                        System.out.print("Apakah anda ingin mengembalikan buku (Ya/Tidak)? ");
                                         konfirmasi = inputhuruf.next();
-
-                                        if (konfirmasi.equalsIgnoreCase("y")) {
+                                        if (konfirmasi.equalsIgnoreCase("Ya")) {
                                             System.out.print("Masukkan nama peminjam               : ");
-                                            nama = inputhuruf.nextLine();
+                                            nama = inputKembaliHuruf.nextLine();
                                             System.out.print("Masukkan nim peminjam                : ");
-                                            nim = inputhuruf.nextLine();
-                                            System.out.print("Masukkan judul buku yang dipinjam    : ");
-                                            judul = inputhuruf.nextLine();
-                                            System.out.print("Masukkan jumlah buku yang dipinjam   : ");
-                                            jumlah = inputangka.nextInt();
-                                            System.out.print("Masukkan jumlah hari peminjaman      : ");
-                                            hari = inputangka.nextInt();
+                                            nim  = inputKembaliHuruf.nextLine();
 
+                                            if ((nama.equalsIgnoreCase(usernameMember[m]))&& nim.equalsIgnoreCase(nimMember[m])){
+                                            for (int j=0; j <judulKembali.length;j++){
+                                            System.out.print("Masukkan judul buku yang akan dikembalikan   : ");
+                                            judulKembali[j] = inputKembaliHuruf.nextLine();
+                                            System.out.print("Masukkan jumlah buku yang akan dikembalikan   : ");
+                                            jumlahKembali[j] = inputKembaliAngka.nextInt();
+                                            System.out.print("Status buku (Baik/Tidak baik)");
+                                            status[j] = inputKembaliHuruf.nextLine();
+                                            System.out.print("Masukkan jumlah hari peminjaman      : ");
+                                            hari = inputKembaliAngka.nextInt();
                                             telat = hari - 7;
                                             tenggat = 7;
 
-                                            if (hari > tenggat) {
-                                                denda = (hari - 7) * 500;
-                                                System.out.println("Peminjam " + nama + " terkena denda sebesar "
-                                                        + denda
+                                            if (hari > tenggat){
+                                                dendaMember [m]= (hari - 7) * 500;
+                                                System.out.println("Peminjam " + usernameMember[m] + " terkena denda sebesar "
+                                                        + dendaMember[m]
                                                         + " karena terlambat mengembalikan buku " + telat + " hari. ");
-
+                                            } else if(denda[m] == 0 && status[j].equalsIgnoreCase("baik")){
+                                                System.out.println("=========================================");
+                                                System.out.println("Judul buku '"+judulKembali[j] +"' jumlah '"+jumlahKembali[j]+"' Status '"+status[j]+"'");
+                                                System.out.println("===buku berhasil dikembalikan===");
                                             } else {
-                                                System.out.println("Buku berhasil dikembalikan");
-
+                                                System.out.println("========================================");
+                                                System.out.println("===gagal mengembalikan buku(peminjam terkena denda / status buku tidak baik)===");
                                             }
+                                            
+                                            System.out.print("Apakah anda ingin mengembalikan buku lagi (Ya/Tidak)");
+                                            pemilihan=inputKembaliHuruf.nextLine();
+                                            if (pemilihan.equalsIgnoreCase("ya")){
+                                                j++;
+                                            }else{
+                                                break;
+                                            }
+                                        }
+                                    }else {
+                                        System.out.println("Username atau Password yang anda masukkan salah, mohon masukkan dengan teliti");
+                                    }
                                         } else {
                                             System.out.println("Terima kasih sudah mengembalikan buku");
                                             break;
                                         }
-                                    } while (hari > 0);
+                                    } while (hariKembali > 0);
                                     break;
                                 case '3':
                                     int stokawal, pinjam, hilang, rusak, stokakhir;
@@ -135,7 +191,6 @@ public class Perpustakaan1 {
                                     int ele = inputangka.nextInt();
                                     String[] buku = new String[ele];
                                     int[] jml = new int[ele];
-
                                     for (int a = 0; a < buku.length;a++) {
 
                                         System.out.print("Masukkan judul buku ke-" + (a + 1) + ": ");
@@ -158,7 +213,7 @@ public class Perpustakaan1 {
                                         // break;
 
                                         // }
-                                    }
+                                    } 
                                     for(int i = 0; i < buku.length; i++){
                                         System.out.println("Judul buku ke-"+(i+1)+": " + buku[i] + " Jumlah buku:" + jml[i]);
                                     }
@@ -213,6 +268,18 @@ public class Perpustakaan1 {
                                     //     }
                                     // } while (member > 0);
                                     break;
+                                case '6':
+                                System.out.println(" ____________________________________");        
+                                System.out.println("|Anda memasuki laman pembayaran denda|");
+                                System.out.println("|____________________________________|");
+                                System.out.println("/n");
+                                System.out.println("Masukkan nama anda ");
+                                nama = inputhuruf.nextLine();
+                                System.out.println("Masukkan NIM anda ");
+                                nim = inputhuruf. nextLine();
+                                        
+                                        break;
+                                case '7':
                                 default:
                                     System.out.println("Maaf belum bisa diakses");
                             }
@@ -279,5 +346,6 @@ public class Perpustakaan1 {
             // System.out.println("Username dan password salah silahkan login ulang!");
             // }
         } while (true);
+    }
     }
 }
