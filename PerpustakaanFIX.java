@@ -251,15 +251,9 @@ public class PerpustakaanFIX {
                                     System.out.println("|=============================================|");
                                     System.out.println("|      Anda memasuki menu peminjaman buku     |");
                                     System.out.println("|=============================================|");
-<<<<<<< HEAD
-                                    if (bukucount > 0) {
-                                        if (membercount > 0) {
-                                            for (int i = 0; i < peminjamArray.length;i++) {
-=======
                                     if (bukuArray != null) {
                                         if (memberArray != null) {
                                             for (int i = 0; i < peminjamArray.length;) {
->>>>>>> 49a2839f0392d74f7611171bb5c55324e2d5e1e7
                                                 System.out.println("|=============================================|");
                                                 System.out.print("|Apakah sudah terdaftar sebagai member?(y/t): " + "|");
                                                 String tanyaDaftar = peminjamHuruf.nextLine();
@@ -304,18 +298,8 @@ public class PerpustakaanFIX {
                                                                         // .valueOf(stok);
                                                                         // }
 
-<<<<<<< HEAD
-                                                                                int stok = Integer
-                                                                                        .parseInt(bukuArray[a][4]);
-                                                                                if (stok >= jumlah) {
-                                                                                    stok -= jumlah;
-                                                                                    bukuArray[a][4] = String
-                                                                                            .valueOf(stok);
-                                                                                }
-=======
                                                                         System.out.print("Masukkan tenggat: ");
                                                                         tenggat = peminjamHuruf.nextLine();
->>>>>>> 49a2839f0392d74f7611171bb5c55324e2d5e1e7
 
                                                                         peminjamArray[peminjamanCount][1] = memberArray[i][1];
                                                                         peminjamArray[peminjamanCount][2] = kodeBuku1;
