@@ -12,7 +12,7 @@ public class PerpustakaanFINISH {
     static String memberArray[][] = new String[100][2];
     static String peminjamArray[][] = new String[100][9];
     static String pengembaliArray[][] = new String [100][9];
-    static int membercount = 1, bukucount = 1, peminjamanCount = 0;
+    static int membercount = 1, bukucount = 1, peminjamanCount = 0, pengembaliCount = 0;
     static String cariJudul, cariNim, cariNimPeminjam, cariKode, jmlPinjam, status;
     static boolean nimketemu = false;
 
@@ -374,7 +374,7 @@ public class PerpustakaanFINISH {
                                         System.out.println("|======================================|");
                                     }
                                 } else if (firm == 2) {
-
+                                    laporanPengembalian();
                                 } else if (firm == 3) {
                                     break;
                                 } else {
@@ -642,68 +642,60 @@ public class PerpustakaanFINISH {
                     System.out.print("Masukkan jumlah buku yang dikembalikan : ");
                     String jumlahBukuKembali = pengembaliHuruf.nextLine();
                     int bukuKurang = hitungBukuKembali(Integer.parseInt(jumlahBukuKembali), i);
-
+                    pengembaliArray[pengembaliCount][1] = peminjamArray[i][1];
+                    pengembaliArray[pengembaliCount][0] = peminjamArray[i][0];
+                    pengembaliArray[pengembaliCount][2] = peminjamArray[i][2];
+                    pengembaliArray[pengembaliCount][3] = peminjamArray[i][3];
+                    pengembaliArray[pengembaliCount][4] = peminjamArray[i][4];
+                    pengembaliArray[pengembaliCount][5] = peminjamArray[i][5];
+                    pengembaliArray[pengembaliCount][6] = jumlahBukuKembali;
+                    // pengembaliCount++;
                     if (bukuKurang == 0) {
                         System.out.println("Buku berhasil dikembalikan ");
                         peminjamArray[i][8] = "Kembali";
+                        pengembaliCount++;
                     } else if (bukuKurang > 0) {
                         System.out.println("Buku berhasil dikembalikan ");
                         System.out.println(" Member " + peminjamArray[i][1]+ " memiliki tanggungan buku yang belum dikembalikan berjumlah -" + bukuKurang);
+                        pengembaliCount++;
                     }
+                    pengembaliCount++;
                     int stokKembali = hitungStokKembali(Integer.parseInt(jumlahBukuKembali), i);
                     bukuArray[i][4] = String.valueOf(stokKembali);
 
                     int kurangJumlahPinjam = kurangStokPinjam(Integer.parseInt(jumlahBukuKembali), i);
                     peminjamArray[i][6] = String.valueOf(kurangJumlahPinjam);
-
+                    
                     
                     break;
-                    // lanjutanPengembali();
+                    
                 
             }
         }
-
-        // if (!nimketemu) {
-        // System.out.println("NIM tidak ditemukan");
-        // }
     }
+    
+    static void laporanPengembalian() {
+        System.out.println("|==============================================|");
+        System.out.println("Data Pengembalian");
+        System.out.println(pengembaliArray[0][0]);
+        if (pengembaliCount > 0) {
+            for (int m = 0;  m < pengembaliCount; m++) {
+                if (pengembaliArray[m][0] != null) {
+                    System.out.println("|==============================================|");
+                    System.out.println(" Data pengembali ke-" + (m + 1));
+                    System.out.println(" Nim            : " + pengembaliArray[m][0]);
+                    System.out.println(" Nama           : " + pengembaliArray[m][1]);
+                    System.out.println(" Kode Buku      : " + pengembaliArray[m][2]);
+                    System.out.println(" Judul          : " + pengembaliArray[m][3]);
+                    System.out.println(" Penulis        : " + pengembaliArray[m][4]);
+                    System.out.println(" Tahun Terbit   : " + pengembaliArray[m][5]);
+                    System.out.println(" Jumlah         : " + pengembaliArray[m][6]);
+                    System.out.println("|==============================================|");
+                } 
+            }
+        }
 
-    // static void lanjutanPengembali() {
-    //     boolean cocokKode = false;
-    //     for (int c = 0; c < bukuArray.length; c++) {
-
-    //         if (bukuArray[c][0].equals(peminjamArray[c][0]))
-    //             System.out.println("================================");
-    //         System.out.println("     Data buku yang dipinjam    ");
-    //         System.out.println("================================");
-    //         System.out.println("Judul Buku : " + peminjamArray[c][3]);
-    //         System.out.println("Kode Buku : " + peminjamArray[c][2]);
-    //         System.out.println("Penulis Buku : " + peminjamArray[c][4]);
-    //         System.out.println("Tahun Terbit : " + peminjamArray[c][5]);
-    //         System.out.println("Jumlah : " + peminjamArray[c][6]);
-
-    //         System.out.print("Masukkan jumlah buku yang dikembalikan : ");
-    //         String jumlahBukuKembali = pengembaliHuruf.nextLine();
-    //         int bukuKurang = hitungBukuKembali(Integer.parseInt(jumlahBukuKembali), c);
-
-    //         if (bukuKurang == 0) {
-    //             System.out.println("Buku berhasil dikembalikan ");
-    //             peminjamArray[c][8] = "Kembali";
-    //         } else if (bukuKurang > 0) {
-    //             System.out.println("Buku berhasil dikembalikan ");
-    //             System.out.println(" Member " + peminjamArray[c][1]
-    //                     + " memiliki tanggungan buku yang belum dikembalikan berjumlah -" + bukuKurang);
-    //         }
-    //         int stokKembali = hitungStokKembali(Integer.parseInt(jumlahBukuKembali), c);
-    //         bukuArray[c][4] = String.valueOf(stokKembali);
-
-    //         int kurangJumlahPinjam = kurangStokPinjam(Integer.parseInt(jumlahBukuKembali), c);
-    //         peminjamArray[c][6] = String.valueOf(kurangJumlahPinjam);
-    //         break;
-
-    //     }
-
-    // }
+    }
 
     static int hitungBukuKembali(int jumlahDiKembalikan, int index) {
         int jumlahDiPinjam = Integer.parseInt(peminjamArray[index][6]);
@@ -717,7 +709,7 @@ public class PerpustakaanFINISH {
         return stok;
 
     }
-
+    
     static int kurangStokPinjam(int jumlahBoekoe, int index) {
         int joemlahPinjam = Integer.parseInt(peminjamArray[index][6]);
         joemlahPinjam -= jumlahBoekoe;
