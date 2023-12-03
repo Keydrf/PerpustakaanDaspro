@@ -549,8 +549,12 @@ public class PerpustakaanFINISH {
 
                 System.out.print("Apakah anda ingin cetak struk (y/t)?: ");
                 String kondisi = peminjamHuruf.nextLine();
-
-                cetakStruk();
+                if(kondisi.equalsIgnoreCase("y")){
+                    cetakStruk();
+                } else{
+                    break;
+                }
+                
 
                 peminjamanCount++;
 
