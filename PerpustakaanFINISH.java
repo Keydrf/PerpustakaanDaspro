@@ -9,12 +9,13 @@ public class PerpustakaanFINISH {
     static Scanner pengembaliHuruf = new Scanner(System.in);
 
     static String bukuArray[][] = new String[100][5];
-    static String memberArray[][] = new String[100][2];
+    static String memberArray[][] = new String[100][3];
     static String peminjamArray[][] = new String[100][10];
     static String pengembaliArray[][] = new String[100][9];
     static int membercount = 1, bukucount = 1, peminjamanCount = 0, pengembaliCount = 0, kodePinjam = 1;
     static String cariJudul, cariNim, cariNimPeminjam, cariKode, jmlPinjam, status;
     static boolean nimketemu = false;
+    static Scanner tanggalDenda = new Scanner(System.in);
 
     public static void main(String[] args) {
         ////////////////////// SCANNER ///////////////////////////
@@ -40,6 +41,9 @@ public class PerpustakaanFINISH {
         /// scanner pengembalian ///
         Scanner pengembaliHuruf = new Scanner(System.in);
         Scanner pengembaliAngka = new Scanner(System.in);
+
+        /// scanner denda  ///
+        
 
         ///////////////////////// DEKLARASI//////////////////////
         String levelPengguna, username, password;
@@ -215,6 +219,7 @@ public class PerpustakaanFINISH {
 
                                             System.out.println("   NIM    : " + memberArray[i][0]);
                                             System.out.println("   Nama   : " + memberArray[i][1]);
+                                            System.out.println("total Denda : " + memberArray[i][2]);
 
                                             // break;
                                         }
@@ -412,7 +417,7 @@ public class PerpustakaanFINISH {
                                         }
                                     }
                                 } else if (menu1 == 2) {
-
+                                    laporanPengembalian();
                                 } else {
                                     break;
                                 }
@@ -551,15 +556,6 @@ public class PerpustakaanFINISH {
                 peminjamArray[peminjamanCount][9] = NomorPeminjaman;
                 System.out.print("Apakah anda ingin cetak struk (y/t)?: ");
                 String kondisi = peminjamHuruf.nextLine();
-<<<<<<< HEAD
-                if(kondisi.equalsIgnoreCase("y")){
-                    cetakStruk();
-                } else{
-                    break;
-                }
-                
-
-=======
                 if (kondisi.equalsIgnoreCase("y")) {
                     cetakStruk();
                 } else {
@@ -567,7 +563,6 @@ public class PerpustakaanFINISH {
                 }
 
                 kodePinjam++;
->>>>>>> 0b736781025180c852b0a03a84af96b5da3a4ac2
                 peminjamanCount++;
 
                 break;
@@ -662,7 +657,7 @@ public class PerpustakaanFINISH {
                 System.out.println("Penulis Buku  : " + peminjamArray[i][4]);
                 System.out.println("Tahun Terbit  : " + peminjamArray[i][5]);
                 System.out.println("Jumlah        : " + peminjamArray[i][6]);
-                System.out.print("Masukkan jumlah buku yang dikembalikan : ");
+                System.out.println("tanggal dipinjam : "+ peminjamArray[i][7]);                System.out.print("Masukkan jumlah buku yang dikembalikan : ");
                 String jumlahBukuKembali = pengembaliHuruf.nextLine();
                 int bukuKurang = hitungBukuKembali(Integer.parseInt(jumlahBukuKembali), i);
                 pengembaliArray[pengembaliCount][1] = peminjamArray[i][1];
@@ -672,10 +667,30 @@ public class PerpustakaanFINISH {
                 pengembaliArray[pengembaliCount][4] = peminjamArray[i][4];
                 pengembaliArray[pengembaliCount][5] = peminjamArray[i][5];
                 pengembaliArray[pengembaliCount][6] = jumlahBukuKembali;
+
+                System.out.print("Masukkan tanggal peminjaman (dd/mm/yyyy): ");
+                Date tanggalPinjam = masukkanTanggal(tanggalDenda);
+                
+                System.out.print("Masukkan tanggal pengembalian (dd/mm/yyyy): ");
+                Date tanggalKembali = masukkanTanggal(tanggalDenda);
+        
+                long selisihHari = hitungSelisihHari(tanggalPinjam, tanggalKembali);
+                
+        
+                if (selisihHari <= 7) {
+                    System.out.println("Buku berhasil dikembalikan tepat waktu.");
+                } else if (selisihHari > 7) {
+                    System.out.println("Berapa lama hari dipinjam adalah: " + selisihHari + " hari");
+                    long totalDenda = (selisihHari-7) * 1000;
+                    System.out.println("Lama hari terlambat: " + (selisihHari-7) + " hari");
+                    System.out.println("Denda yang harus dibayar: Rp " + totalDenda);
+                    memberArray[i][2]=String.valueOf(totalDenda);
+                }
                 
                 if (bukuKurang == 0) {
                     System.out.println("Buku berhasil dikembalikan ");
                     peminjamArray[i][8] = "Kembali";
+                    pengembaliArray[pengembaliCount][8] = peminjamArray[i][8];
                     pengembaliCount++;
                 } else if (bukuKurang > 0) {
                     System.out.println("Buku berhasil dikembalikan ");
@@ -683,6 +698,7 @@ public class PerpustakaanFINISH {
                             + " memiliki tanggungan buku yang belum dikembalikan berjumlah -" + bukuKurang);
                     pengembaliCount++;
                 }
+        
                 
                 int stokKembali = hitungStokKembali(Integer.parseInt(jumlahBukuKembali), i);
                 bukuArray[i][4] = String.valueOf(stokKembali);
@@ -694,7 +710,7 @@ public class PerpustakaanFINISH {
                 }
 
             } else {
-                System.out.println("Kode peminjaman tidak terdaftara");
+                System.out.println("Kode peminjaman tidak terdaftar");
             }
         }
     }
@@ -715,6 +731,7 @@ public class PerpustakaanFINISH {
                     System.out.println(" Penulis        : " + pengembaliArray[m][4]);
                     System.out.println(" Tahun Terbit   : " + pengembaliArray[m][5]);
                     System.out.println(" Jumlah         : " + pengembaliArray[m][6]);
+                    System.out.println(" Status         : " + pengembaliArray[m][8]);
                     System.out.println("|==============================================|");
                 }
             }
@@ -740,4 +757,22 @@ public class PerpustakaanFINISH {
         joemlahPinjam -= jumlahBoekoe;
         return joemlahPinjam;
     }
+    public static Date masukkanTanggal(Scanner tanggalDenda) {
+        String inputTanggal = tanggalDenda.next();
+
+        int tanggal = Integer.parseInt(inputTanggal.split("/")[0]);
+        int bulan = Integer.parseInt(inputTanggal.split("/")[1]) - 1; 
+        int tahun = Integer.parseInt(inputTanggal.split("/")[2]);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(tahun, bulan, tanggal);
+
+        return calendar.getTime();
+    }
+
+    public static long hitungSelisihHari(Date tanggalAwal, Date tanggalAkhir) {
+        long selisihMilidetik = Math.abs(tanggalAkhir.getTime() - tanggalAwal.getTime());
+        return selisihMilidetik / (1000 * 60 * 60 * 24);
+    }
+
 }
