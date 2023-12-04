@@ -1,4 +1,4 @@
-import java.util.Calendar;
+   import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -639,12 +639,9 @@ public class PerpustakaanFINISH {
         for (int i = 0; i < membercount; i++) {
             int bukuPinjam = Integer.parseInt(peminjamArray[i][6]);
             if (peminjamArray[i][9].equalsIgnoreCase(cariNimPeminjam)) {
-
                 nimpengembalian = true;
                 // if (nimketemu) {
-                if(bukuPinjam == 0){
-                    System.out.println("Buku telah dikembalikan");
-                }else{
+                if(bukuPinjam > 0){
                 System.out.println("Nama          : " + peminjamArray[i][1]);
                 System.out.println("Nim           : " + peminjamArray[i][0]);
                 System.out.println("Kode Buku     : " + peminjamArray[i][2]);
@@ -652,6 +649,7 @@ public class PerpustakaanFINISH {
                 System.out.println("Penulis Buku  : " + peminjamArray[i][4]);
                 System.out.println("Tahun Terbit  : " + peminjamArray[i][5]);
                 System.out.println("Jumlah        : " + peminjamArray[i][6]);
+                System.out.println("Status buku   : " + peminjamArray[i][8]);
                 System.out.print("Masukkan jumlah buku yang dikembalikan : ");
                 String jumlahBukuKembali = pengembaliHuruf.nextLine();
                 int bukuKurang = hitungBukuKembali(Integer.parseInt(jumlahBukuKembali), i);
@@ -671,6 +669,8 @@ public class PerpustakaanFINISH {
                     System.out.println("Buku berhasil dikembalikan ");
                     System.out.println(" Member " + peminjamArray[i][1]
                             + " memiliki tanggungan buku yang belum dikembalikan berjumlah -" + bukuKurang);
+                    peminjamArray[i][8] = "Belum dikembalikan keseluruhan";
+                    pengembaliArray[i][8] = peminjamArray[i][8];
                     pengembaliCount++;
                 }
                 
@@ -681,6 +681,8 @@ public class PerpustakaanFINISH {
                 peminjamArray[i][6] = String.valueOf(kurangJumlahPinjam);
 
                 break;
+                } else {
+                    System.out.println("Buku telah dikembalikan");
                 }
 
             } else {
