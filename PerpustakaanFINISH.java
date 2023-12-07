@@ -696,7 +696,9 @@ public class PerpustakaanFINISH {
                     System.out.println("Buku berhasil dikembalikan ");
                     System.out.println(" Member " + peminjamArray[i][1]
                             + " memiliki tanggungan buku yang belum dikembalikan berjumlah -" + bukuKurang);
-                    pengembaliCount++;
+                            pengembaliArray[i][8]="Memiliki Tanggungan";
+
+                            pengembaliCount++;
                 }
         
                 
