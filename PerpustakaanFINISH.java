@@ -481,7 +481,6 @@ public class PerpustakaanFINISH {
 
                 peminjamArray[peminjamanCount][0] = cariNim;
                 nimketemu = true;
-
                 System.out.println("Nama: " + memberArray[i][1]);
                 peminjamArray[peminjamanCount][1] = memberArray[i][1];
 
@@ -563,7 +562,7 @@ public class PerpustakaanFINISH {
                 if (kondisi.equalsIgnoreCase("y")) {
                     cetakStruk();
                 } else {
-                    break;
+                    
                 }
 
                 kodePinjam++;
@@ -573,7 +572,6 @@ public class PerpustakaanFINISH {
 
             } else {
                 System.out.println("Buku tidak ditemukan!");
-                break;
             }
         }
     }
@@ -619,7 +617,7 @@ public class PerpustakaanFINISH {
                     System.out.println("|==============================================|");
                     System.out.printf("|   Data peminjaman ke-%-24s|\n", (l + 1));
                     System.out.println("|==============================================|");
-                    System.out.printf("| Kode Pinjam    : %-28s|\n", peminjamArray[l][8]);
+                    System.out.printf("| Kode Pinjam    : %-28s|\n", peminjamArray[l][9]);
                     System.out.printf("| Nim            : %-28s|\n", peminjamArray[l][0]);
                     System.out.printf("| Nama           : %-28s|\n", peminjamArray[l][1]);
                     System.out.printf("| Kode Buku      : %-28s|\n", peminjamArray[l][2]);
@@ -651,15 +649,12 @@ public class PerpustakaanFINISH {
     static void pengembalian() {
 
         boolean nimpengembalian = false;
-        for (int i = 0; i < membercount; i++) {
-            int bukuPinjam = Integer.parseInt(peminjamArray[i][6]);
+        for (int i = 0; i < peminjamanCount; i++) {
             if (peminjamArray[i][9].equalsIgnoreCase(cariNimPeminjam)) {
-
+                int bukuPinjam = Integer.parseInt(peminjamArray[i][6]);
                 nimpengembalian = true;
                 // if (nimketemu) {
-                if (bukuPinjam == 0) {
-                    System.out.println("Buku telah dikembalikan");
-                } else {
+                 if(bukuPinjam>0) {
                     System.out.println("Nama          : " + peminjamArray[i][1]);
                     System.out.println("Nim           : " + peminjamArray[i][0]);
                     System.out.println("Kode Buku     : " + peminjamArray[i][2]);
@@ -667,7 +662,7 @@ public class PerpustakaanFINISH {
                     System.out.println("Penulis Buku  : " + peminjamArray[i][4]);
                     System.out.println("Tahun Terbit  : " + peminjamArray[i][5]);
                     System.out.println("Jumlah        : " + peminjamArray[i][6]);
-                    System.out.println("Tgl    pinjam : " + peminjamArray[i][7]);
+                    System.out.println("Tgl pinjam    : " + peminjamArray[i][7]);
                     System.out.print("Masukkan jumlah buku yang dikembalikan : ");
                     String jumlahBukuKembali = pengembaliHuruf.nextLine();
                     int bukuKurang = hitungBukuKembali(Integer.parseInt(jumlahBukuKembali), i);
@@ -678,12 +673,14 @@ public class PerpustakaanFINISH {
                     pengembaliArray[pengembaliCount][4] = peminjamArray[i][4];
                     pengembaliArray[pengembaliCount][5] = peminjamArray[i][5];
                     pengembaliArray[pengembaliCount][6] = jumlahBukuKembali;
+                    pengembaliArray[pengembaliCount][9] = peminjamArray[i][9];
 
                     System.out.print("Masukkan tanggal peminjaman (dd/mm/yyyy): ");
                     Date tanggalPinjam = masukkanTanggal(tanggalDenda);
 
                     System.out.print("Masukkan tanggal pengembalian (dd/mm/yyyy): ");
                     Date tanggalKembali = masukkanTanggal(tanggalDenda);
+                    pengembaliArray[pengembaliCount][7] = tanggalKembali.toString();
 
                     long selisihHari = hitungSelisihHari(tanggalPinjam, tanggalKembali);
 
@@ -712,7 +709,9 @@ public class PerpustakaanFINISH {
                         System.out.println("Buku berhasil dikembalikan ");
                         System.out.println(" Member " + peminjamArray[i][1]
                                 + " memiliki tanggungan buku yang belum dikembalikan berjumlah -" + bukuKurang);
-                        pengembaliCount++;
+                        peminjamArray[i][8] = "memiliki tanggungan buku kembali";
+                        pengembaliArray[pengembaliCount][8] = peminjamArray[i][8];
+                                pengembaliCount++;
                     }
 
                     int stokKembali = hitungStokKembali(Integer.parseInt(jumlahBukuKembali), i);
@@ -720,13 +719,14 @@ public class PerpustakaanFINISH {
 
                     int kurangJumlahPinjam = kurangStokPinjam(Integer.parseInt(jumlahBukuKembali), i);
                     peminjamArray[i][6] = String.valueOf(kurangJumlahPinjam);
-
+                    
                     break;
+                }else if (bukuPinjam == 0) {
+                    System.out.println("Buku telah dikembalikan");
                 }
 
             } else {
                 System.out.println("Kode peminjaman tidak terdaftar");
-                break;
             }
         }
         System.out.println();
@@ -749,7 +749,7 @@ public class PerpustakaanFINISH {
                     System.out.printf("| Penulis        : %-28s|\n", pengembaliArray[m][4]);
                     System.out.printf("| Tahun Terbit   : %-28s|\n", pengembaliArray[m][5]);
                     System.out.printf("| Jumlah         : %-28s|\n", pengembaliArray[m][6]);
-                    System.out.printf("| Tanggal        : %-28s|\n", pengembaliArray[m][7]);
+                    System.out.printf("| Tanggal        : %-28s|\n", pengembaliArray[m][7]);//tanggal dikembalikannya buku.
                     System.out.printf("| Status         : %-28s|\n", pengembaliArray[m][8]);
                     System.out.printf("| Kode Pinjam    : %-28s|\n", pengembaliArray[m][9]);
 
