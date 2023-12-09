@@ -15,10 +15,11 @@ public class PerpustakaanFINISH {
     static String peminjamArray[][] = new String[100][10];
     static String pengembaliArray[][] = new String[100][10];
     static int membercount = 1, bukucount = 1, peminjamanCount = 0, pengembaliCount = 0, kodePinjam = 1;
+    static long dendaa=0;
     static String cariJudul, cariNim, cariNimPeminjam, cariKode, jmlPinjam, status;
     static boolean nimketemu = false;
     static Scanner tanggalDenda = new Scanner(System.in);
-
+    
     public static void main(String[] args) {
         ////////////////////// SCANNER ///////////////////////////
         /// scanner level dan login ///
@@ -36,6 +37,7 @@ public class PerpustakaanFINISH {
 
         /// scanner member ///
         Scanner memberSH = new Scanner(System.in);
+        Scanner memberSA = new Scanner(System.in);
 
         /// scanner peminjaman ///
         Scanner peminjamHuruf = new Scanner(System.in);
@@ -66,6 +68,7 @@ public class PerpustakaanFINISH {
         String nim, nama;
         memberArray[0][0] = "2341760076";
         memberArray[0][1] = "David";
+        memberArray[0][2] = String.valueOf(dendaa);
 
         /////////////// input member selesai ///////////////
 
@@ -197,13 +200,14 @@ public class PerpustakaanFINISH {
                                 int confirm2 = konfirmasiAngka.nextInt();
                                 if (confirm2 == 1) {
                                     System.out.println("    Input Member");
-
                                     System.out.print("Masukkan NIM: ");
                                     nim = memberSH.nextLine();
                                     System.out.print("Masukkan Nama: ");
                                     nama = memberSH.nextLine();
+                                    
                                     memberArray[membercount][0] = nim;
                                     memberArray[membercount][1] = nama;
+                                    memberArray[membercount][2] = String.valueOf(dendaa);
                                     membercount++;
                                     System.out.println();
                                 } else if (confirm2 == 2) {
@@ -454,10 +458,6 @@ public class PerpustakaanFINISH {
         if (membercount > 0) {
 
             for (int i = 0; i < membercount; i++) {
-                if (memberArray[i][2] == null) {
-                    memberArray[i][2] = "0";
-
-                }
                 System.out.println(" ____________________________________________ ");
                 System.out.printf("| Member ke-%-33s|\n", (i + 1));
                 System.out.printf("|   NIM         : %-27s|\n", memberArray[i][0]);
@@ -694,7 +694,9 @@ public class PerpustakaanFINISH {
 
                         for (int j = 0; j < memberArray.length; j++) {
                         if (peminjamArray[i][0].equalsIgnoreCase(memberArray[j][0])) {
-                        memberArray[j][2] = String.valueOf(totalDenda);
+                         long dendaTersedia= Long.parseLong(memberArray[j][2]);
+                        long dendaYangHarusDibayar = dendaTersedia + totalDenda;
+                        memberArray[j][2] = String.valueOf(dendaYangHarusDibayar);
                         }
                         }
 
@@ -707,11 +709,10 @@ public class PerpustakaanFINISH {
                         pengembaliCount++;
                     } else if (bukuKurang > 0) {
                         System.out.println("Buku berhasil dikembalikan ");
-                        System.out.println(" Member " + peminjamArray[i][1]
-                                + " memiliki tanggungan buku yang belum dikembalikan berjumlah -" + bukuKurang);
+                        System.out.println(" Member " + peminjamArray[i][1]+ " memiliki tanggungan buku yang belum dikembalikan berjumlah -" + bukuKurang);
                         peminjamArray[i][8] = "memiliki tanggungan buku kembali";
                         pengembaliArray[pengembaliCount][8] = peminjamArray[i][8];
-                                pengembaliCount++;
+                        pengembaliCount++;
                     }
 
                     int stokKembali = hitungStokKembali(Integer.parseInt(jumlahBukuKembali), i);
@@ -775,9 +776,9 @@ public class PerpustakaanFINISH {
     }
 
     static int hitungStokKembali(int jumlahDiKembali, int index) {
-        int stok = Integer.parseInt(bukuArray[index][4]);
-        stok += jumlahDiKembali;
-        return stok;
+        int stokDiArray = Integer.parseInt(bukuArray[index][4]);
+        int stokSetelahKembali = stokDiArray + jumlahDiKembali;
+        return stokSetelahKembali;
 
     }
 
