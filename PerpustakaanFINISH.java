@@ -16,17 +16,18 @@ public class PerpustakaanFINISH {
     static String memberArray[][] = new String[100][5];
     static String peminjamArray[][] = new String[100][11];
     static String pengembaliArray[][] = new String[100][11];
-    static String dendaArray[][] = new String [100][5];
-    static int membercount = 1, bukucount = 1, peminjamanCount = 0, pengembaliCount = 0, kodePinjam = 1,dendaCount=0;
-    static long dendaa=0;
-    static String cariJudul, cariNim, cariNimPeminjam, cariKode, jmlPinjam, status;
+    static String dendaArray[][] = new String[100][5];
+    static int membercount = 1, bukucount = 1, peminjamanCount = 0, pengembaliCount = 0, kodePinjam = 1, dendaCount = 0, totalPinjam=0;
+    static long dendaa = 0;
+    static String cariJudul,cariKodeBuku,cariPenulisBuku,cariTahunBuku, cariNim, cariNimPeminjam, cariKode, jmlPinjam, status;
     static boolean nimketemu = false;
     static Scanner tanggalDenda = new Scanner(System.in);
     static Scanner scStok = new Scanner(System.in);
     static Scanner tambahStokAngka = new Scanner(System.in);
     static Scanner tambahStokHuruf = new Scanner(System.in);
+    static Scanner scCari = new Scanner(System.in);
+    static Scanner penggunaHuruf= new Scanner(System.in);
 
-    
     public static void main(String[] args) {
         ////////////////////// SCANNER ///////////////////////////
         /// scanner level dan login ///
@@ -63,7 +64,7 @@ public class PerpustakaanFINISH {
 
         /// deklarasi inputan buku ///
 
-        bukuArray[0][0] = "20001"; //kode Buku
+        bukuArray[0][0] = "20001"; // kode Buku
         bukuArray[0][1] = "Kembali Pulang"; // judul Buku
         bukuArray[0][2] = "Yura Yunita"; // penulis
         bukuArray[0][3] = "2019"; // tahun terbit
@@ -74,9 +75,10 @@ public class PerpustakaanFINISH {
         /////////////// input member mulai ///////////////
         /// deklarasi input member ///
         String nim, nama;
-        memberArray[0][0] = "2341760076"; //NIM
-        memberArray[0][1] = "David"; //Nama
-        memberArray[0][2] = String.valueOf(dendaa); //DendaMember
+        memberArray[0][0] = "2341760076"; // NIM
+        memberArray[0][1] = "David"; // Nama
+        memberArray[0][2] = String.valueOf(dendaa); // DendaMember
+        memberArray[0][3] = String.valueOf(totalPinjam);
 
         /////////////// input member selesai ///////////////
 
@@ -103,7 +105,7 @@ public class PerpustakaanFINISH {
 
         //////////// Scanner pencarian ///////////////
         Scanner scCari = new Scanner(System.in);
-        Scanner pilihFitur1 = new Scanner (System.in);
+        Scanner pilihFitur1 = new Scanner(System.in);
         do {
             System.out.println("|===========================================|");
             System.out.println("|   Pilih level pengguna (admin/pengguna)   |");
@@ -127,7 +129,7 @@ public class PerpustakaanFINISH {
                 password = login.nextLine();
                 System.out.println();
                 if (username.equals("admin") && password.equals("admin123")
-                || username.equals("admin2") && password.equals("admin321")) {
+                        || username.equals("admin2") && password.equals("admin321")) {
                     do {
                         System.out.println("|===========================================|");
                         System.out.println("|        Berhasil masuk sebagai admin       |");
@@ -167,32 +169,31 @@ public class PerpustakaanFINISH {
                                     System.out.print("Masukkan kode buku: ");
                                     kodeBuku = bukuHuruf.nextLine();
                                     boolean cocokKodeBuku = false;
-                                    for (int i=0;i<bukuArray.length;i++){
-                                    if (kodeBuku.equals(bukuArray[i][0])){
-                                        cocokKodeBuku=true;
-                                    System.out.println("Buku telah tersedia di Perpustakaan");
-                                    break;
+                                    for (int i = 0; i < bukuArray.length; i++) {
+                                        if (kodeBuku.equals(bukuArray[i][0])) {
+                                            cocokKodeBuku = true;
+                                            System.out.println("Buku telah tersedia di Perpustakaan");
+                                            break;
+                                        }
                                     }
-                                }if (!cocokKodeBuku){
-                                    System.out.print("Masukkan judul buku: ");
-                                    judulBuku = bukuHuruf.nextLine();
-                                    System.out.print("Masukkan nama penulis: ");
-                                    penulis = bukuHuruf.nextLine();
-                                    System.out.print("Masukkan tahun terbit: ");
-                                    tahunTerbit = bukuAngka.nextLine();
-                                    System.out.print("Masukkan jumlah buku: ");
-                                    jumlahBuku = bukuAngka.nextLine();
-                                    System.out.println();
-                                    bukuArray[bukucount][0] = kodeBuku;
-                                    bukuArray[bukucount][1] = judulBuku;
-                                    bukuArray[bukucount][2] = penulis;
-                                    bukuArray[bukucount][3] = tahunTerbit;
-                                    bukuArray[bukucount][4] = jumlahBuku;
-                                    bukuArray[bukucount][5] = bukuArray[bukucount][4];
-                                    bukucount++;
+                                    if (!cocokKodeBuku) {
+                                        System.out.print("Masukkan judul buku: ");
+                                        judulBuku = bukuHuruf.nextLine();
+                                        System.out.print("Masukkan nama penulis: ");
+                                        penulis = bukuHuruf.nextLine();
+                                        System.out.print("Masukkan tahun terbit: ");
+                                        tahunTerbit = bukuAngka.nextLine();
+                                        System.out.print("Masukkan jumlah buku: ");
+                                        jumlahBuku = bukuAngka.nextLine();
+                                        System.out.println();
+                                        bukuArray[bukucount][0] = kodeBuku;
+                                        bukuArray[bukucount][1] = judulBuku;
+                                        bukuArray[bukucount][2] = penulis;
+                                        bukuArray[bukucount][3] = tahunTerbit;
+                                        bukuArray[bukucount][4] = jumlahBuku;
+                                        bukuArray[bukucount][5] = bukuArray[bukucount][4];
+                                        bukucount++;
                                     }
-                                    
-                                    
 
                                 } else if (confirm1.equals("2")) {
                                     // for (int i = 0; i < bukucount; i++) {
@@ -200,8 +201,7 @@ public class PerpustakaanFINISH {
 
                                 } else if (confirm1.equals("3")) {
                                     tambahStok();
-                                }
-                                 else if (confirm1.equals("4")) {
+                                } else if (confirm1.equals("4")) {
                                     break;
                                 } else {
                                     System.out.println();
@@ -229,21 +229,23 @@ public class PerpustakaanFINISH {
                                     System.out.println("       Input Member");
                                     System.out.print("Masukkan NIM: ");
                                     nim = memberSH.nextLine();
-                                    boolean CocokNim=false;
-                                    for(int i=0;i<memberArray.length;i++){
-                                    if (nim.equalsIgnoreCase(memberArray[i][0])){
-                                    CocokNim=true;
-                                    System.out.println("Nim sudah terdaftar");
-                                        }    
-                                    }if(!CocokNim){
+                                    boolean CocokNim = false;
+                                    for (int i = 0; i < memberArray.length; i++) {
+                                        if (nim.equalsIgnoreCase(memberArray[i][0])) {
+                                            CocokNim = true;
+                                            System.out.println("Nim sudah terdaftar");
+                                        }
+                                    }
+                                    if (!CocokNim) {
                                         System.out.print("Masukkan Nama: ");
                                         nama = memberSH.nextLine();
                                         memberArray[membercount][0] = nim;
                                         memberArray[membercount][1] = nama;
                                         memberArray[membercount][2] = String.valueOf(dendaa);
+                                        memberArray[membercount][3] = String.valueOf(totalPinjam);
                                         membercount++;
                                     }
-                                    
+
                                     System.out.println();
                                 } else if (confirm2.equals("2")) {
                                     tampilMember();
@@ -278,7 +280,7 @@ public class PerpustakaanFINISH {
                                     if (bukuArray != null) {
                                         if (memberArray != null) {
                                             for (int i = 0; i < peminjamArray.length;) {
-                                                
+
                                                 System.out
                                                         .print("Apakah sudah terdaftar sebagai member?(y/t): ");
                                                 String tanyaDaftar = peminjamHuruf.nextLine();
@@ -319,7 +321,7 @@ public class PerpustakaanFINISH {
                                     System.out.println("|   Mohon masukkan pilihan dengan benar :D   |");
                                     System.out.println("|============================================|");
                                     System.out.println();
-                                } 
+                                }
                             } while (true);
                         } else if (menu.equals("4")) {
                             System.out.println("|==============================================|");
@@ -363,40 +365,42 @@ public class PerpustakaanFINISH {
                                 }
                             } while (true);
 
-                        } else if(menu.equals("5")){
+                        } else if (menu.equals("5")) {
                             System.out.println("Masukkan NIM: ");
                             String search = pengembaliHuruf.nextLine();
                             boolean nimBayarDenda = false;
-                            for(int i = 0; i < memberArray.length; i++){
-                                if(search.equalsIgnoreCase(memberArray[i][0])){
-                                    nimBayarDenda=true;
-                                    System.out.println("NIM     : "+memberArray[i][0]);
-                                    System.out.println("Nama    : "+memberArray[i][1]);
-                                    System.out.println("Denda   : "+memberArray[i][2]);
+                            for (int i = 0; i < memberArray.length; i++) {
+                                if (search.equalsIgnoreCase(memberArray[i][0])) {
+                                    nimBayarDenda = true;
+                                    System.out.println("NIM     : " + memberArray[i][0]);
+                                    System.out.println("Nama    : " + memberArray[i][1]);
+                                    System.out.println("Denda   : " + memberArray[i][2]);
                                     System.out.print("Masukkan nominal pembayaran: ");
                                     int bayar = konfirmasiAngka.nextInt();
                                     int dendaBayar = Integer.parseInt(memberArray[i][2]);
                                     int hasilBayar = dendaBayar - bayar;
                                     
-                                    if(hasilBayar == 0){
+
+                                    if (hasilBayar == 0) {
                                         System.out.println("Denda berhasil dibayar!");
-                                        
-                                    }else{
-                                        System.out.println("Denda berhasil dibayar, denda tersisa Rp. "+ hasilBayar);
+
+                                    } else {
+                                        System.out.println("Denda berhasil dibayar, denda tersisa Rp. " + hasilBayar);
                                     }
                                     memberArray[i][2] = String.valueOf(hasilBayar);
-                                    dendaArray[dendaCount][0]=memberArray[i][0];
-                                    dendaArray[dendaCount][1]=memberArray[i][1];
-                                    dendaArray[dendaCount][2]=memberArray[i][2];
-                                    dendaArray[dendaCount][3]= String.valueOf(bayar);
-                                    dendaArray[dendaCount][4]= String.valueOf(hasilBayar);
+                                    dendaArray[dendaCount][0] = memberArray[i][0];
+                                    dendaArray[dendaCount][1] = memberArray[i][1];
+                                    dendaArray[dendaCount][2] = String.valueOf(dendaBayar);
+                                    dendaArray[dendaCount][3] = String.valueOf(bayar);
+                                    dendaArray[dendaCount][4] = String.valueOf(hasilBayar);
                                     dendaCount++;
-                                    
+
                                 }
-                            } if(!nimBayarDenda){
+                            }
+                            if (!nimBayarDenda) {
                                 System.out.println("Data tidak ditemukan");
                             }
-                        }else if (menu.equals("6")) {
+                        } else if (menu.equals("6")) {
                             while (true) {
                                 System.out.println("|======================================|");
                                 System.out.println("|      Anda memasuki menu laporan      |");
@@ -415,53 +419,55 @@ public class PerpustakaanFINISH {
                                     laporanPengembalian();
                                 } else if (confirm6.equals("3")) {
                                     laporanPembayaranDenda();
-                                } else if(confirm6.equals("4")){
+                                } else if (confirm6.equals("4")) {
                                     break;
-                                }else{
-                                System.out.println();
-                                System.out.println("|============================================|");
-                                System.out.println("|   Mohon masukkan pilihan dengan benar :D   |");
-                                System.out.println("|============================================|");
-                                System.out.println();
+                                } else {
+                                    System.out.println();
+                                    System.out.println("|============================================|");
+                                    System.out.println("|   Mohon masukkan pilihan dengan benar :D   |");
+                                    System.out.println("|============================================|");
+                                    System.out.println();
                                 }
                             }
 
-                        }else if(menu.equals("7")){ 
+                        } else if (menu.equals("7")) {
                             System.out.println("|========================================|");
                             System.out.println("|    Selamat datang di menu PENCARIAN    |");
                             System.out.println("|========================================|");
                             System.out.println(" 1. Ketik pencarian");
                             System.out.println(" 2. pilih berdasarkan fitur");
                             String pilihFitur = pilihFitur1.nextLine();
-                        if(pilihFitur.equals("1")){
-                            System.out.println(" Ketik Pencarian anda ");
-                            String cari = scCari.nextLine();
-                        if(cari.equalsIgnoreCase("Cari pengguna yang belum membayar denda")
-                            ||cari.equalsIgnoreCase("Caripenggunayangbelummembayardenda")
-                            ||cari.equalsIgnoreCase("Pengguna yang belum membayar denda")
-                            ||cari.equalsIgnoreCase("Pengguna yang belum membayarkan denda")
-                            ||cari.equalsIgnoreCase("pengguna ga bayar denda")
-                            ||cari.equalsIgnoreCase("Pengguna yang hutang ")
-                            ||cari.equalsIgnoreCase("Pengguna nakal")
-                            ||cari.equalsIgnoreCase("denda yang belum dibayarkan")
-                            ||cari.equalsIgnoreCase("Pengguna ga bayar denda")
-                            ||cari.equalsIgnoreCase("Pengguna yang ngga bayar denda")
-                            ||cari.equalsIgnoreCase("Pengguna ngga bayar denda")){
+                            if (pilihFitur.equals("1")) {
+                                System.out.println(" Ketik Pencarian anda ");
+                                String cari = scCari.nextLine();
+                                if (cari.equalsIgnoreCase("Cari pengguna yang belum membayar denda")
+                                        || cari.equalsIgnoreCase("Caripenggunayangbelummembayardenda")
+                                        || cari.equalsIgnoreCase("Pengguna yang belum membayar denda")
+                                        || cari.equalsIgnoreCase("Pengguna yang belum membayarkan denda")
+                                        || cari.equalsIgnoreCase("pengguna ga bayar denda")
+                                        || cari.equalsIgnoreCase("Pengguna yang hutang ")
+                                        || cari.equalsIgnoreCase("Pengguna nakal")
+                                        || cari.equalsIgnoreCase("denda yang belum dibayarkan")
+                                        || cari.equalsIgnoreCase("Pengguna ga bayar denda")
+                                        || cari.equalsIgnoreCase("Pengguna yang ngga bayar denda")
+                                        || cari.equalsIgnoreCase("Pengguna ngga bayar denda")) {
 
-                            PencarianPenggunaMemilikiDenda();
+                                    PencarianPenggunaMemilikiDenda();
+                                }
+                            } else if (pilihFitur.equals("2")) {
+                                System.out.println("Silahkan pilih fitur pencarian");
+                                System.out.println("1. member yang memiliki tanggungan buku kembali");
+                                System.out.println("2");
+                                String cari = scCari.nextLine();
+                                if (cari.equalsIgnoreCase("1")) {
+                                    PencarianPeminjaMemilikiTanggungan();
+                                }else if(cari.equalsIgnoreCase("2")){
+                                    cariTanggunganMember();
+                                }
+    
                             }
-                        }else if (pilihFitur.equals("2")){
-                            System.out.println("Silahkan pilih fitur pencarian");
-                            System.out.println("1. member yang memiliki tanggungan buku kembali");
-                            String cari = scCari.nextLine();
-                            if (cari.equalsIgnoreCase("1")){
-                                //cariTanggunganMember();
-                            }
-                        }
-                            
 
-                                  
-                        }else if (menu.equals("8")) {
+                        } else if (menu.equals("8")) {
                             System.out.println("Apakah anda yakin akan keluar? (y/t): ");
                             String keluar = pengembaliHuruf.nextLine();
                             if (keluar.equalsIgnoreCase("y")) {
@@ -470,14 +476,14 @@ public class PerpustakaanFINISH {
                                 System.out.println();
                                 continue;
                             } else {
-                            System.out.println();
-                            System.out.println("|============================================|");
-                            System.out.println("|   Mohon masukkan pilihan dengan benar :D   |");
-                            System.out.println("|============================================|");
-                            System.out.println();
+                                System.out.println();
+                                System.out.println("|============================================|");
+                                System.out.println("|   Mohon masukkan pilihan dengan benar :D   |");
+                                System.out.println("|============================================|");
+                                System.out.println();
                             }
 
-                        } else{
+                        } else {
                             System.out.println("Pastikan anda memilih menu dengan benar :D");
                         }
                     } while (true);
@@ -497,38 +503,59 @@ public class PerpustakaanFINISH {
                 System.out.print("  Password: ");
                 password = login.nextLine();
                 for (int i = 0; i < memberArray.length; i++) {
-                    if (username.equals("pengguna") && password.equals("pengguna123")|| username.equals(memberArray[i][0]) && password.equals(memberArray[i][1])) {
+                    if (username.equals("pengguna") && password.equals("pengguna123")
+                            || username.equals(memberArray[i][0]) && password.equals(memberArray[i][1])) {
                         System.out.println("|===========================================|");
                         System.out.println("|       Anda hanya bisa mencari buku        |");
                         System.out.println("|===========================================|");
 
                         if (bukuArray != null) {
                             do {
-                                System.out.println("  Masukkan judul buku: ");
-                                cariJudul = judul.nextLine();
-                                cariBukuJudul();
-                                System.out.print("Apakah anda ingin mencari buku lagi? (y/t): ");
-                                String again = judul.nextLine();
-                                if (again.equalsIgnoreCase("y")) {
-                                    continue;
-                                } else if (again.equalsIgnoreCase("t")) {
+                                System.out.println("1. Pilih menu pencarian ");
+                                System.out.println("2. keluar");
+                                String pilih = penggunaHuruf.nextLine();
+                                if(pilih.equalsIgnoreCase("1")){
+                                    System.out.println("1. Cari judul buku");
+                                    System.out.println("2. cari Nama penulis buku");
+                                    System.out.println("3. cari buku berdasarkan tahun");
+                                    String pilih1 = penggunaHuruf.nextLine();
+
+                                    if(pilih1.equalsIgnoreCase("1")){
+                                        System.out.println("  Masukkan judul buku yang ingin dicari: ");
+                                        cariJudul = judul.nextLine();
+                                        cariBukuJudul();
+                                        
+                                    } else if (pilih1.equalsIgnoreCase("2")){
+                                        System.out.println("Masukkan nama penulis buku");
+                                        System.out.println("-----------------------");
+                                        cariPenulisBuku = penggunaHuruf.nextLine();
+                                        System.out.println("--------------------------");
+                                        cariPenulisBuku();
+                                    }else if(pilih1.equalsIgnoreCase("3")){
+                                        cariTahunBuku=penggunaHuruf.nextLine();
+                                        cariTahunBuku();
+                                        
+                                    }
+                                }else if(pilih.equalsIgnoreCase("2")){
                                     break;
-                                } else {
-                                    break;
+                                }else{
+                                    System.out.println("Masukkan pilihan dengan benar! ");
                                 }
+                                
                             } while (true);
 
-                        }else if (bukuArray == null){
+                        } else if (bukuArray == null) {
                             System.out.println("Tidak tersedia buku di perpustakaan");
                             break;
                         }
                         break;
 
-                    } else if(!username.equals("pengguna") && !password.equals("pengguna123")|| !username.equals(memberArray[i][0]) && !password.equals(memberArray[i][1])) {
+                    } else if (!username.equals("pengguna") && !password.equals("pengguna123")
+                            || !username.equals(memberArray[i][0]) && !password.equals(memberArray[i][1])) {
                         System.out.println("Username dan Password salah silahkan login kembali!");
                         System.out.println();
                         break;
-                    }else {
+                    } else {
                         System.out.println();
                         break;
                     }
@@ -554,7 +581,40 @@ public class PerpustakaanFINISH {
                 System.out.printf("|   Jumlah buku  Bisa dipinjam  : %-25s|\n", bukuArray[j][5]);
                 System.out.println("|_________________________________________________________|");
                 System.out.println();
+            
 
+            } System.out.println("cari buku? (ya/tidak)");
+            String pilih = scCari.nextLine();
+            if (pilih.equalsIgnoreCase("ya")){
+                
+                System.out.println(" 1.Cari berdasarkan judul Buku");
+                System.out.println(" 2.Cari berdasarkan kode buku");
+                System.out.println(" 3.Cari berdasarkan penulis");
+                System.out.println(" 4.Cari berdasarkan tahun terbit");
+                System.out.println(" 5.Cari buku yang sedang dipinjam ");
+                String pilih1=scCari.nextLine();
+                if(pilih1.equalsIgnoreCase("1")){
+                    System.out.println("Masukkan judul buku yang ingin dicari");
+                    cariJudul= scCari.nextLine();
+                    cariBukuJudul();
+                }else if(pilih1.equalsIgnoreCase("2")){
+                    System.out.println("Masukkan kode buku yang ingin dicari");
+                    cariKodeBuku=scCari.nextLine();
+                    cariKodeBuku();
+                }else if(pilih1.equalsIgnoreCase("3")){
+                    System.out.println("Masukkan nama penulis yang ingin dicari");
+                    cariPenulisBuku=scCari.nextLine();
+                    cariPenulisBuku();
+                }else if(pilih1.equalsIgnoreCase("4")){
+                    System.out.println("Masukkan tahun terbit buku yang ingin dicari");
+                    cariTahunBuku=scCari.nextLine();
+                    cariTahunBuku();
+                }else if (pilih1.equalsIgnoreCase("5")){
+                    System.out.println("Data buku yang sedang dipinjam :");
+                    cariBukuDiPinjam();
+                }else{
+                    System.out.println("Masukkan pilihan dengan benar");
+                }
             }
         } else {
             System.out.println("Data buku kosong ");
@@ -571,10 +631,15 @@ public class PerpustakaanFINISH {
                 System.out.printf("|   NIM         : %-27s|\n", memberArray[i][0]);
                 System.out.printf("|   Nama        : %-27s|\n", memberArray[i][1]);
                 System.out.printf("|   Total Denda : %-27s|\n", memberArray[i][2]);
+                System.out.printf("|   Total Pinjam: %-27s|\n", memberArray[i][3]);
                 System.out.println("|____________________________________________|");
                 System.out.println();
 
-            }
+            } System.out.println("Ingin cari member? (y/t)");
+            String pilih = scCari.nextLine();
+            if (pilih.equalsIgnoreCase("y")){
+                cariMember();
+            }else if (pilih.equalsIgnoreCase("t"));
         } else {
             System.out.println("Data member kosong");
             System.out.println();
@@ -591,12 +656,13 @@ public class PerpustakaanFINISH {
                 nimketemu = true;
                 System.out.println("Nama: " + memberArray[i][1]);
                 peminjamArray[peminjamanCount][1] = memberArray[i][1];
+                cariBukuKode(i);
             }
         }
-        if (nimketemu) {
-            cariBukuKode();
+        // if (nimketemu) {
+        //     
 
-        }
+        // }
         if (!nimketemu) {
             System.out.println("NIM tidak ditemukan");
         }
@@ -605,22 +671,112 @@ public class PerpustakaanFINISH {
 
     static void cariBukuJudul() {
         boolean cariBuku = false;
-        for (int a = 0; a < bukuArray.length; a++) {
+        for (int a = 0; a < bukucount; a++) {
             if (bukuArray[a][1].equalsIgnoreCase(cariJudul)) {
                 cariBuku = true;
-                System.out.println("Kode Buku            : " + bukuArray[a][0]);
-                System.out.println("Judul Buku           : " + bukuArray[a][1]);
-                System.out.println("Nama Penulis         : " + bukuArray[a][2]);
-                System.out.println("Tahun terbit         : " + bukuArray[a][3]);
-                System.out.println("Stok buku  Tersedia  : " + bukuArray[a][5]);
-                break;
+                tampilBukuYangDiCari(a);
             }
-        }if (!cariBuku){
+        }
+        if (!cariBuku) {
             System.out.println("Data buku tidak ditemukan");
         }
     }
+    static void cariKodeBuku(){
+        boolean cariKodee = false;
+        for(int i=0;i<bukucount;i++){
+            if (bukuArray[i][0].equalsIgnoreCase(cariKodeBuku)){
+                cariKodee=true;
+                tampilBukuYangDiCari(i);
+                System.out.println("Tampilkan data peminjam buku? (ya/tidak)");
+                String pilih = scCari.nextLine();
+                if(pilih.equalsIgnoreCase("ya")){
+                    tampilPeminjam1(i);
+                }else if(pilih.equalsIgnoreCase("tidak")){
+                }else {
+                    System.out.println("Masukkan pilihan dengan benar");
+                }
+            }
+        }if(!cariKodee){
+            System.out.println("data buku tidak tersedia");
+        }  
+    }
+    static void cariPenulisBuku(){
+        boolean cariKodee = false;
+        for(int i=0;i<bukucount;i++){
+            if (bukuArray[i][2].equalsIgnoreCase(cariPenulisBuku)){
+                cariKodee=true;
+                tampilBukuYangDiCari(i);
+            }
+        }if(!cariKodee){
+            System.out.println("data buku tidak tersedia");
+        }  
+    }
+    static void cariTahunBuku(){
+        boolean cariKodee = false;
+        for(int i=0;i<bukucount;i++){
+            if (bukuArray[i][3].equalsIgnoreCase(cariTahunBuku)){
+                cariKodee=true;
+                tampilBukuYangDiCari(i);
+            }
+        }if(!cariKodee){
+            System.out.println("data buku tidak tersedia");
+        }  
+    }
+    static void cariBukuDiPinjam(){
+        boolean cariDiPinjam=false;
+        for (int i=0;i<bukucount;i++){
+            if(Integer.parseInt(bukuArray[i][5])<Integer.parseInt(bukuArray[i][4])){
+                cariDiPinjam=true;
+                int totalDiPinjam =Integer.parseInt(bukuArray[i][4])-Integer.parseInt(bukuArray[i][5]);
+                System.out.println("|-------------------------------------------------------|");
+                System.out.println("                       buku ke-"+(i+1));
+                System.out.println("|-------------------------------------------------------|");
+                System.out.println("Kode buku               : "+ bukuArray[i][0]);
+                System.out.println("Judul buku              : "+ bukuArray[i][1]);
+                System.out.println("Total buku di pinjam    : "+String.valueOf(totalDiPinjam));
+                System.out.println("|-------------------------------------------------------|");
+            }
+            System.out.println("Tampilkan peminjam? (ya/tidak)");
+            String pilih = scCari.nextLine();
+            if(pilih.equalsIgnoreCase("ya")){
+                tampilPeminjam1(i);
+            }else if(pilih.equalsIgnoreCase("tidak")){
+            }else{
+                System.out.println("Masukkan pilihan dengan benar!");
+            }
+            
+        }if(!cariDiPinjam){
+            System.out.println("Tidak ada buku yang sedang dipinjam");
+        }
+    }
+    static void tampilBukuYangDiCari(int index){
+                System.out.println();
+                System.out.println(" _________________________________________________________");
+                System.out.printf("|                                                         |\n");
+                System.out.printf("|  Kode buku                   : %-25s|\n", bukuArray[index][0]);
+                System.out.printf("|  Judul buku                  : %-25s|\n", bukuArray[index][1]);
+                System.out.printf("|  Penulis                     : %-25s|\n", bukuArray[index][2]);
+                System.out.printf("|  Tahun terbit                : %-25s|\n", bukuArray[index][3]);
+                System.out.printf("|  Jumlah buku  Awal           : %-25s|\n", bukuArray[index][4]);
+                System.out.printf("|  Jumlah buku  Bisa dipinjam  : %-25s|\n", bukuArray[index][5]);
+                System.out.println("|_________________________________________________________|");
+                System.out.println();
+    }
+    static void tampilPeminjam1(int i){
+        boolean cocokPeminjam = false; 
+            for (int j=0;j<peminjamanCount;j++){
+                if(bukuArray[i][0].equalsIgnoreCase(peminjamArray[j][2])){
+                    System.out.println("                      Data peminjam");
+                    System.out.println("|-------------------------------------------------------|");
+                    System.out.println("Nim peminjam buku       : "+peminjamArray[j][0]);
+                    System.out.println("Nama peminjam buku      : "+peminjamArray[j][1]);
+                    System.out.println("Banyaknya meminjam buku : "+ peminjamArray[j][10]);
+                    System.out.println("|-------------------------------------------------------|");
+                }
+            }
+    }
 
-    static void cariBukuKode() {
+    static void cariBukuKode(int indexNim) {
         System.out.print("Masukkan kode buku: ");
         cariKode = peminjamHuruf.nextLine();
         boolean cariCode = false;
@@ -652,7 +808,17 @@ public class PerpustakaanFINISH {
                 System.out.println("Transaksi peminjaman Berhasil! ");
                 status = "Dipinjam";
                 String NomorPeminjaman = String.valueOf(kodePinjam);
-
+                boolean cocokanNim=false;
+                for (int j = 0; j < memberArray.length; j++) {
+                    if (peminjamArray[indexNim][0].equalsIgnoreCase(memberArray[j][0])) {
+                        cocokanNim=true;
+                        int totalPinjamMember = Integer.parseInt(memberArray[j][3]);
+                        totalPinjamMember += Integer.parseInt(jmlPinjam);
+                        memberArray[j][3] = String.valueOf(totalPinjamMember);
+                    }
+                }if (!cocokanNim){
+                    System.out.println("Tidak bisa di hubungkan");
+                }
                 peminjamArray[peminjamanCount][2] = bukuArray[b][0]; // Kode Buku
                 peminjamArray[peminjamanCount][3] = bukuArray[b][1]; // Judul Buku
                 peminjamArray[peminjamanCount][4] = bukuArray[b][2]; // Nama Penulis
@@ -669,12 +835,13 @@ public class PerpustakaanFINISH {
                 if (kondisi.equalsIgnoreCase("y")) {
                     cetakStruk();
                 } else {
-                    
+
                 }
                 kodePinjam++;
                 peminjamanCount++;
             }
-        } if (!cariCode){
+        }
+        if (!cariCode) {
             System.out.println("|============================|");
             System.out.println("|    Buku tidak ditemukan!   |");
             System.out.println("|============================|");
@@ -692,14 +859,15 @@ public class PerpustakaanFINISH {
         bukuArray[index][5] = String.valueOf(stock);
         return stock;
     }
+
     static void tambahStok() {
         String kodeTambahBuku;
         System.out.print("Masukkan kode buku: ");
         kodeTambahBuku = tambahStokHuruf.nextLine();
-        boolean carikodetambah=false;
+        boolean carikodetambah = false;
         for (int i = 0; i < bukucount; i++) {
             if (bukuArray[i][0].equalsIgnoreCase(kodeTambahBuku)) {
-                carikodetambah =true;
+                carikodetambah = true;
 
                 System.out.println("|=============================================|");
                 System.out.printf("|   Kode buku                   : %-25s|\n", bukuArray[i][0]);
@@ -710,10 +878,10 @@ public class PerpustakaanFINISH {
                 System.out.printf("|   Jumlah buku Bisa dipinjam   : %-25s|\n", bukuArray[i][5]);
                 System.out.println("|=============================================|");
                 System.out.println();
-    
+
                 System.out.print("Masukkan jumlah stok yang ingin ditambahkan: ");
                 String jumlahTmbhStok = tambahStokHuruf.nextLine();
-                
+
                 if (jumlahTmbhStok != null && !jumlahTmbhStok.isEmpty()) {
                     // Update stok buku
                     int stokAkhir1 = jumlahTmbhStok1(Integer.parseInt(jumlahTmbhStok), i);
@@ -726,23 +894,25 @@ public class PerpustakaanFINISH {
                 }
                 break;
             }
-        }if(!carikodetambah){
+        }
+        if (!carikodetambah) {
             System.out.println("|========================|");
             System.out.println("|  Buku tidak ditemukan  |");
             System.out.println("|========================|");
         }
     }
-    static int jumlahTmbhStok1(int jumlahTmbhStok, int index){
+
+    static int jumlahTmbhStok1(int jumlahTmbhStok, int index) {
         int jmlhBuku1 = Integer.parseInt(bukuArray[index][4]);
         jmlhBuku1 += jumlahTmbhStok;
         return jmlhBuku1;
     }
+
     static int jumlahTmbhStok2(int jumlahTmbhStok, int index) {
         int jmlhBuku2 = Integer.parseInt(bukuArray[index][5]);
         jmlhBuku2 += jumlahTmbhStok;
         return jmlhBuku2;
     }
-    
 
     static void cetakStruk() {
 
@@ -787,18 +957,18 @@ public class PerpustakaanFINISH {
                     System.out.println("|==============================================|");
                     System.out.println();
 
-                }  else {
+                } else {
                     break;
                 }
 
             }
             System.out.println();
 
-        }else if (peminjamanCount == 0) {
-                    System.out.println("|=============================================|");
-                    System.out.println("|        Data Peminjaman Tidak Tersedia       |");
-                    System.out.println("|=============================================|");
-                }
+        } else if (peminjamanCount == 0) {
+            System.out.println("|=============================================|");
+            System.out.println("|        Data Peminjaman Tidak Tersedia       |");
+            System.out.println("|=============================================|");
+        }
     }
 
     static void pengembalian() {
@@ -809,7 +979,7 @@ public class PerpustakaanFINISH {
                 int bukuPinjam = Integer.parseInt(peminjamArray[i][6]);
                 nimpengembalian = true;
                 // if (nimketemu) {
-                 if(bukuPinjam>0) {
+                if (bukuPinjam > 0) {
                     System.out.println("Nama          : " + peminjamArray[i][1]);
                     System.out.println("Nim           : " + peminjamArray[i][0]);
                     System.out.println("Kode Buku     : " + peminjamArray[i][2]);
@@ -851,16 +1021,16 @@ public class PerpustakaanFINISH {
                         long totalDenda = (selisihHari - 7) * 1000;
                         System.out.println("--------------------------------------------------------");
                         System.out.println("       Note!           ");
-                        System.out.println("    Lama hari terlambat: " + (selisihHari - 7) + " hari"   ); 
-                        System.out.println("    Denda yang harus dibayar: Rp " + totalDenda            );
+                        System.out.println("    Lama hari terlambat: " + (selisihHari - 7) + " hari");
+                        System.out.println("    Denda yang harus dibayar: Rp " + totalDenda);
                         System.out.println("--------------------------------------------------------");
 
                         for (int j = 0; j < memberArray.length; j++) {
-                        if (peminjamArray[i][0].equalsIgnoreCase(memberArray[j][0])) {
-                        long dendaTersedia= Long.parseLong(memberArray[j][2]);
-                        long dendaYangHarusDibayar = dendaTersedia + totalDenda;
-                        memberArray[j][2] = String.valueOf(dendaYangHarusDibayar);
-                        }
+                            if (peminjamArray[i][0].equalsIgnoreCase(memberArray[j][0])) {
+                                long dendaTersedia = Long.parseLong(memberArray[j][2]);
+                                long dendaYangHarusDibayar = dendaTersedia + totalDenda;
+                                memberArray[j][2] = String.valueOf(dendaYangHarusDibayar);
+                            }
                         }
 
                     }
@@ -872,36 +1042,38 @@ public class PerpustakaanFINISH {
                         pengembaliCount++;
                     } else if (bukuKurang > 0) {
                         System.out.println("Buku berhasil dikembalikan ");
-                        System.out.println(" Member " + peminjamArray[i][1]+ " memiliki tanggungan buku yang belum dikembalikan berjumlah -" + bukuKurang);
-                        peminjamArray[i][8] = "memiliki tanggungan buku kembali";
+                        System.out.println(" Member " + peminjamArray[i][1]
+                                + " memiliki tanggungan buku yang belum dikembalikan berjumlah -" + bukuKurang);
+                        peminjamArray[i][8] = "Memiliki tanggungan buku kembali";
                         pengembaliArray[pengembaliCount][8] = peminjamArray[i][8];
                         pengembaliCount++;
                     }
-                    for (int k=0;k<bukuArray.length; k++){
-                    if (peminjamArray[i][2].equalsIgnoreCase(bukuArray[k][0])){
-                    int stokKembali = hitungStokKembali(Integer.parseInt(peminjamArray[i][6]),Integer.parseInt(jumlahBukuKembali), k);
-                    bukuArray[k][5] = String.valueOf(stokKembali);
+                    for (int k = 0; k < bukuArray.length; k++) {
+                        if (peminjamArray[i][2].equalsIgnoreCase(bukuArray[k][0])) {
+                            int stokKembali = hitungStokKembali(Integer.parseInt(peminjamArray[i][6]),
+                                    Integer.parseInt(jumlahBukuKembali), k);
+                            bukuArray[k][5] = String.valueOf(stokKembali);
+                        }
                     }
-                }
                     int kurangJumlahPinjam = kurangStokPinjam(Integer.parseInt(jumlahBukuKembali), i);
                     peminjamArray[i][10] = String.valueOf(kurangJumlahPinjam);
-                    
-                
+
                     break;
-                }else if (bukuPinjam == 0) {
+                } else if (bukuPinjam == 0) {
                     System.out.println("Buku telah dikembalikan");
                 }
 
             }
-        } if (!nimpengembalian){
-            System.out.println(); 
+        }
+        if (!nimpengembalian) {
+            System.out.println();
             System.out.println("|===================================================|");
             System.out.println("|     Kode peminjaman tersebut tidak terdaftar      |");
             System.out.println("|    Mohon periksa ulang kode peminjaman tersebut   |");
-            System.out.println("|===================================================|");           
+            System.out.println("|===================================================|");
             System.out.println();
         }
-        
+
     }
 
     static void laporanPengembalian() {
@@ -920,8 +1092,8 @@ public class PerpustakaanFINISH {
                     System.out.printf("| Judul          : %-28s|\n", pengembaliArray[m][3]);
                     System.out.printf("| Penulis        : %-28s|\n", pengembaliArray[m][4]);
                     System.out.printf("| Tahun Terbit   : %-28s|\n", pengembaliArray[m][5]);
-                    System.out.printf("| Jumlah kembali : %-28s|\n", pengembaliArray[m][10]);//jumlah kembalinya buku
-                    System.out.printf("| Tanggal        : %-28s|\n", pengembaliArray[m][7]);//tanggal dikembalikannya buku.
+                    System.out.printf("| Jumlah kembali : %-28s|\n", pengembaliArray[m][10]);// jumlah kembalinya buku
+                    System.out.printf("| Tanggal        : %-28s|\n", pengembaliArray[m][7]);// tanggal dikembalikannya buku.
                     System.out.printf("| Status         : %-28s|\n", pengembaliArray[m][8]);
                     System.out.printf("| Kode Pinjam    : %-28s|\n", pengembaliArray[m][9]);
 
@@ -932,34 +1104,35 @@ public class PerpustakaanFINISH {
                 }
 
             }
-        }else if (pengembaliCount == 0) {
-                System.out.println("|=============================================|");
-                System.out.println("|       Data Pengembalian Tidak Tersedia      |");
-                System.out.println("|=============================================|");
-                }
+        } else if (pengembaliCount == 0) {
+            System.out.println("|=============================================|");
+            System.out.println("|       Data Pengembalian Tidak Tersedia      |");
+            System.out.println("|=============================================|");
+        }
     }
-    static void laporanPembayaranDenda(){
+
+    static void laporanPembayaranDenda() {
         System.out.println("|=============================================|");
         System.out.println("|            Data Pembayaran Denda            |");
         System.out.println("|=============================================|");
-    if(dendaCount>0){
-        for (int i=0; i<dendaArray.length;i++){
-            if(dendaArray[i][0]!=null){
-            System.out.println("Laporan pembayaran denda ke-"+(i+1));
-            System.out.println("|==========================================================|");
-            System.out.println("    Nim Pembayar Denda          : "  +dendaArray[i][0]);
-            System.out.println("    Nama Pembayar Denda         : "  +dendaArray[i][1]);
-            System.out.println("    Nominal Denda Harus dibayar : "  +dendaArray[i][2]);
-            System.out.println("    Nominal Denda yang dibayar  : "  +dendaArray[i][3]);
-            System.out.println("    Sisa denda setelah dibayar  : "  +dendaArray[i][4]);
-            System.out.println("|==========================================================|");
+        if (dendaCount > 0) {
+            for (int i = 0; i < dendaArray.length; i++) {
+                if (dendaArray[i][0] != null) {
+                    System.out.println("Laporan pembayaran denda ke-" + (i + 1));
+                    System.out.println("|==========================================================|");
+                    System.out.println("    Nim Pembayar Denda          : " + dendaArray[i][0]);
+                    System.out.println("    Nama Pembayar Denda         : " + dendaArray[i][1]);
+                    System.out.println("    Nominal Denda Harus dibayar : " + dendaArray[i][2]);
+                    System.out.println("    Nominal Denda yang dibayar  : " + dendaArray[i][3]);
+                    System.out.println("    Sisa denda setelah dibayar  : " + dendaArray[i][4]);
+                    System.out.println("|==========================================================|");
+                }
             }
+        } else if (dendaCount == 0) {
+            System.out.println("|======================================|");
+            System.out.println("|  Data pembayaran denda belum terisi  |");
+            System.out.println("|======================================|");
         }
-    }else if(dendaCount==0){
-        System.out.println("|======================================|");
-        System.out.println("|  Data pembayaran denda belum terisi  |");
-        System.out.println("|======================================|");
-    }
     }
 
     static int hitungBukuKembali(int jumlahDiKembalikan, int index) {
@@ -968,11 +1141,10 @@ public class PerpustakaanFINISH {
         return bukuKurang;
     }
 
-    static int hitungStokKembali(int jumlahPinjam,int jumlahDiKembali, int index) {
+    static int hitungStokKembali(int jumlahPinjam, int jumlahDiKembali, int index) {
         int stokDiArray = Integer.parseInt(bukuArray[index][5]);
-        stokDiArray+=jumlahDiKembali;
+        stokDiArray += jumlahDiKembali;
         return stokDiArray;
-        
 
     }
 
@@ -986,7 +1158,7 @@ public class PerpustakaanFINISH {
         String inputTanggal = tanggalDenda.next();
 
         int tanggal = Integer.parseInt(inputTanggal.split("/")[0]);
-        int bulan = Integer.parseInt(inputTanggal.split("/")[1])- 1;
+        int bulan = Integer.parseInt(inputTanggal.split("/")[1]) - 1;
         int tahun = Integer.parseInt(inputTanggal.split("/")[2]);
 
         Calendar calendar = Calendar.getInstance();
@@ -999,29 +1171,67 @@ public class PerpustakaanFINISH {
         long selisihMilidetik = Math.abs(tanggalAkhir.getTime() - tanggalAwal.getTime());
         return selisihMilidetik / (1000 * 60 * 60 * 24);
     }
-     static void PencarianPenggunaMemilikiDenda(){
-         for(int i=0;i<memberArray.length;i++){
-             if(Integer.parseInt(memberArray[i][2])>0){
-                 System.out.println(memberArray[i][0]);
-                 System.out.println(memberArray[i][1]);
-                 System.out.println(memberArray[i][2]);
-             }else if (Integer.parseInt(memberArray[i][2])==0){
-                 System.out.println("Tidak ada Pengguna yang belum membayarkan denda");
-                 break;
-             }
-         }
-     }
-    // static void cariTanggunganMember(){
-    //     boolean cariKodeTanggungan = false;
-    //     for (int i=0;i<memberArray.length;i++){
-    //         if (Integer.valueOf(memberArray[i][3])>0){
-    //             cariKodeTanggungan=true;
-    //             System.out.println(memberArray[i][1]);
-    //             System.out.println(memberArray[i][3]);
-    //         } 
-    //     }if(!cariKodeTanggungan){
-    //         System.out.println("tidak ada yang memiliki tanggungan");
-    //     }
-    // }
- }
- 
+
+    static void PencarianPenggunaMemilikiDenda() {
+        boolean cekDenda = false;
+        for (int i = 0; i < membercount; i++) {
+            if (Integer.parseInt(memberArray[i][2]) > 0) {
+                cekDenda = true;
+                System.out.println(memberArray[i][0]);
+                System.out.println(memberArray[i][1]);
+                System.out.println(memberArray[i][2]);
+            } else if (Integer.parseInt(memberArray[i][2]) == 0) {
+                System.out.println();
+            }
+        }
+        if (!cekDenda) {
+            System.out.println("Tidak ada member yang memiliki tanggungan denda");
+        }
+    }
+
+    static void PencarianPeminjaMemilikiTanggungan() {
+        for (int i = 0; i < peminjamanCount; i++) {
+            if (peminjamArray[i][8].equalsIgnoreCase("Memiliki tanggungan buku kembali")) {
+                System.out.println("Nim pemilik tanggungan              : " + peminjamArray[i][0]);
+                System.out.println("Nama pemilik tanggungan             : " + peminjamArray[i][1]);
+                System.out.println("Banyak buku yang dipinjam           : " + peminjamArray[i][6]);
+                System.out.println("Banyak buku yang belum dikembalikan : " + peminjamArray[i][10]);
+                System.out.println("Status                              : " + peminjamArray[i][8]);
+            } else if (!peminjamArray[i][8].equalsIgnoreCase("Memiliki tanggungan buku kembali")) {
+                System.out.println();
+            }
+        }
+    }
+
+    static void cariTanggunganMember() {
+        boolean cariKodeTanggungan = false;
+        for (int i = 0; i < membercount; i++) {
+            if (Integer.valueOf(memberArray[i][3]) > 0) {
+                cariKodeTanggungan = true;
+                System.out.println(memberArray[i][1]);
+                System.out.println(memberArray[i][3]);
+            }
+        }
+        if (!cariKodeTanggungan) {
+            System.out.println("tidak ada yang memiliki tanggungan");
+        }
+    }
+    static void cariMember(){
+        if(memberArray!=null){
+            System.out.println("Masukkan nama member yang ingin di cari : ");
+            String CariNama = scCari.nextLine();
+            boolean cocokNama= false;
+            for(int i =0;i<membercount;i++){
+            if (memberArray[i][1].equalsIgnoreCase(CariNama)){
+                cocokNama=true;
+                System.out.println("Nim : "+memberArray[i][0]);
+                System.out.println("nama : "+memberArray[i][1]);
+                System.out.println("Total denda : "+memberArray[i][2]);
+                System.out.println("Total buku dipinjam : "+memberArray[i][3]);
+            }
+            } if (!cocokNama){
+                System.out.println("Nim tidak ditemukan!");
+            }
+        }
+    }
+}
