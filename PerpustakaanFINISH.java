@@ -1295,7 +1295,7 @@ public class PerpustakaanFINISH {
             for (int i = 0; i < membercount; i++) {
                 System.out.println();
                 System.out.println("╔════════════════════════════════════════════════════════════════════╗");
-                System.out.printf("║      Member ke-%-53s║\n", (i + 1));
+                System.out.printf("║      Member ke-%-52s║\n", (i + 1));
                 System.out.printf("║   NIM                         : %-35s║\n", bukuArray[i][0]);
                 System.out.printf("║   Nama                        : %-35s║\n", bukuArray[i][1]);
                 System.out.printf("║   Total denda                 : %-35s║\n", bukuArray[i][2]);
