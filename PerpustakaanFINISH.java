@@ -17,16 +17,18 @@ public class PerpustakaanFINISH {
     static String peminjamArray[][] = new String[100][11];
     static String pengembaliArray[][] = new String[100][11];
     static String dendaArray[][] = new String[100][5];
-    static int membercount = 1, bukucount = 1, peminjamanCount = 0, pengembaliCount = 0, kodePinjam = 1, dendaCount = 0, totalPinjam=0;
+    static int membercount = 1, bukucount = 1, peminjamanCount = 0, pengembaliCount = 0, kodePinjam = 1, dendaCount = 0,
+            totalPinjam = 0;
     static long dendaa = 0;
-    static String cariJudul,cariKodeBuku,cariPenulisBuku,cariTahunBuku, cariNim, cariNimPeminjam, cariKode, jmlPinjam, status;
+    static String cariJudul, cariKodeBuku, cariPenulisBuku, cariTahunBuku, cariNim, cariNimPeminjam, cariKode,
+            jmlPinjam, status;
     static boolean nimketemu = false;
     static Scanner tanggalDenda = new Scanner(System.in);
     static Scanner scStok = new Scanner(System.in);
     static Scanner tambahStokAngka = new Scanner(System.in);
     static Scanner tambahStokHuruf = new Scanner(System.in);
     static Scanner scCari = new Scanner(System.in);
-    static Scanner penggunaHuruf= new Scanner(System.in);
+    static Scanner penggunaHuruf = new Scanner(System.in);
 
     public static void main(String[] args) {
         ////////////////////// SCANNER ///////////////////////////
@@ -58,7 +60,7 @@ public class PerpustakaanFINISH {
         /// scanner denda ///
 
         ///////////////////////// DEKLARASI//////////////////////
-        String Bahasa,levelPengguna, username, password;
+        String Bahasa, levelPengguna, username, password;
 
         //////////////// input buku mulai ////////////////
 
@@ -107,956 +109,1125 @@ public class PerpustakaanFINISH {
         Scanner scCari = new Scanner(System.in);
         Scanner pilihFitur1 = new Scanner(System.in);
         Scanner PilihBahasa = new Scanner(System.in);
-        do{
-           System.out.println("|=================================================|");
-            System.out.println("|  Pilih Bahasa/Choose language (Indonesa/English)|");
-            System.out.println("|=================================================|");
-            System.out.println("| 1. Indonesia                                    |");
-            System.out.println("| 2. Bahasa Inggris/English                       |");
-            System.out.println("|=================================================|");
+        do {
+            System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+            System.out.println("║          Pilih Bahasa/Choose language (Indonesa/English)           ║");
+            System.out.println("║====================================================================║");
+            System.out.println("║                      1. Indonesia                                  ║");
+            System.out.println("║                      2. Bahasa Inggris/English                     ║");
+            System.out.println("╚════════════════════════════════════════════════════════════════════╝");
             System.out.println();
             System.out.print("   Pilihan anda: ");
             Bahasa = PilihBahasa.nextLine();
             System.out.println();
-            
-            if (Bahasa.equalsIgnoreCase("1")||Bahasa.equalsIgnoreCase("Indonesia")){
+
+            if (Bahasa.equalsIgnoreCase("1") || Bahasa.equalsIgnoreCase("Indonesia")) {
                 do {
-            System.out.println("|===========================================|");
-            System.out.println("|   Pilih level pengguna (admin/pengguna)   |");
-            System.out.println("|===========================================|");
-            System.out.println("| 1. Admin                                  |");
-            System.out.println("| 2. Pengguna                               |");
-            System.out.println("| 3. Keluar                                 |");
-            System.out.println("|===========================================|");
-            System.out.println();
-            System.out.print("   Pilihan anda: ");
-            levelPengguna = pilLevel.nextLine();
-            System.out.println();
+                    System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+                    System.out.println("║               Pilih level pengguna (admin/pengguna)                ║");
+                    System.out.println("║====================================================================║");
+                    System.out.println("║                          1. Admin                                  ║");
+                    System.out.println("║                          2. Pengguna                               ║");
+                    System.out.println("║                          3. Keluar                                 ║");
+                    System.out.println("╚════════════════════════════════════════════════════════════════════╝");
+                    System.out.println();
+                    System.out.print("   Pilihan anda: ");
+                    levelPengguna = pilLevel.nextLine();
+                    System.out.println();
 
-            if (levelPengguna.equalsIgnoreCase("admin")) {
-                System.out.println("|===========================================|");
-                System.out.println("|      Silahkan login terlebih dahulu       |");
-                System.out.println("|===========================================|");
-                System.out.println();
-                System.out.print("  Username: ");
-                username = login.nextLine();
-                System.out.print("  Password: ");
-                password = login.nextLine();
-                System.out.println();
-                if (username.equals("admin") && password.equals("admin123")
-                        || username.equals("admin2") && password.equals("admin321")) {
-                    do {
-                        System.out.println("|===========================================|");
-                        System.out.println("|        Berhasil masuk sebagai admin       |");
-                        System.out.println("|===========================================|");
-                        System.out.println("|      Silahkan pilih menu (1/2/3/4/5)      |");
-                        System.out.println("|===========================================|");
-                        System.out.println("| 1. Data Buku                              |");
-                        System.out.println("| 2. Data Member                            |");
-                        System.out.println("| 3. Transaksi Peminjaman                   |");
-                        System.out.println("| 4. Transaksi Pengembalian                 |");
-                        System.out.println("| 5. Pembayaran Denda                       |");
-                        System.out.println("| 6. Laporan                                |");
-                        System.out.println("| 7. Pencarian                              |");
-                        System.out.println("| 8. Keluar                                 |");
-                        System.out.println("|===========================================|");
+                    if (levelPengguna.equalsIgnoreCase("admin")) {
+                        System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+                        System.out.println("║                   Silahkan login terlebih dahulu                   ║");
+                        System.out.println("╚════════════════════════════════════════════════════════════════════╝");
                         System.out.println();
-                        System.out.print(" Pilihan anda: ");
-                        String menu = konfirmasiHuruf.nextLine();
+                        System.out.print("  Username: ");
+                        username = login.nextLine();
+                        System.out.print("  Password: ");
+                        password = login.nextLine();
                         System.out.println();
-
-                        if (menu.equals("1")) {
+                        if (username.equals("admin") && password.equals("admin123")
+                                || username.equals("admin2") && password.equals("admin321")) {
                             do {
-                                System.out.println("|===========================================|");
-                                System.out.println("|        Pilih Akses Data Buku (1/2)        |");
-                                System.out.println("|===========================================|");
-                                System.out.println("| 1. Input Buku Baru                        |");
-                                System.out.println("| 2. Lihat semua buku                       |");
-                                System.out.println("| 3. Tambah stok                            |");
-                                System.out.println("| 4. Kembali                                |");
-                                System.out.println("|===========================================|");
+                                System.out.println(
+                                        "╔════════════════════════════════════════════════════════════════════╗");
+                                System.out.println(
+                                        "║                   Berhasil masuk sebagai admin                     ║");
+                                System.out.println(
+                                        "║====================================================================║");
+                                System.out.println(
+                                        "║                  Silahkan pilih menu (1/2/3/4/5)                   ║");
+                                System.out.println(
+                                        "║====================================================================║");
+                                System.out.println(
+                                        "║                    1. Data Buku                                    ║");
+                                System.out.println(
+                                        "║                    2. Data Member                                  ║");
+                                System.out.println(
+                                        "║                    3. Transaksi Peminjaman                         ║");
+                                System.out.println(
+                                        "║                    4. Transaksi Pengembalian                       ║");
+                                System.out.println(
+                                        "║                    5. Pembayaran Denda                             ║");
+                                System.out.println(
+                                        "║                    6. Laporan                                      ║");
+                                System.out.println(
+                                        "║                    7. Pencarian                                    ║");
+                                System.out.println(
+                                        "║                    8. Keluar                                       ║");
+                                System.out.println(
+                                        "╚════════════════════════════════════════════════════════════════════╝");
                                 System.out.println();
-                                System.out.print("  Pilihan anda: ");
-                                String confirm1 = konfirmasiHuruf.nextLine();
+                                System.out.print(" Pilihan anda: ");
+                                String menu = konfirmasiHuruf.nextLine();
                                 System.out.println();
-                                if (confirm1.equals("1")) {
-                                    System.out.println("    Anda memasuki menu input buku");
-                                    System.out.print("Masukkan kode buku: ");
-                                    kodeBuku = bukuHuruf.nextLine();
-                                    boolean cocokKodeBuku = false;
-                                    for (int i = 0; i < bukuArray.length; i++) {
-                                        if (kodeBuku.equals(bukuArray[i][0])) {
-                                            cocokKodeBuku = true;
-                                            System.out.println("Buku telah tersedia di Perpustakaan");
-                                            break;
-                                        }
-                                    }
-                                    if (!cocokKodeBuku) {
-                                        System.out.print("Masukkan judul buku: ");
-                                        judulBuku = bukuHuruf.nextLine();
-                                        System.out.print("Masukkan nama penulis: ");
-                                        penulis = bukuHuruf.nextLine();
-                                        System.out.print("Masukkan tahun terbit: ");
-                                        tahunTerbit = bukuAngka.nextLine();
-                                        System.out.print("Masukkan jumlah buku: ");
-                                        jumlahBuku = bukuAngka.nextLine();
+
+                                if (menu.equals("1")) {
+                                    do {
+                                        System.out.println(
+                                                "╔════════════════════════════════════════════════════════════════════╗");
+                                        System.out.println(
+                                                "║                 Pilih Akses Data Buku (1/2/3/4)                    ║");
+                                        System.out.println(
+                                                "║====================================================================║");
+                                        System.out.println(
+                                                "║                       1. Input Buku Baru                           ║");
+                                        System.out.println(
+                                                "║                       2. Lihat semua buku                          ║");
+                                        System.out.println(
+                                                "║                       3. Tambah stok                               ║");
+                                        System.out.println(
+                                                "║                       4. Kembali                                   ║");
+                                        System.out.println(
+                                                "╚════════════════════════════════════════════════════════════════════╝");
                                         System.out.println();
-                                        bukuArray[bukucount][0] = kodeBuku;
-                                        bukuArray[bukucount][1] = judulBuku;
-                                        bukuArray[bukucount][2] = penulis;
-                                        bukuArray[bukucount][3] = tahunTerbit;
-                                        bukuArray[bukucount][4] = jumlahBuku;
-                                        bukuArray[bukucount][5] = bukuArray[bukucount][4];
-                                        bukucount++;
-                                    }
-
-                                } else if (confirm1.equals("2")) {
-                                    // for (int i = 0; i < bukucount; i++) {
-                                    tampilBuku();
-
-                                } else if (confirm1.equals("3")) {
-                                    tambahStok();
-                                } else if (confirm1.equals("4")) {
-                                    break;
-                                } else {
-                                    System.out.println();
-                                    System.out.println("|============================================|");
-                                    System.out.println("|   Mohon masukkan pilihan dengan benar :D   |");
-                                    System.out.println("|============================================|");
-                                    System.out.println();
-                                }
-                            } while (true);
-
-                        } else if (menu.equals("2")) {
-                            do {
-                                System.out.println("|===========================================|");
-                                System.out.println("|       Pilih Akses Data Member (1/2)       |");
-                                System.out.println("|===========================================|");
-                                System.out.println("| 1. Input Member Baru                      |");
-                                System.out.println("| 2. Lihat semua member                     |");
-                                System.out.println("| 3. Kembali                                |");
-                                System.out.println("|===========================================|");
-                                System.out.println();
-                                System.out.print("  Pilihan anda: ");
-                                System.out.println();
-                                String confirm2 = konfirmasiHuruf.nextLine();
-                                if (confirm2.equals("1")) {
-                                    System.out.println("       Input Member");
-                                    System.out.print("Masukkan NIM: ");
-                                    nim = memberSH.nextLine();
-                                    boolean CocokNim = false;
-                                    for (int i = 0; i < memberArray.length; i++) {
-                                        if (nim.equalsIgnoreCase(memberArray[i][0])) {
-                                            CocokNim = true;
-                                            System.out.println("Nim sudah terdaftar");
-                                        }
-                                    }
-                                    if (!CocokNim) {
-                                        System.out.print("Masukkan Nama: ");
-                                        nama = memberSH.nextLine();
-                                        memberArray[membercount][0] = nim;
-                                        memberArray[membercount][1] = nama;
-                                        memberArray[membercount][2] = String.valueOf(dendaa);
-                                        memberArray[membercount][3] = String.valueOf(totalPinjam);
-                                        membercount++;
-                                    }
-
-                                    System.out.println();
-                                } else if (confirm2.equals("2")) {
-                                    tampilMember();
-                                } else if (confirm2.equals("3")) {
-                                    break;
-                                } else {
-                                    System.out.println();
-                                    System.out.println("|============================================|");
-                                    System.out.println("|   Mohon masukkan pilihan dengan benar :D   |");
-                                    System.out.println("|============================================|");
-                                    System.out.println();
-                                }
-                            } while (true);
-
-                        } else if (menu.equals("3")) {
-                            do {
-                                System.out.println("|=============================================|");
-                                System.out.println("|      Pilih Akses Data Peminjaman (1/2)      |");
-                                System.out.println("|=============================================|");
-                                System.out.println("|       1. Input Peminjaman                   |");
-                                System.out.println("|       2. Lihat Data Peminjaman              |");
-                                System.out.println("|       3. Kembali                            |");
-                                System.out.println("|=============================================|");
-                                System.out.println();
-                                System.out.print("  Pilihan anda: ");
-                                String confirm3 = konfirmasiHuruf.nextLine();
-                                System.out.println();
-                                if (confirm3.equals("1")) {
-                                    System.out.println("|=============================================|");
-                                    System.out.println("|      Anda memasuki menu peminjaman buku     |");
-                                    System.out.println("|=============================================|");
-                                    if (bukuArray != null) {
-                                        if (memberArray != null) {
-                                            for (int i = 0; i < peminjamArray.length;) {
-
-                                                System.out
-                                                        .print("Apakah sudah terdaftar sebagai member?(y/t): ");
-                                                String tanyaDaftar = peminjamHuruf.nextLine();
-                                                System.out.println();
-                                                if (tanyaDaftar.equalsIgnoreCase("y")) {
-                                                    do {
-                                                        System.out.print("Masukkan NIM peminjaman: ");
-                                                        cariNim = peminjamHuruf.nextLine();
-                                                        peminjaman();
-
-                                                        break;
-                                                    } while (true);
-
-                                                } else {
-                                                    System.out.println("Silahkan daftar terlebih dahulu");
+                                        System.out.print("  Pilihan anda: ");
+                                        String confirm1 = konfirmasiHuruf.nextLine();
+                                        System.out.println();
+                                        if (confirm1.equals("1")) {
+                                            System.out.println(
+                                                    "╔════════════════════════════════════════════════════════════════════╗");
+                                            System.out.println(
+                                                    "║                    Anda memasuki menu input buku                   ║");
+                                            System.out.println(
+                                                    "╚════════════════════════════════════════════════════════════════════╝");
+                                            System.out.print("Masukkan kode buku: ");
+                                            kodeBuku = bukuHuruf.nextLine();
+                                            boolean cocokKodeBuku = false;
+                                            for (int i = 0; i < bukuArray.length; i++) {
+                                                if (kodeBuku.equals(bukuArray[i][0])) {
+                                                    cocokKodeBuku = true;
+                                                    System.out.println("Buku telah tersedia di Perpustakaan!");
                                                     break;
                                                 }
-                                                break;
-
                                             }
-                                        } else {
-                                            System.out.println("Tidak terdapat member di perpustakaan");
-                                            break;
-                                        }
-
-                                    } else {
-                                        System.out.println("Tidak terdapat buku di perpustakaan");
-                                        break;
-                                    }
-                                } else if (confirm3.equals("2")) {
-                                    laporanPeminjaman();
-
-                                } else if (confirm3.equals("3")) {
-                                    break;
-                                } else {
-                                    System.out.println();
-                                    System.out.println("|============================================|");
-                                    System.out.println("|   Mohon masukkan pilihan dengan benar :D   |");
-                                    System.out.println("|============================================|");
-                                    System.out.println();
-                                }
-                            } while (true);
-                        } else if (menu.equals("4")) {
-                            System.out.println("|==============================================|");
-                            System.out.println("|            Transaksi Pengembalian            |");
-                            System.out.println("|==============================================|");
-                            System.out.println();
-                            do {
-                                System.out.println("|===========================================|");
-                                System.out.println("|    Pilih Akses Data Pengembalian (1/2)    |");
-                                System.out.println("|===========================================|");
-                                System.out.println("| 1. Input Pengembalian                     |");
-                                System.out.println("| 2. Lihat Data Pengembalian                |");
-                                System.out.println("| 3. Kembali                                |");
-                                System.out.println("|===========================================|");
-                                System.out.println();
-                                System.out.print("  Pilihan anda: ");
-                                String confirm4 = konfirmasiHuruf.nextLine();
-                                System.out.println();
-                                if (confirm4.equals("1")) {
-                                    System.out.println("|======================================|");
-                                    System.out.println("| Anda memasuki menu pengembalian buku |");
-                                    System.out.println("|======================================|");
-                                    System.out.println();
-                                    if (peminjamanCount >= 0) {
-                                        System.out.print("   Masukkan kode peminjam: ");
-                                        cariNimPeminjam = pengembaliHuruf.nextLine();
-
-                                        pengembalian();
-
-                                    } else {
-                                        System.out.println("|======================================|");
-                                        System.out.println("|     Tidak ada buku yang dipinjam     |");
-                                        System.out.println("|======================================|");
-                                    }
-                                } else if (confirm4.equals("2")) {
-                                    laporanPengembalian();
-                                } else if (confirm4.equals("3")) {
-                                    break;
-                                } else {
-                                    System.out.println("Data yang anda masukkan salah!");
-                                }
-                            } while (true);
-
-                        } else if (menu.equals("5")) {
-                            System.out.println("Masukkan NIM: ");
-                            String search = pengembaliHuruf.nextLine();
-                            boolean nimBayarDenda = false;
-                            for (int i = 0; i < memberArray.length; i++) {
-                                if (search.equalsIgnoreCase(memberArray[i][0])) {
-                                    nimBayarDenda = true;
-                                    System.out.println("NIM     : " + memberArray[i][0]);
-                                    System.out.println("Nama    : " + memberArray[i][1]);
-                                    System.out.println("Denda   : " + memberArray[i][2]);
-                                    System.out.print("Masukkan nominal pembayaran: ");
-                                    int bayar = konfirmasiAngka.nextInt();
-                                    int dendaBayar = Integer.parseInt(memberArray[i][2]);
-                                    int hasilBayar = dendaBayar - bayar;
-                                    
-
-                                    if (hasilBayar == 0) {
-                                        System.out.println("Denda berhasil dibayar!");
-
-                                    } else {
-                                        System.out.println("Denda berhasil dibayar, denda tersisa Rp. " + hasilBayar);
-                                    }
-                                    memberArray[i][2] = String.valueOf(hasilBayar);
-                                    dendaArray[dendaCount][0] = memberArray[i][0];
-                                    dendaArray[dendaCount][1] = memberArray[i][1];
-                                    dendaArray[dendaCount][2] = String.valueOf(dendaBayar);
-                                    dendaArray[dendaCount][3] = String.valueOf(bayar);
-                                    dendaArray[dendaCount][4] = String.valueOf(hasilBayar);
-                                    dendaCount++;
-
-                                }
-                            }
-                            if (!nimBayarDenda) {
-                                System.out.println("Data tidak ditemukan");
-                            }
-                        } else if (menu.equals("6")) {
-                            while (true) {
-                                System.out.println("|======================================|");
-                                System.out.println("|      Anda memasuki menu laporan      |");
-                                System.out.println("|======================================|");
-                                System.out.println("|        Silahkan pilih laporan        |");
-                                System.out.println("|      1. Laporan Peminjaman           |");
-                                System.out.println("|      2. Laporan pengembalian         |");
-                                System.out.println("|      3. Laporan Pembayaran denda     |");
-                                System.out.println("|      4. Kembali                      |");
-                                System.out.println("|======================================|");
-                                System.out.print("   Masukkan pilihan anda : ");
-                                String confirm6 = menuLap.nextLine();
-                                if (confirm6.equals("1")) {
-                                    laporanPeminjaman();
-                                } else if (confirm6.equals("2")) {
-                                    laporanPengembalian();
-                                } else if (confirm6.equals("3")) {
-                                    laporanPembayaranDenda();
-                                } else if (confirm6.equals("4")) {
-                                    break;
-                                } else {
-                                    System.out.println();
-                                    System.out.println("|============================================|");
-                                    System.out.println("|   Mohon masukkan pilihan dengan benar :D   |");
-                                    System.out.println("|============================================|");
-                                    System.out.println();
-                                }
-                            }
-
-                        } else if (menu.equals("7")) {
-                            System.out.println("|========================================|");
-                            System.out.println("|    Selamat datang di menu PENCARIAN    |");
-                            System.out.println("|========================================|");
-                            System.out.println(" 1. Ketik pencarian");
-                            System.out.println(" 2. pilih berdasarkan fitur");
-                            String pilihFitur = pilihFitur1.nextLine();
-                            if (pilihFitur.equals("1")) {
-                                System.out.println(" Ketik Pencarian anda ");
-                                String cari = scCari.nextLine();
-                                if (cari.equalsIgnoreCase("Cari pengguna yang belum membayar denda")
-                                        || cari.equalsIgnoreCase("Caripenggunayangbelummembayardenda")
-                                        || cari.equalsIgnoreCase("Pengguna yang belum membayar denda")
-                                        || cari.equalsIgnoreCase("Pengguna yang belum membayarkan denda")
-                                        || cari.equalsIgnoreCase("pengguna ga bayar denda")
-                                        || cari.equalsIgnoreCase("Pengguna yang hutang ")
-                                        || cari.equalsIgnoreCase("Pengguna nakal")
-                                        || cari.equalsIgnoreCase("denda yang belum dibayarkan")
-                                        || cari.equalsIgnoreCase("Pengguna ga bayar denda")
-                                        || cari.equalsIgnoreCase("Pengguna yang ngga bayar denda")
-                                        || cari.equalsIgnoreCase("Pengguna ngga bayar denda")) {
-
-                                    PencarianPenggunaMemilikiDenda();
-                                }
-                            } else if (pilihFitur.equals("2")) {
-                                System.out.println("Silahkan pilih fitur pencarian");
-                                System.out.println("1. member yang memiliki tanggungan buku kembali");
-                                System.out.println("2");
-                                String cari = scCari.nextLine();
-                                if (cari.equalsIgnoreCase("1")) {
-                                    PencarianPeminjaMemilikiTanggungan();
-                                }else if(cari.equalsIgnoreCase("2")){
-                                    cariTanggunganMember();
-                                }
-    
-                            }
-
-                        } else if (menu.equals("8")) {
-                            System.out.println("Apakah anda yakin akan keluar? (y/t): ");
-                            String keluar = pengembaliHuruf.nextLine();
-                            if (keluar.equalsIgnoreCase("y")) {
-                                break;
-                            } else if (keluar.equalsIgnoreCase("t")) {
-                                System.out.println();
-                                continue;
-                            } else {
-                                System.out.println();
-                                System.out.println("|============================================|");
-                                System.out.println("|   Mohon masukkan pilihan dengan benar :D   |");
-                                System.out.println("|============================================|");
-                                System.out.println();
-                            }
-
-                        } else {
-                            System.out.println("Pastikan anda memilih menu dengan benar :D");
-                        }
-                    } while (true);
-
-                } else {
-                    System.out.println("Username dan password salah silahkan login kembali!");
-                    System.out.println();
-                }
-            } else if (levelPengguna.equalsIgnoreCase("pengguna")) {
-                System.out.println("|===========================================|");
-                System.out.println("|      Silahkan login terlebih dahulu       |");
-                System.out.println("|         Username menggunakan NIM          |");
-                System.out.println("|         Password menggunakan Nama         |");
-                System.out.println("|===========================================|");
-                System.out.print("  Username: ");
-                username = login.nextLine();
-                System.out.print("  Password: ");
-                password = login.nextLine();
-                for (int i = 0; i < memberArray.length; i++) {
-                    if (username.equals("pengguna") && password.equals("pengguna123")
-                            || username.equals(memberArray[i][0]) && password.equals(memberArray[i][1])) {
-                        System.out.println("|===========================================|");
-                        System.out.println("|       Anda hanya bisa mencari buku        |");
-                        System.out.println("|===========================================|");
-
-                        if (bukuArray != null) {
-                            do {
-                                System.out.println("1. Pilih menu pencarian ");
-                                System.out.println("2. keluar");
-                                String pilih = penggunaHuruf.nextLine();
-                                if(pilih.equalsIgnoreCase("1")){
-                                    System.out.println("1. Cari judul buku");
-                                    System.out.println("2. cari Nama penulis buku");
-                                    System.out.println("3. cari buku berdasarkan tahun");
-                                    String pilih1 = penggunaHuruf.nextLine();
-
-                                    if(pilih1.equalsIgnoreCase("1")){
-                                        System.out.println("  Masukkan judul buku yang ingin dicari: ");
-                                        cariJudul = judul.nextLine();
-                                        cariBukuJudul();
-                                        
-                                    } else if (pilih1.equalsIgnoreCase("2")){
-                                        System.out.println("Masukkan nama penulis buku");
-                                        System.out.println("-----------------------");
-                                        cariPenulisBuku = penggunaHuruf.nextLine();
-                                        System.out.println("--------------------------");
-                                        cariPenulisBuku();
-                                    }else if(pilih1.equalsIgnoreCase("3")){
-                                        cariTahunBuku=penggunaHuruf.nextLine();
-                                        cariTahunBuku();
-                                        
-                                    }
-                                }else if(pilih.equalsIgnoreCase("2")){
-                                    break;
-                                }else{
-                                    System.out.println("Masukkan pilihan dengan benar! ");
-                                }
-                                
-                            } while (true);
-
-                        } else if (bukuArray == null) {
-                            System.out.println("Tidak tersedia buku di perpustakaan");
-                            break;
-                        }
-                        break;
-
-                    } else if (!username.equals("pengguna") && !password.equals("pengguna123")
-                            || !username.equals(memberArray[i][0]) && !password.equals(memberArray[i][1])) {
-                        System.out.println("Username dan Password salah silahkan login kembali!");
-                        System.out.println();
-                        break;
-                    } else {
-                        System.out.println();
-                        break;
-                    }
-                }
-
-            }else if (levelPengguna.equalsIgnoreCase("Keluar")){
-                System.out.println("Keluar ke menu utama? ya/tidak");
-                String pilih1= peminjamHuruf.nextLine();
-                if(pilih1.equalsIgnoreCase("ya")){
-                    break;
-                } else if(pilih1.equalsIgnoreCase("tidak")){
-
-                }
-            }
-        } while (true);
-            }else if (Bahasa.equalsIgnoreCase("2")||Bahasa.equalsIgnoreCase("English")||Bahasa.equalsIgnoreCase("Bahasa Inggris")){
-                do {
-            System.out.println("|===========================================|");
-            System.out.println("|   Pilih level pengguna (admin/pengguna)   |");
-            System.out.println("|===========================================|");
-            System.out.println("| 1. Admin                                  |");
-            System.out.println("| 2. Pengguna                               |");
-            System.out.println("| 3. Keluar                                 |");
-            System.out.println("|===========================================|");
-            System.out.println();
-            System.out.print("   Pilihan anda: ");
-            levelPengguna = pilLevel.nextLine();
-            System.out.println();
-
-            if (levelPengguna.equalsIgnoreCase("admin")) {
-                System.out.println("|===========================================|");
-                System.out.println("|      Silahkan login terlebih dahulu       |");
-                System.out.println("|===========================================|");
-                System.out.println();
-                System.out.print("  Username: ");
-                username = login.nextLine();
-                System.out.print("  Password: ");
-                password = login.nextLine();
-                System.out.println();
-                if (username.equals("admin") && password.equals("admin123")
-                        || username.equals("admin2") && password.equals("admin321")) {
-                    do {
-                        System.out.println("|===========================================|");
-                        System.out.println("|        Berhasil masuk sebagai admin       |");
-                        System.out.println("|===========================================|");
-                        System.out.println("|      Silahkan pilih menu (1/2/3/4/5)      |");
-                        System.out.println("|===========================================|");
-                        System.out.println("| 1. Data Buku                              |");
-                        System.out.println("| 2. Data Member                            |");
-                        System.out.println("| 3. Transaksi Peminjaman                   |");
-                        System.out.println("| 4. Transaksi Pengembalian                 |");
-                        System.out.println("| 5. Pembayaran Denda                       |");
-                        System.out.println("| 6. Laporan                                |");
-                        System.out.println("| 7. Pencarian                              |");
-                        System.out.println("| 8. Keluar                                 |");
-                        System.out.println("|===========================================|");
-                        System.out.println();
-                        System.out.print(" Pilihan anda: ");
-                        String menu = konfirmasiHuruf.nextLine();
-                        System.out.println();
-
-                        if (menu.equals("1")) {
-                            do {
-                                System.out.println("|===========================================|");
-                                System.out.println("|        Pilih Akses Data Buku (1/2)        |");
-                                System.out.println("|===========================================|");
-                                System.out.println("| 1. Input Buku Baru                        |");
-                                System.out.println("| 2. Lihat semua buku                       |");
-                                System.out.println("| 3. Tambah stok                            |");
-                                System.out.println("| 4. Kembali                                |");
-                                System.out.println("|===========================================|");
-                                System.out.println();
-                                System.out.print("  Pilihan anda: ");
-                                String confirm1 = konfirmasiHuruf.nextLine();
-                                System.out.println();
-                                if (confirm1.equals("1")) {
-                                    System.out.println("    Anda memasuki menu input buku");
-                                    System.out.print("Masukkan kode buku: ");
-                                    kodeBuku = bukuHuruf.nextLine();
-                                    boolean cocokKodeBuku = false;
-                                    for (int i = 0; i < bukuArray.length; i++) {
-                                        if (kodeBuku.equals(bukuArray[i][0])) {
-                                            cocokKodeBuku = true;
-                                            System.out.println("Buku telah tersedia di Perpustakaan");
-                                            break;
-                                        }
-                                    }
-                                    if (!cocokKodeBuku) {
-                                        System.out.print("Masukkan judul buku: ");
-                                        judulBuku = bukuHuruf.nextLine();
-                                        System.out.print("Masukkan nama penulis: ");
-                                        penulis = bukuHuruf.nextLine();
-                                        System.out.print("Masukkan tahun terbit: ");
-                                        tahunTerbit = bukuAngka.nextLine();
-                                        System.out.print("Masukkan jumlah buku: ");
-                                        jumlahBuku = bukuAngka.nextLine();
-                                        System.out.println();
-                                        bukuArray[bukucount][0] = kodeBuku;
-                                        bukuArray[bukucount][1] = judulBuku;
-                                        bukuArray[bukucount][2] = penulis;
-                                        bukuArray[bukucount][3] = tahunTerbit;
-                                        bukuArray[bukucount][4] = jumlahBuku;
-                                        bukuArray[bukucount][5] = bukuArray[bukucount][4];
-                                        bukucount++;
-                                    }
-
-                                } else if (confirm1.equals("2")) {
-                                    // for (int i = 0; i < bukucount; i++) {
-                                    tampilBuku();
-
-                                } else if (confirm1.equals("3")) {
-                                    tambahStok();
-                                } else if (confirm1.equals("4")) {
-                                    break;
-                                } else {
-                                    System.out.println();
-                                    System.out.println("|============================================|");
-                                    System.out.println("|   Mohon masukkan pilihan dengan benar :D   |");
-                                    System.out.println("|============================================|");
-                                    System.out.println();
-                                }
-                            } while (true);
-
-                        } else if (menu.equals("2")) {
-                            do {
-                                System.out.println("|===========================================|");
-                                System.out.println("|       Pilih Akses Data Member (1/2)       |");
-                                System.out.println("|===========================================|");
-                                System.out.println("| 1. Input Member Baru                      |");
-                                System.out.println("| 2. Lihat semua member                     |");
-                                System.out.println("| 3. Kembali                                |");
-                                System.out.println("|===========================================|");
-                                System.out.println();
-                                System.out.print("  Pilihan anda: ");
-                                System.out.println();
-                                String confirm2 = konfirmasiHuruf.nextLine();
-                                if (confirm2.equals("1")) {
-                                    System.out.println("       Input Member");
-                                    System.out.print("Masukkan NIM: ");
-                                    nim = memberSH.nextLine();
-                                    boolean CocokNim = false;
-                                    for (int i = 0; i < memberArray.length; i++) {
-                                        if (nim.equalsIgnoreCase(memberArray[i][0])) {
-                                            CocokNim = true;
-                                            System.out.println("Nim sudah terdaftar");
-                                        }
-                                    }
-                                    if (!CocokNim) {
-                                        System.out.print("Masukkan Nama: ");
-                                        nama = memberSH.nextLine();
-                                        memberArray[membercount][0] = nim;
-                                        memberArray[membercount][1] = nama;
-                                        memberArray[membercount][2] = String.valueOf(dendaa);
-                                        memberArray[membercount][3] = String.valueOf(totalPinjam);
-                                        membercount++;
-                                    }
-
-                                    System.out.println();
-                                } else if (confirm2.equals("2")) {
-                                    tampilMember();
-                                } else if (confirm2.equals("3")) {
-                                    break;
-                                } else {
-                                    System.out.println();
-                                    System.out.println("|============================================|");
-                                    System.out.println("|   Mohon masukkan pilihan dengan benar :D   |");
-                                    System.out.println("|============================================|");
-                                    System.out.println();
-                                }
-                            } while (true);
-
-                        } else if (menu.equals("3")) {
-                            do {
-                                System.out.println("|=============================================|");
-                                System.out.println("|      Pilih Akses Data Peminjaman (1/2)      |");
-                                System.out.println("|=============================================|");
-                                System.out.println("|       1. Input Peminjaman                   |");
-                                System.out.println("|       2. Lihat Data Peminjaman              |");
-                                System.out.println("|       3. Kembali                            |");
-                                System.out.println("|=============================================|");
-                                System.out.println();
-                                System.out.print("  Pilihan anda: ");
-                                String confirm3 = konfirmasiHuruf.nextLine();
-                                System.out.println();
-                                if (confirm3.equals("1")) {
-                                    System.out.println("|=============================================|");
-                                    System.out.println("|      Anda memasuki menu peminjaman buku     |");
-                                    System.out.println("|=============================================|");
-                                    if (bukuArray != null) {
-                                        if (memberArray != null) {
-                                            for (int i = 0; i < peminjamArray.length;) {
-
-                                                System.out
-                                                        .print("Apakah sudah terdaftar sebagai member?(y/t): ");
-                                                String tanyaDaftar = peminjamHuruf.nextLine();
+                                            if (!cocokKodeBuku) {
+                                                System.out.print("Masukkan judul buku: ");
+                                                judulBuku = bukuHuruf.nextLine();
+                                                System.out.print("Masukkan nama penulis: ");
+                                                penulis = bukuHuruf.nextLine();
+                                                System.out.print("Masukkan tahun terbit: ");
+                                                tahunTerbit = bukuAngka.nextLine();
+                                                System.out.print("Masukkan jumlah buku: ");
+                                                jumlahBuku = bukuAngka.nextLine();
                                                 System.out.println();
-                                                if (tanyaDaftar.equalsIgnoreCase("y")) {
-                                                    do {
-                                                        System.out.print("Masukkan NIM peminjaman: ");
-                                                        cariNim = peminjamHuruf.nextLine();
-                                                        peminjaman();
+                                                bukuArray[bukucount][0] = kodeBuku;
+                                                bukuArray[bukucount][1] = judulBuku;
+                                                bukuArray[bukucount][2] = penulis;
+                                                bukuArray[bukucount][3] = tahunTerbit;
+                                                bukuArray[bukucount][4] = jumlahBuku;
+                                                bukuArray[bukucount][5] = bukuArray[bukucount][4];
+                                                bukucount++;
+                                            }
 
+                                        } else if (confirm1.equals("2")) {
+                                            // for (int i = 0; i < bukucount; i++) {
+                                            tampilBuku();
+
+                                        } else if (confirm1.equals("3")) {
+                                            tambahStok();
+                                        } else if (confirm1.equals("4")) {
+                                            break;
+                                        } else {
+                                            System.out.println();
+                                            System.out.println(
+                                                    "╔════════════════════════════════════════════════════════════════════╗");
+                                            System.out.println(
+                                                    "║               Mohon masukkan pilihan dengan benar !                ║");
+                                            System.out.println(
+                                                    "╚════════════════════════════════════════════════════════════════════╝");
+                                            System.out.println();
+                                        }
+                                    } while (true);
+
+                                } else if (menu.equals("2")) {
+                                    do {
+                                        System.out.println(
+                                                "╔════════════════════════════════════════════════════════════════════╗");
+                                        System.out.println(
+                                                "║                    Pilih Akses Data Member (1/2/3)                 ║");
+                                        System.out.println(
+                                                "║====================================================================║");
+                                        System.out.println(
+                                                "║                       1. Input Member Baru                         ║");
+                                        System.out.println(
+                                                "║                       2. Lihat semua member                        ║");
+                                        System.out.println(
+                                                "║                       3. Kembali                                   ║");
+                                        System.out.println(
+                                                "╚════════════════════════════════════════════════════════════════════╝");
+                                        System.out.println();
+                                        System.out.print("  Pilihan anda: ");
+                                        System.out.println();
+                                        String confirm2 = konfirmasiHuruf.nextLine();
+                                        if (confirm2.equals("1")) {
+                                            System.out.println(
+                                                    "╔════════════════════════════════════════════════════════════════════╗");
+                                            System.out.println(
+                                                    "║                   Anda memasuki menu input member                  ║");
+                                            System.out.println(
+                                                    "╚════════════════════════════════════════════════════════════════════╝");
+                                            System.out.println("       Input Member");
+                                            System.out.print("Masukkan NIM: ");
+                                            nim = memberSH.nextLine();
+                                            boolean CocokNim = false;
+                                            for (int i = 0; i < memberArray.length; i++) {
+                                                if (nim.equalsIgnoreCase(memberArray[i][0])) {
+                                                    CocokNim = true;
+                                                    System.out.println("Nim sudah terdaftar");
+                                                }
+                                            }
+                                            if (!CocokNim) {
+                                                System.out.print("Masukkan Nama: ");
+                                                nama = memberSH.nextLine();
+                                                memberArray[membercount][0] = nim;
+                                                memberArray[membercount][1] = nama;
+                                                memberArray[membercount][2] = String.valueOf(dendaa);
+                                                memberArray[membercount][3] = String.valueOf(totalPinjam);
+                                                membercount++;
+                                            }
+
+                                            System.out.println();
+                                        } else if (confirm2.equals("2")) {
+                                            tampilMember();
+                                        } else if (confirm2.equals("3")) {
+                                            break;
+                                        } else {
+                                            System.out.println();
+                                            System.out.println(
+                                                    "╔════════════════════════════════════════════════════════════════════╗");
+                                            System.out.println(
+                                                    "║               Mohon masukkan pilihan dengan benar !                ║");
+                                            System.out.println(
+                                                    "╚════════════════════════════════════════════════════════════════════╝");
+                                            System.out.println();
+                                        }
+                                    } while (true);
+
+                                } else if (menu.equals("3")) {
+                                    do {
+                                        System.out.println(
+                                                "╔════════════════════════════════════════════════════════════════════╗");
+                                        System.out.println(
+                                                "║                  Pilih Akses Data Peminjaman (1/2/3)               ║");
+                                        System.out.println(
+                                                "║====================================================================║");
+                                        System.out.println(
+                                                "║                       1. Input Peminjaman                          ║");
+                                        System.out.println(
+                                                "║                       2. Lihat Data Peminjaman                     ║");
+                                        System.out.println(
+                                                "║                       3. Kembali                                   ║");
+                                        System.out.println(
+                                                "╚════════════════════════════════════════════════════════════════════╝");
+                                        System.out.println();
+                                        System.out.print("  Pilihan anda: ");
+                                        String confirm3 = konfirmasiHuruf.nextLine();
+                                        System.out.println();
+                                        if (confirm3.equals("1")) {
+                                            System.out.println(
+                                                    "╔════════════════════════════════════════════════════════════════════╗");
+                                            System.out.println(
+                                                    "║                  Anda memasuki menu peminjaman buku                ║");
+                                            System.out.println(
+                                                    "╚════════════════════════════════════════════════════════════════════╝");
+                                            System.out.println();
+                                            if (bukuArray != null) {
+                                                if (memberArray != null) {
+                                                    for (int i = 0; i < peminjamArray.length;) {
+
+                                                        System.out
+                                                                .print("   Apakah sudah terdaftar sebagai member?(y/t): ");
+                                                        String tanyaDaftar = peminjamHuruf.nextLine();
+                                                        System.out.println();
+                                                        if (tanyaDaftar.equalsIgnoreCase("y")) {
+                                                            do {
+                                                                System.out.print("Masukkan NIM peminjaman: ");
+                                                                cariNim = peminjamHuruf.nextLine();
+                                                                peminjaman();
+
+                                                                break;
+                                                            } while (true);
+
+                                                        } else {
+                                                            System.out.println("Silahkan daftar terlebih dahulu");
+                                                            break;
+                                                        }
                                                         break;
-                                                    } while (true);
 
+                                                    }
                                                 } else {
-                                                    System.out.println("Silahkan daftar terlebih dahulu");
+                                                    System.out.println("Tidak terdapat member di perpustakaan");
                                                     break;
                                                 }
-                                                break;
 
+                                            } else {
+                                                System.out.println("Tidak terdapat buku di perpustakaan");
+                                                break;
                                             }
-                                        } else {
-                                            System.out.println("Tidak terdapat member di perpustakaan");
+                                        } else if (confirm3.equals("2")) {
+                                            laporanPeminjaman();
+
+                                        } else if (confirm3.equals("3")) {
                                             break;
+                                        } else {
+                                            System.out.println();
+                                            System.out.println(
+                                                    "╔════════════════════════════════════════════════════════════════════╗");
+                                            System.out.println(
+                                                    "║               Mohon masukkan pilihan dengan benar !                ║");
+                                            System.out.println(
+                                                    "╚════════════════════════════════════════════════════════════════════╝");
+                                            System.out.println();
+                                        }
+                                    } while (true);
+                                } else if (menu.equals("4")) {
+
+                                    do {
+                                        System.out.println(
+                                                "╔════════════════════════════════════════════════════════════════════╗");
+                                        System.out.println(
+                                                "║                 Pilih Akses Data Pengembalian (1/2/3)               ║");
+                                        System.out.println(
+                                                "║====================================================================║");
+                                        System.out.println(
+                                                "║                       1. Input Pengembalian                        ║");
+                                        System.out.println(
+                                                "║                       2. Lihat Data Pengembalian                   ║");
+                                        System.out.println(
+                                                "║                       3. Kembali                                   ║");
+                                        System.out.println(
+                                                "╚════════════════════════════════════════════════════════════════════╝");
+                                        System.out.println();
+                                        System.out.print("  Pilihan anda: ");
+                                        String confirm4 = konfirmasiHuruf.nextLine();
+                                        System.out.println();
+                                        if (confirm4.equals("1")) {
+                                            System.out.println(
+                                                    "╔════════════════════════════════════════════════════════════════════╗");
+                                            System.out.println(
+                                                    "║                 Anda memasuki menu pengembalian buku               ║");
+                                            System.out.println(
+                                                    "╚════════════════════════════════════════════════════════════════════╝");
+                                            System.out.println();
+                                            if (peminjamanCount >= 0) {
+                                                System.out.print("   Masukkan kode peminjam: ");
+                                                cariNimPeminjam = pengembaliHuruf.nextLine();
+
+                                                pengembalian();
+
+                                            } else {
+                                                System.out.println(
+                                                        "╔════════════════════════════════════════════════════════════════════╗");
+                                                System.out.println(
+                                                        "║                    Tidak terdapat peminjaman buku                  ║");
+                                                System.out.println(
+                                                        "╚════════════════════════════════════════════════════════════════════╝");
+                                            }
+                                        } else if (confirm4.equals("2")) {
+                                            laporanPengembalian();
+                                        } else if (confirm4.equals("3")) {
+                                            break;
+                                        } else {
+                                            System.out.println();
+                                            System.out.println(
+                                                    "╔════════════════════════════════════════════════════════════════════╗");
+                                            System.out.println(
+                                                    "║               Mohon masukkan pilihan dengan benar !                ║");
+                                            System.out.println(
+                                                    "╚════════════════════════════════════════════════════════════════════╝");
+                                            System.out.println();
+                                        }
+                                    } while (true);
+
+                                } else if (menu.equals("5")) {
+                                    System.out.println(
+                                            "╔════════════════════════════════════════════════════════════════════╗");
+                                    System.out.println(
+                                            "║                Anda memasuki menu pembayaran denda!                ║");
+                                    System.out.println(
+                                            "╚════════════════════════════════════════════════════════════════════╝");
+                                    System.out.println("   Masukkan NIM: ");
+                                    String search = pengembaliHuruf.nextLine();
+                                    boolean nimBayarDenda = false;
+                                    for (int i = 0; i < memberArray.length; i++) {
+                                        if (search.equalsIgnoreCase(memberArray[i][0])) {
+                                            nimBayarDenda = true;
+                                            System.out.println("   NIM     : " + memberArray[i][0]);
+                                            System.out.println("   Nama    : " + memberArray[i][1]);
+                                            System.out.println("   Denda   : " + memberArray[i][2]);
+                                            System.out.print("   Masukkan nominal pembayaran: ");
+                                            int bayar = konfirmasiAngka.nextInt();
+                                            int dendaBayar = Integer.parseInt(memberArray[i][2]);
+                                            int hasilBayar = dendaBayar - bayar;
+
+                                            if (hasilBayar == 0) {
+                                                System.out.println("Denda berhasil dibayar!");
+
+                                            } else {
+                                                System.out.println(
+                                                        "Denda berhasil dibayar, denda tersisa Rp. " + hasilBayar);
+                                            }
+                                            memberArray[i][2] = String.valueOf(hasilBayar);
+                                            dendaArray[dendaCount][0] = memberArray[i][0];
+                                            dendaArray[dendaCount][1] = memberArray[i][1];
+                                            dendaArray[dendaCount][2] = String.valueOf(dendaBayar);
+                                            dendaArray[dendaCount][3] = String.valueOf(bayar);
+                                            dendaArray[dendaCount][4] = String.valueOf(hasilBayar);
+                                            dendaCount++;
+
+                                        }
+                                    }
+                                    if (!nimBayarDenda) {
+                                        System.out.println("Data tidak ditemukan");
+                                    }
+                                } else if (menu.equals("6")) {
+                                    while (true) {
+                                        System.out.println(
+                                                "╔════════════════════════════════════════════════════════════════════╗");
+                                        System.out.println(
+                                                "║                   Pilih Akses Data Laporan (1/2/3)                 ║");
+                                        System.out.println(
+                                                "║====================================================================║");
+                                        System.out.println(
+                                                "║                       1. Laporan peminjaman                        ║");
+                                        System.out.println(
+                                                "║                       2. Laporan Pengembalian                      ║");
+                                        System.out.println(
+                                                "║                       2. Laporan Pembayaran denda                  ║");
+                                        System.out.println(
+                                                "║                       3. Kembali                                   ║");
+                                        System.out.println(
+                                                "╚════════════════════════════════════════════════════════════════════╝");
+                                        System.out.println();
+                                        System.out.print("   Masukkan pilihan anda : ");
+                                        String confirm6 = menuLap.nextLine();
+                                        if (confirm6.equals("1")) {
+                                            laporanPeminjaman();
+                                        } else if (confirm6.equals("2")) {
+                                            laporanPengembalian();
+                                        } else if (confirm6.equals("3")) {
+                                            laporanPembayaranDenda();
+                                        } else if (confirm6.equals("4")) {
+                                            break;
+                                        } else {
+                                            System.out.println();
+                                            System.out.println(
+                                                    "╔════════════════════════════════════════════════════════════════════╗");
+                                            System.out.println(
+                                                    "║               Mohon masukkan pilihan dengan benar !                ║");
+                                            System.out.println(
+                                                    "╚════════════════════════════════════════════════════════════════════╝");
+                                            System.out.println();
+                                        }
+                                    }
+
+                                } else if (menu.equals("7")) {
+                                    System.out.println();
+                                    System.out.println(
+                                            "╔════════════════════════════════════════════════════════════════════╗");
+                                    System.out.println(
+                                            "║                    Anda memasuki menu pencarian                    ║");
+                                    System.out.println(
+                                            "║====================================================================║");
+                                    System.out.println(
+                                            "║                       1. Ketik pencarian                           ║");
+                                    System.out.println(
+                                            "║                       2. Cari berdasarkan fitur                    ║");
+                                    System.out.println(
+                                            "╚════════════════════════════════════════════════════════════════════╝");
+                                    System.out.print("   Masukkan pilihan anda: ");
+                                    String pilihFitur = pilihFitur1.nextLine();
+                                    System.out.println();
+                                    if (pilihFitur.equals("1")) {
+                                        System.out.println("   Ketik Pencarian anda ");
+                                        String cari = scCari.nextLine();
+                                        if (cari.equalsIgnoreCase("Cari pengguna yang belum membayar denda")
+                                                || cari.equalsIgnoreCase("Caripenggunayangbelummembayardenda")
+                                                || cari.equalsIgnoreCase("Pengguna yang belum membayar denda")
+                                                || cari.equalsIgnoreCase("Pengguna yang belum membayarkan denda")
+                                                || cari.equalsIgnoreCase("pengguna ga bayar denda")
+                                                || cari.equalsIgnoreCase("Pengguna yang hutang ")
+                                                || cari.equalsIgnoreCase("Pengguna nakal")
+                                                || cari.equalsIgnoreCase("denda yang belum dibayarkan")
+                                                || cari.equalsIgnoreCase("Pengguna ga bayar denda")
+                                                || cari.equalsIgnoreCase("Pengguna yang ngga bayar denda")
+                                                || cari.equalsIgnoreCase("Pengguna ngga bayar denda")) {
+
+                                            PencarianPenggunaMemilikiDenda();
+                                        }
+                                    } else if (pilihFitur.equals("2")) {
+                                        System.out.println(
+                                                "╔════════════════════════════════════════════════════════════════════╗");
+                                        System.out.println(
+                                                "║                    Silahkan pilih fitur pencarian                  ║");
+                                        System.out.println(
+                                                "║====================================================================║");
+                                        System.out.println(
+                                                "║          1. Member yang memiliki beban mengembalikan buku          ║");
+                                        System.out.println(
+                                                "║          2. Member yang belum membayar denda                       ║");
+                                        System.out.println(
+                                                "╚════════════════════════════════════════════════════════════════════╝");
+                                        System.out.print("   Masukkan pilihan anda: ");
+                                        String cari = scCari.nextLine();
+                                        if (cari.equalsIgnoreCase("1")) {
+                                            PencarianPeminjaMemilikiTanggungan();
+                                        } else if (cari.equalsIgnoreCase("2")) {
+                                            cariTanggunganMember();
                                         }
 
-                                    } else {
-                                        System.out.println("Tidak terdapat buku di perpustakaan");
+                                    }
+
+                                } else if (menu.equals("8")) {
+                                    System.out.println("Apakah anda yakin akan keluar? (y/t): ");
+                                    String keluar = pengembaliHuruf.nextLine();
+                                    if (keluar.equalsIgnoreCase("y")) {
                                         break;
+                                    } else if (keluar.equalsIgnoreCase("t")) {
+                                        System.out.println();
+                                        continue;
+                                    } else {
+                                        System.out.println();
+                                        System.out.println(
+                                                "╔════════════════════════════════════════════════════════════════════╗");
+                                        System.out.println(
+                                                "║               Mohon masukkan pilihan dengan benar !                ║");
+                                        System.out.println(
+                                                "╚════════════════════════════════════════════════════════════════════╝");
+                                        System.out.println();
                                     }
-                                } else if (confirm3.equals("2")) {
-                                    laporanPeminjaman();
 
-                                } else if (confirm3.equals("3")) {
-                                    break;
                                 } else {
-                                    System.out.println();
-                                    System.out.println("|============================================|");
-                                    System.out.println("|   Mohon masukkan pilihan dengan benar :D   |");
-                                    System.out.println("|============================================|");
-                                    System.out.println();
+                                    System.out.println("Pastikan anda memilih menu dengan benar :D");
                                 }
                             } while (true);
-                        } else if (menu.equals("4")) {
-                            System.out.println("|==============================================|");
-                            System.out.println("|            Transaksi Pengembalian            |");
-                            System.out.println("|==============================================|");
-                            System.out.println();
-                            do {
-                                System.out.println("|===========================================|");
-                                System.out.println("|    Pilih Akses Data Pengembalian (1/2)    |");
-                                System.out.println("|===========================================|");
-                                System.out.println("| 1. Input Pengembalian                     |");
-                                System.out.println("| 2. Lihat Data Pengembalian                |");
-                                System.out.println("| 3. Kembali                                |");
-                                System.out.println("|===========================================|");
-                                System.out.println();
-                                System.out.print("  Pilihan anda: ");
-                                String confirm4 = konfirmasiHuruf.nextLine();
-                                System.out.println();
-                                if (confirm4.equals("1")) {
-                                    System.out.println("|======================================|");
-                                    System.out.println("| Anda memasuki menu pengembalian buku |");
-                                    System.out.println("|======================================|");
-                                    System.out.println();
-                                    if (peminjamanCount >= 0) {
-                                        System.out.print("   Masukkan kode peminjam: ");
-                                        cariNimPeminjam = pengembaliHuruf.nextLine();
-
-                                        pengembalian();
-
-                                    } else {
-                                        System.out.println("|======================================|");
-                                        System.out.println("|     Tidak ada buku yang dipinjam     |");
-                                        System.out.println("|======================================|");
-                                    }
-                                } else if (confirm4.equals("2")) {
-                                    laporanPengembalian();
-                                } else if (confirm4.equals("3")) {
-                                    break;
-                                } else {
-                                    System.out.println("Data yang anda masukkan salah!");
-                                }
-                            } while (true);
-
-                        } else if (menu.equals("5")) {
-                            System.out.println("Masukkan NIM: ");
-                            String search = pengembaliHuruf.nextLine();
-                            boolean nimBayarDenda = false;
-                            for (int i = 0; i < memberArray.length; i++) {
-                                if (search.equalsIgnoreCase(memberArray[i][0])) {
-                                    nimBayarDenda = true;
-                                    System.out.println("NIM     : " + memberArray[i][0]);
-                                    System.out.println("Nama    : " + memberArray[i][1]);
-                                    System.out.println("Denda   : " + memberArray[i][2]);
-                                    System.out.print("Masukkan nominal pembayaran: ");
-                                    int bayar = konfirmasiAngka.nextInt();
-                                    int dendaBayar = Integer.parseInt(memberArray[i][2]);
-                                    int hasilBayar = dendaBayar - bayar;
-                                    
-
-                                    if (hasilBayar == 0) {
-                                        System.out.println("Denda berhasil dibayar!");
-
-                                    } else {
-                                        System.out.println("Denda berhasil dibayar, denda tersisa Rp. " + hasilBayar);
-                                    }
-                                    memberArray[i][2] = String.valueOf(hasilBayar);
-                                    dendaArray[dendaCount][0] = memberArray[i][0];
-                                    dendaArray[dendaCount][1] = memberArray[i][1];
-                                    dendaArray[dendaCount][2] = String.valueOf(dendaBayar);
-                                    dendaArray[dendaCount][3] = String.valueOf(bayar);
-                                    dendaArray[dendaCount][4] = String.valueOf(hasilBayar);
-                                    dendaCount++;
-
-                                }
-                            }
-                            if (!nimBayarDenda) {
-                                System.out.println("Data tidak ditemukan");
-                            }
-                        } else if (menu.equals("6")) {
-                            while (true) {
-                                System.out.println("|======================================|");
-                                System.out.println("|      Anda memasuki menu laporan      |");
-                                System.out.println("|======================================|");
-                                System.out.println("|        Silahkan pilih laporan        |");
-                                System.out.println("|      1. Laporan Peminjaman           |");
-                                System.out.println("|      2. Laporan pengembalian         |");
-                                System.out.println("|      3. Laporan Pembayaran denda     |");
-                                System.out.println("|      4. Kembali                      |");
-                                System.out.println("|======================================|");
-                                System.out.print("   Masukkan pilihan anda : ");
-                                String confirm6 = menuLap.nextLine();
-                                if (confirm6.equals("1")) {
-                                    laporanPeminjaman();
-                                } else if (confirm6.equals("2")) {
-                                    laporanPengembalian();
-                                } else if (confirm6.equals("3")) {
-                                    laporanPembayaranDenda();
-                                } else if (confirm6.equals("4")) {
-                                    break;
-                                } else {
-                                    System.out.println();
-                                    System.out.println("|============================================|");
-                                    System.out.println("|   Mohon masukkan pilihan dengan benar :D   |");
-                                    System.out.println("|============================================|");
-                                    System.out.println();
-                                }
-                            }
-
-                        } else if (menu.equals("7")) {
-                            System.out.println("|========================================|");
-                            System.out.println("|    Selamat datang di menu PENCARIAN    |");
-                            System.out.println("|========================================|");
-                            System.out.println(" 1. Ketik pencarian");
-                            System.out.println(" 2. pilih berdasarkan fitur");
-                            String pilihFitur = pilihFitur1.nextLine();
-                            if (pilihFitur.equals("1")) {
-                                System.out.println(" Ketik Pencarian anda ");
-                                String cari = scCari.nextLine();
-                                if (cari.equalsIgnoreCase("Cari pengguna yang belum membayar denda")
-                                        || cari.equalsIgnoreCase("Caripenggunayangbelummembayardenda")
-                                        || cari.equalsIgnoreCase("Pengguna yang belum membayar denda")
-                                        || cari.equalsIgnoreCase("Pengguna yang belum membayarkan denda")
-                                        || cari.equalsIgnoreCase("pengguna ga bayar denda")
-                                        || cari.equalsIgnoreCase("Pengguna yang hutang ")
-                                        || cari.equalsIgnoreCase("Pengguna nakal")
-                                        || cari.equalsIgnoreCase("denda yang belum dibayarkan")
-                                        || cari.equalsIgnoreCase("Pengguna ga bayar denda")
-                                        || cari.equalsIgnoreCase("Pengguna yang ngga bayar denda")
-                                        || cari.equalsIgnoreCase("Pengguna ngga bayar denda")) {
-
-                                    PencarianPenggunaMemilikiDenda();
-                                }
-                            } else if (pilihFitur.equals("2")) {
-                                System.out.println("Silahkan pilih fitur pencarian");
-                                System.out.println("1. member yang memiliki tanggungan buku kembali");
-                                System.out.println("2");
-                                String cari = scCari.nextLine();
-                                if (cari.equalsIgnoreCase("1")) {
-                                    PencarianPeminjaMemilikiTanggungan();
-                                }else if(cari.equalsIgnoreCase("2")){
-                                    cariTanggunganMember();
-                                }
-    
-                            }
-
-                        } else if (menu.equals("8")) {
-                            System.out.println("Apakah anda yakin akan keluar? (y/t): ");
-                            String keluar = pengembaliHuruf.nextLine();
-                            if (keluar.equalsIgnoreCase("y")) {
-                                break;
-                            } else if (keluar.equalsIgnoreCase("t")) {
-                                System.out.println();
-                                continue;
-                            } else {
-                                System.out.println();
-                                System.out.println("|============================================|");
-                                System.out.println("|   Mohon masukkan pilihan dengan benar :D   |");
-                                System.out.println("|============================================|");
-                                System.out.println();
-                            }
 
                         } else {
-                            System.out.println("Pastikan anda memilih menu dengan benar :D");
+                            System.out.println("Username dan password salah silahkan login kembali!");
+                            System.out.println();
                         }
-                    } while (true);
+                    } else if (levelPengguna.equalsIgnoreCase("pengguna")) {
+                        System.out.println();
+                        System.out.println(
+                                "╔════════════════════════════════════════════════════════════════════╗");
+                        System.out.println(
+                                "║                   Silahkan Login terlebih dahulu                   ║");
+                        System.out.println(
+                                "║====================================================================║");
+                        System.out.println(
+                                "║                      Username menggunakan NIM                      ║");
+                        System.out.println(
+                                "║                      Password menggunakan Nama                     ║");
+                        System.out.println(
+                                "╚════════════════════════════════════════════════════════════════════╝");
 
-                } else {
-                    System.out.println("Username dan password salah silahkan login kembali!");
-                    System.out.println();
-                }
-            } else if (levelPengguna.equalsIgnoreCase("pengguna")) {
-                System.out.println("|===========================================|");
-                System.out.println("|      Silahkan login terlebih dahulu       |");
-                System.out.println("|         Username menggunakan NIM          |");
-                System.out.println("|         Password menggunakan Nama         |");
-                System.out.println("|===========================================|");
-                System.out.print("  Username: ");
-                username = login.nextLine();
-                System.out.print("  Password: ");
-                password = login.nextLine();
-                for (int i = 0; i < memberArray.length; i++) {
-                    if (username.equals("pengguna") && password.equals("pengguna123")
-                            || username.equals(memberArray[i][0]) && password.equals(memberArray[i][1])) {
-                        System.out.println("|===========================================|");
-                        System.out.println("|       Anda hanya bisa mencari buku        |");
-                        System.out.println("|===========================================|");
+                        System.out.print("  Username: ");
+                        username = login.nextLine();
+                        System.out.print("  Password: ");
+                        password = login.nextLine();
+                        for (int i = 0; i < memberArray.length; i++) {
+                            if (username.equals("pengguna") && password.equals("pengguna123")
+                                    || username.equals(memberArray[i][0]) && password.equals(memberArray[i][1])) {
+                                System.out.println(
+                                        "╔════════════════════════════════════════════════════════════════════╗");
+                                System.out.println(
+                                        "║                    Anda hanya bisa mencari buku                    ║");
+                                System.out.println(
+                                        "╚════════════════════════════════════════════════════════════════════╝");
 
-                        if (bukuArray != null) {
-                            do {
-                                System.out.println("1. Pilih menu pencarian ");
-                                System.out.println("2. keluar");
-                                String pilih = penggunaHuruf.nextLine();
-                                if(pilih.equalsIgnoreCase("1")){
-                                    System.out.println("1. Cari judul buku");
-                                    System.out.println("2. cari Nama penulis buku");
-                                    System.out.println("3. cari buku berdasarkan tahun");
-                                    String pilih1 = penggunaHuruf.nextLine();
+                                if (bukuArray != null) {
+                                    do {
+                                        System.out.println(
+                                                "╔════════════════════════════════════════════════════════════════════╗");
+                                        System.out.println(
+                                                "║                       1. Pilih menu pencarian                      ║");
+                                        System.out.println(
+                                                "║                       2. Keluar                                    ║");
+                                        System.out.println(
+                                                "╚════════════════════════════════════════════════════════════════════╝");
 
-                                    if(pilih1.equalsIgnoreCase("1")){
-                                        System.out.println("  Masukkan judul buku yang ingin dicari: ");
-                                        cariJudul = judul.nextLine();
-                                        cariBukuJudul();
-                                        
-                                    } else if (pilih1.equalsIgnoreCase("2")){
-                                        System.out.println("Masukkan nama penulis buku");
-                                        System.out.println("-----------------------");
-                                        cariPenulisBuku = penggunaHuruf.nextLine();
-                                        System.out.println("--------------------------");
-                                        cariPenulisBuku();
-                                    }else if(pilih1.equalsIgnoreCase("3")){
-                                        cariTahunBuku=penggunaHuruf.nextLine();
-                                        cariTahunBuku();
-                                        
-                                    }
-                                }else if(pilih.equalsIgnoreCase("2")){
+                                        String pilih = penggunaHuruf.nextLine();
+                                        if (pilih.equalsIgnoreCase("1")) {
+                                            System.out.println(
+                                                    "╔════════════════════════════════════════════════════════════════════╗");
+                                            System.out.println(
+                                                    "║                   1. Cari judul buku                               ║");
+                                            System.out.println(
+                                                    "║                   2. Cari nama penulis buku                        ║");
+                                            System.out.println(
+                                                    "║                   3. Cari buku berdasarkan tahun                   ║");
+                                            System.out.println(
+                                                    "╚════════════════════════════════════════════════════════════════════╝");
+                                            System.out.print("Masukkan pilihan anda: ");
+
+                                            String pilih1 = penggunaHuruf.nextLine();
+
+                                            if (pilih1.equalsIgnoreCase("1")) {
+                                                System.out.println("  Masukkan judul buku yang ingin dicari: ");
+                                                cariJudul = judul.nextLine();
+                                                cariBukuJudul();
+
+                                            } else if (pilih1.equalsIgnoreCase("2")) {
+                                                System.out.println("Masukkan nama penulis buku");
+                                                System.out.println("-----------------------");
+                                                cariPenulisBuku = penggunaHuruf.nextLine();
+                                                System.out.println("--------------------------");
+                                                cariPenulisBuku();
+                                            } else if (pilih1.equalsIgnoreCase("3")) {
+                                                cariTahunBuku = penggunaHuruf.nextLine();
+                                                cariTahunBuku();
+
+                                            }
+                                        } else if (pilih.equalsIgnoreCase("2")) {
+                                            break;
+                                        } else {
+                                            System.out.println("Masukkan pilihan dengan benar! ");
+                                        }
+
+                                    } while (true);
+
+                                } else if (bukuArray == null) {
+                                    System.out.println("Tidak tersedia buku di perpustakaan");
                                     break;
-                                }else{
-                                    System.out.println("Masukkan pilihan dengan benar! ");
                                 }
-                                
+                                break;
+
+                            } else if (!username.equals("pengguna") && !password.equals("pengguna123")
+                                    || !username.equals(memberArray[i][0]) && !password.equals(memberArray[i][1])) {
+                                System.out.println("Username dan Password salah silahkan login kembali!");
+                                System.out.println();
+                                break;
+                            } else {
+                                System.out.println();
+                                break;
+                            }
+                        }
+
+                    } else if (levelPengguna.equalsIgnoreCase("Keluar")) {
+                        System.out.print("Keluar ke menu utama? ya/tidak: ");
+                        String pilih1 = peminjamHuruf.nextLine();
+                        if (pilih1.equalsIgnoreCase("ya")) {
+                            break;
+                        } else if (pilih1.equalsIgnoreCase("tidak")) {
+
+                        }
+                    }
+                } while (true);
+            } else if (Bahasa.equalsIgnoreCase("2") || Bahasa.equalsIgnoreCase("English")
+                    || Bahasa.equalsIgnoreCase("Bahasa Inggris")) {
+                do {
+                    System.out.println("|===========================================|");
+                    System.out.println("|   Pilih level pengguna (admin/pengguna)   |");
+                    System.out.println("|===========================================|");
+                    System.out.println("| 1. Admin                                  |");
+                    System.out.println("| 2. Pengguna                               |");
+                    System.out.println("| 3. Keluar                                 |");
+                    System.out.println("|===========================================|");
+                    System.out.println();
+                    System.out.print("   Pilihan anda: ");
+                    levelPengguna = pilLevel.nextLine();
+                    System.out.println();
+
+                    if (levelPengguna.equalsIgnoreCase("admin")) {
+                        System.out.println("|===========================================|");
+                        System.out.println("|      Silahkan login terlebih dahulu       |");
+                        System.out.println("|===========================================|");
+                        System.out.println();
+                        System.out.print("  Username: ");
+                        username = login.nextLine();
+                        System.out.print("  Password: ");
+                        password = login.nextLine();
+                        System.out.println();
+                        if (username.equals("admin") && password.equals("admin123")
+                                || username.equals("admin2") && password.equals("admin321")) {
+                            do {
+                                System.out.println("|===========================================|");
+                                System.out.println("|        Berhasil masuk sebagai admin       |");
+                                System.out.println("|===========================================|");
+                                System.out.println("|      Silahkan pilih menu (1/2/3/4/5)      |");
+                                System.out.println("|===========================================|");
+                                System.out.println("| 1. Data Buku                              |");
+                                System.out.println("| 2. Data Member                            |");
+                                System.out.println("| 3. Transaksi Peminjaman                   |");
+                                System.out.println("| 4. Transaksi Pengembalian                 |");
+                                System.out.println("| 5. Pembayaran Denda                       |");
+                                System.out.println("| 6. Laporan                                |");
+                                System.out.println("| 7. Pencarian                              |");
+                                System.out.println("| 8. Keluar                                 |");
+                                System.out.println("|===========================================|");
+                                System.out.println();
+                                System.out.print(" Pilihan anda: ");
+                                String menu = konfirmasiHuruf.nextLine();
+                                System.out.println();
+
+                                if (menu.equals("1")) {
+                                    do {
+                                        System.out.println("|===========================================|");
+                                        System.out.println("|        Pilih Akses Data Buku (1/2)        |");
+                                        System.out.println("|===========================================|");
+                                        System.out.println("| 1. Input Buku Baru                        |");
+                                        System.out.println("| 2. Lihat semua buku                       |");
+                                        System.out.println("| 3. Tambah stok                            |");
+                                        System.out.println("| 4. Kembali                                |");
+                                        System.out.println("|===========================================|");
+                                        System.out.println();
+                                        System.out.print("  Pilihan anda: ");
+                                        String confirm1 = konfirmasiHuruf.nextLine();
+                                        System.out.println();
+                                        if (confirm1.equals("1")) {
+                                            System.out.println("    Anda memasuki menu input buku");
+                                            System.out.print("Masukkan kode buku: ");
+                                            kodeBuku = bukuHuruf.nextLine();
+                                            boolean cocokKodeBuku = false;
+                                            for (int i = 0; i < bukuArray.length; i++) {
+                                                if (kodeBuku.equals(bukuArray[i][0])) {
+                                                    cocokKodeBuku = true;
+                                                    System.out.println("Buku telah tersedia di Perpustakaan");
+                                                    break;
+                                                }
+                                            }
+                                            if (!cocokKodeBuku) {
+                                                System.out.print("Masukkan judul buku: ");
+                                                judulBuku = bukuHuruf.nextLine();
+                                                System.out.print("Masukkan nama penulis: ");
+                                                penulis = bukuHuruf.nextLine();
+                                                System.out.print("Masukkan tahun terbit: ");
+                                                tahunTerbit = bukuAngka.nextLine();
+                                                System.out.print("Masukkan jumlah buku: ");
+                                                jumlahBuku = bukuAngka.nextLine();
+                                                System.out.println();
+                                                bukuArray[bukucount][0] = kodeBuku;
+                                                bukuArray[bukucount][1] = judulBuku;
+                                                bukuArray[bukucount][2] = penulis;
+                                                bukuArray[bukucount][3] = tahunTerbit;
+                                                bukuArray[bukucount][4] = jumlahBuku;
+                                                bukuArray[bukucount][5] = bukuArray[bukucount][4];
+                                                bukucount++;
+                                            }
+
+                                        } else if (confirm1.equals("2")) {
+                                            // for (int i = 0; i < bukucount; i++) {
+                                            tampilBuku();
+
+                                        } else if (confirm1.equals("3")) {
+                                            tambahStok();
+                                        } else if (confirm1.equals("4")) {
+                                            break;
+                                        } else {
+                                            System.out.println();
+                                            System.out.println(
+                                                    "╔════════════════════════════════════════════════════════════════════╗");
+                                            System.out.println(
+                                                    "║               Mohon masukkan pilihan dengan benar !                ║");
+                                            System.out.println(
+                                                    "╚════════════════════════════════════════════════════════════════════╝");
+                                            System.out.println();
+                                        }
+                                    } while (true);
+
+                                } else if (menu.equals("2")) {
+                                    do {
+                                        System.out.println("|===========================================|");
+                                        System.out.println("|       Pilih Akses Data Member (1/2)       |");
+                                        System.out.println("|===========================================|");
+                                        System.out.println("| 1. Input Member Baru                      |");
+                                        System.out.println("| 2. Lihat semua member                     |");
+                                        System.out.println("| 3. Kembali                                |");
+                                        System.out.println("|===========================================|");
+                                        System.out.println();
+                                        System.out.print("  Pilihan anda: ");
+                                        System.out.println();
+                                        String confirm2 = konfirmasiHuruf.nextLine();
+                                        if (confirm2.equals("1")) {
+                                            System.out.println("       Input Member");
+                                            System.out.print("Masukkan NIM: ");
+                                            nim = memberSH.nextLine();
+                                            boolean CocokNim = false;
+                                            for (int i = 0; i < memberArray.length; i++) {
+                                                if (nim.equalsIgnoreCase(memberArray[i][0])) {
+                                                    CocokNim = true;
+                                                    System.out.println("Nim sudah terdaftar");
+                                                }
+                                            }
+                                            if (!CocokNim) {
+                                                System.out.print("Masukkan Nama: ");
+                                                nama = memberSH.nextLine();
+                                                memberArray[membercount][0] = nim;
+                                                memberArray[membercount][1] = nama;
+                                                memberArray[membercount][2] = String.valueOf(dendaa);
+                                                memberArray[membercount][3] = String.valueOf(totalPinjam);
+                                                membercount++;
+                                            }
+
+                                            System.out.println();
+                                        } else if (confirm2.equals("2")) {
+                                            tampilMember();
+                                        } else if (confirm2.equals("3")) {
+                                            break;
+                                        } else {
+                                            System.out.println();
+                                            System.out.println(
+                                                    "╔════════════════════════════════════════════════════════════════════╗");
+                                            System.out.println(
+                                                    "║               Mohon masukkan pilihan dengan benar !                ║");
+                                            System.out.println(
+                                                    "╚════════════════════════════════════════════════════════════════════╝");
+                                            System.out.println();
+                                        }
+                                    } while (true);
+
+                                } else if (menu.equals("3")) {
+                                    do {
+                                        System.out.println("|=============================================|");
+                                        System.out.println("|      Pilih Akses Data Peminjaman (1/2)      |");
+                                        System.out.println("|=============================================|");
+                                        System.out.println("|       1. Input Peminjaman                   |");
+                                        System.out.println("|       2. Lihat Data Peminjaman              |");
+                                        System.out.println("|       3. Kembali                            |");
+                                        System.out.println("|=============================================|");
+                                        System.out.println();
+                                        System.out.print("  Pilihan anda: ");
+                                        String confirm3 = konfirmasiHuruf.nextLine();
+                                        System.out.println();
+                                        if (confirm3.equals("1")) {
+                                            System.out.println("|=============================================|");
+                                            System.out.println("|      Anda memasuki menu peminjaman buku     |");
+                                            System.out.println("|=============================================|");
+                                            if (bukuArray != null) {
+                                                if (memberArray != null) {
+                                                    for (int i = 0; i < peminjamArray.length;) {
+
+                                                        System.out
+                                                                .print("Apakah sudah terdaftar sebagai member?(y/t): ");
+                                                        String tanyaDaftar = peminjamHuruf.nextLine();
+                                                        System.out.println();
+                                                        if (tanyaDaftar.equalsIgnoreCase("y")) {
+                                                            do {
+                                                                System.out.print("Masukkan NIM peminjaman: ");
+                                                                cariNim = peminjamHuruf.nextLine();
+                                                                peminjaman();
+
+                                                                break;
+                                                            } while (true);
+
+                                                        } else {
+                                                            System.out.println("Silahkan daftar terlebih dahulu");
+                                                            break;
+                                                        }
+                                                        break;
+
+                                                    }
+                                                } else {
+                                                    System.out.println("Tidak terdapat member di perpustakaan");
+                                                    break;
+                                                }
+
+                                            } else {
+                                                System.out.println("Tidak terdapat buku di perpustakaan");
+                                                break;
+                                            }
+                                        } else if (confirm3.equals("2")) {
+                                            laporanPeminjaman();
+
+                                        } else if (confirm3.equals("3")) {
+                                            break;
+                                        } else {
+                                            System.out.println();
+                                            System.out.println(
+                                                    "╔════════════════════════════════════════════════════════════════════╗");
+                                            System.out.println(
+                                                    "║               Mohon masukkan pilihan dengan benar !                ║");
+                                            System.out.println(
+                                                    "╚════════════════════════════════════════════════════════════════════╝");
+                                            System.out.println();
+                                        }
+                                    } while (true);
+                                } else if (menu.equals("4")) {
+                                    System.out.println("|==============================================|");
+                                    System.out.println("|            Transaksi Pengembalian            |");
+                                    System.out.println("|==============================================|");
+                                    System.out.println();
+                                    do {
+                                        System.out.println("|===========================================|");
+                                        System.out.println("|    Pilih Akses Data Pengembalian (1/2)    |");
+                                        System.out.println("|===========================================|");
+                                        System.out.println("| 1. Input Pengembalian                     |");
+                                        System.out.println("| 2. Lihat Data Pengembalian                |");
+                                        System.out.println("| 3. Kembali                                |");
+                                        System.out.println("|===========================================|");
+                                        System.out.println();
+                                        System.out.print("  Pilihan anda: ");
+                                        String confirm4 = konfirmasiHuruf.nextLine();
+                                        System.out.println();
+                                        if (confirm4.equals("1")) {
+                                            System.out.println("|======================================|");
+                                            System.out.println("| Anda memasuki menu pengembalian buku |");
+                                            System.out.println("|======================================|");
+                                            System.out.println();
+                                            if (peminjamanCount >= 0) {
+                                                System.out.print("   Masukkan kode peminjam: ");
+                                                cariNimPeminjam = pengembaliHuruf.nextLine();
+
+                                                pengembalian();
+
+                                            } else {
+                                                System.out.println("|======================================|");
+                                                System.out.println("|     Tidak ada buku yang dipinjam     |");
+                                                System.out.println("|======================================|");
+                                            }
+                                        } else if (confirm4.equals("2")) {
+                                            laporanPengembalian();
+                                        } else if (confirm4.equals("3")) {
+                                            break;
+                                        } else {
+                                            System.out.println("Data yang anda masukkan salah!");
+                                        }
+                                    } while (true);
+
+                                } else if (menu.equals("5")) {
+                                    System.out.println("Masukkan NIM: ");
+                                    String search = pengembaliHuruf.nextLine();
+                                    boolean nimBayarDenda = false;
+                                    for (int i = 0; i < memberArray.length; i++) {
+                                        if (search.equalsIgnoreCase(memberArray[i][0])) {
+                                            nimBayarDenda = true;
+                                            System.out.println("NIM     : " + memberArray[i][0]);
+                                            System.out.println("Nama    : " + memberArray[i][1]);
+                                            System.out.println("Denda   : " + memberArray[i][2]);
+                                            System.out.print("Masukkan nominal pembayaran: ");
+                                            int bayar = konfirmasiAngka.nextInt();
+                                            int dendaBayar = Integer.parseInt(memberArray[i][2]);
+                                            int hasilBayar = dendaBayar - bayar;
+
+                                            if (hasilBayar == 0) {
+                                                System.out.println("Denda berhasil dibayar!");
+
+                                            } else {
+                                                System.out.println(
+                                                        "Denda berhasil dibayar, denda tersisa Rp. " + hasilBayar);
+                                            }
+                                            memberArray[i][2] = String.valueOf(hasilBayar);
+                                            dendaArray[dendaCount][0] = memberArray[i][0];
+                                            dendaArray[dendaCount][1] = memberArray[i][1];
+                                            dendaArray[dendaCount][2] = String.valueOf(dendaBayar);
+                                            dendaArray[dendaCount][3] = String.valueOf(bayar);
+                                            dendaArray[dendaCount][4] = String.valueOf(hasilBayar);
+                                            dendaCount++;
+
+                                        }
+                                    }
+                                    if (!nimBayarDenda) {
+                                        System.out.println("Data tidak ditemukan");
+                                    }
+                                } else if (menu.equals("6")) {
+                                    while (true) {
+                                        System.out.println("|======================================|");
+                                        System.out.println("|      Anda memasuki menu laporan      |");
+                                        System.out.println("|======================================|");
+                                        System.out.println("|        Silahkan pilih laporan        |");
+                                        System.out.println("|      1. Laporan Peminjaman           |");
+                                        System.out.println("|      2. Laporan pengembalian         |");
+                                        System.out.println("|      3. Laporan Pembayaran denda     |");
+                                        System.out.println("|      4. Kembali                      |");
+                                        System.out.println("|======================================|");
+                                        System.out.print("   Masukkan pilihan anda : ");
+                                        String confirm6 = menuLap.nextLine();
+                                        if (confirm6.equals("1")) {
+                                            laporanPeminjaman();
+                                        } else if (confirm6.equals("2")) {
+                                            laporanPengembalian();
+                                        } else if (confirm6.equals("3")) {
+                                            laporanPembayaranDenda();
+                                        } else if (confirm6.equals("4")) {
+                                            break;
+                                        } else {
+                                            System.out.println();
+                                            System.out.println(
+                                                    "╔════════════════════════════════════════════════════════════════════╗");
+                                            System.out.println(
+                                                    "║               Mohon masukkan pilihan dengan benar !                ║");
+                                            System.out.println(
+                                                    "╚════════════════════════════════════════════════════════════════════╝");
+                                            System.out.println();
+                                        }
+                                    }
+
+                                } else if (menu.equals("7")) {
+                                    System.out.println("|========================================|");
+                                    System.out.println("|    Selamat datang di menu PENCARIAN    |");
+                                    System.out.println("|========================================|");
+                                    System.out.println(" 1. Ketik pencarian");
+                                    System.out.println(" 2. pilih berdasarkan fitur");
+                                    String pilihFitur = pilihFitur1.nextLine();
+                                    if (pilihFitur.equals("1")) {
+                                        System.out.println("   Ketik Pencarian anda: ");
+                                        String cari = scCari.nextLine();
+                                        if (cari.equalsIgnoreCase("Cari pengguna yang belum membayar denda")
+                                                || cari.equalsIgnoreCase("Caripenggunayangbelummembayardenda")
+                                                || cari.equalsIgnoreCase("Pengguna yang belum membayar denda")
+                                                || cari.equalsIgnoreCase("Pengguna yang belum membayarkan denda")
+                                                || cari.equalsIgnoreCase("pengguna ga bayar denda")
+                                                || cari.equalsIgnoreCase("Pengguna yang hutang ")
+                                                || cari.equalsIgnoreCase("Pengguna nakal")
+                                                || cari.equalsIgnoreCase("denda yang belum dibayarkan")
+                                                || cari.equalsIgnoreCase("Pengguna ga bayar denda")
+                                                || cari.equalsIgnoreCase("Pengguna yang ngga bayar denda")
+                                                || cari.equalsIgnoreCase("Pengguna ngga bayar denda")) {
+
+                                            PencarianPenggunaMemilikiDenda();
+                                        }
+                                    } else if (pilihFitur.equals("2")) {
+                                        System.out.println("Silahkan pilih fitur pencarian");
+                                        System.out.println("1. Member yang memiliki beban mengembalikan buku");
+                                        System.out.println("2. Member yang belum membayar denda");
+                                        System.out.println("   Masukkan pilihan anda: ");
+                                        String cari = scCari.nextLine();
+                                        if (cari.equalsIgnoreCase("1")) {
+                                            PencarianPeminjaMemilikiTanggungan();
+                                        } else if (cari.equalsIgnoreCase("2")) {
+                                            cariTanggunganMember();
+                                        }
+
+                                    }
+
+                                } else if (menu.equals("8")) {
+                                    System.out.println("Apakah anda yakin akan keluar? (y/t): ");
+                                    String keluar = pengembaliHuruf.nextLine();
+                                    if (keluar.equalsIgnoreCase("y")) {
+                                        break;
+                                    } else if (keluar.equalsIgnoreCase("t")) {
+                                        System.out.println();
+                                        continue;
+                                    } else {
+                                        System.out.println();
+                                        System.out.println(
+                                                "╔════════════════════════════════════════════════════════════════════╗");
+                                        System.out.println(
+                                                "║               Mohon masukkan pilihan dengan benar !                ║");
+                                        System.out.println(
+                                                "╚════════════════════════════════════════════════════════════════════╝");
+                                        System.out.println();
+                                    }
+
+                                } else {
+                                    System.out.println();
+                                    System.out.println(
+                                            "╔════════════════════════════════════════════════════════════════════╗");
+                                    System.out.println(
+                                            "║               Pastikan anda memilih menu dengan benar              ║");
+                                    System.out.println(
+                                            "╚════════════════════════════════════════════════════════════════════╝");
+                                    System.out.println();
+
+                                }
                             } while (true);
 
-                        } else if (bukuArray == null) {
-                            System.out.println("Tidak tersedia buku di perpustakaan");
-                            break;
+                        } else {
+                            System.out.println("Username dan password salah silahkan login kembali!");
+                            System.out.println();
                         }
-                        break;
+                    } else if (levelPengguna.equalsIgnoreCase("pengguna")) {
+                        System.out.println("|===========================================|");
+                        System.out.println("|      Silahkan login terlebih dahulu       |");
+                        System.out.println("|         Username menggunakan NIM          |");
+                        System.out.println("|         Password menggunakan Nama         |");
+                        System.out.println("|===========================================|");
+                        System.out.print("  Username: ");
+                        username = login.nextLine();
+                        System.out.print("  Password: ");
+                        password = login.nextLine();
+                        for (int i = 0; i < memberArray.length; i++) {
+                            if (username.equals("pengguna") && password.equals("pengguna123")
+                                    || username.equals(memberArray[i][0]) && password.equals(memberArray[i][1])) {
+                                System.out.println("|===========================================|");
+                                System.out.println("|       Anda hanya bisa mencari buku        |");
+                                System.out.println("|===========================================|");
 
-                    } else if (!username.equals("pengguna") && !password.equals("pengguna123")
-                            || !username.equals(memberArray[i][0]) && !password.equals(memberArray[i][1])) {
-                        System.out.println("Username dan Password salah silahkan login kembali!");
-                        System.out.println();
-                        break;
-                    } else {
-                        System.out.println();
-                        break;
+                                if (bukuArray != null) {
+                                    do {
+                                        System.out.println("1. Pilih menu pencarian ");
+                                        System.out.println("2. keluar");
+                                        String pilih = penggunaHuruf.nextLine();
+                                        if (pilih.equalsIgnoreCase("1")) {
+                                            System.out.println("1. Cari judul buku");
+                                            System.out.println("2. cari Nama penulis buku");
+                                            System.out.println("3. cari buku berdasarkan tahun");
+                                            String pilih1 = penggunaHuruf.nextLine();
+
+                                            if (pilih1.equalsIgnoreCase("1")) {
+                                                System.out.println("  Masukkan judul buku yang ingin dicari: ");
+                                                cariJudul = judul.nextLine();
+                                                cariBukuJudul();
+
+                                            } else if (pilih1.equalsIgnoreCase("2")) {
+                                                System.out.println("Masukkan nama penulis buku");
+                                                System.out.println("-----------------------");
+                                                cariPenulisBuku = penggunaHuruf.nextLine();
+                                                System.out.println("--------------------------");
+                                                cariPenulisBuku();
+                                            } else if (pilih1.equalsIgnoreCase("3")) {
+                                                cariTahunBuku = penggunaHuruf.nextLine();
+                                                cariTahunBuku();
+
+                                            }
+                                        } else if (pilih.equalsIgnoreCase("2")) {
+                                            break;
+                                        } else {
+                                            System.out.println("Masukkan pilihan dengan benar! ");
+                                        }
+
+                                    } while (true);
+
+                                } else if (bukuArray == null) {
+                                    System.out.println("Tidak tersedia buku di perpustakaan");
+                                    break;
+                                }
+                                break;
+
+                            } else if (!username.equals("pengguna") && !password.equals("pengguna123")
+                                    || !username.equals(memberArray[i][0]) && !password.equals(memberArray[i][1])) {
+                                System.out.println("Username dan Password salah silahkan login kembali!");
+                                System.out.println();
+                                break;
+                            } else {
+                                System.out.println();
+                                break;
+                            }
+                        }
+
+                    } else if (levelPengguna.equalsIgnoreCase("Keluar") || levelPengguna.equalsIgnoreCase("3")) {
+                        System.out.println("Keluar ke menu utama? ya/tidak");
+                        String pilih1 = peminjamHuruf.nextLine();
+                        if (pilih1.equalsIgnoreCase("ya")) {
+                            break;
+                        } else if (pilih1.equalsIgnoreCase("tidak")) {
+                        }
                     }
-                }
-
-            }else if (levelPengguna.equalsIgnoreCase("Keluar")||levelPengguna.equalsIgnoreCase("3")){
-                System.out.println("Keluar ke menu utama? ya/tidak");
-                String pilih1= peminjamHuruf.nextLine();
-                if(pilih1.equalsIgnoreCase("ya")){
-                    break;
-                } else if(pilih1.equalsIgnoreCase("tidak")){
-                }
-            }
-        } while (true);
-            }else {
+                } while (true);
+            } else {
                 System.out.println("Masukkan pilihan dengan benar");
             }
-        }while (true);
-        
+        } while (true);
 
     }
 
@@ -1065,53 +1236,55 @@ public class PerpustakaanFINISH {
 
             for (int j = 0; j < bukucount; j++) {
                 System.out.println();
-                System.out.println(" _________________________________________________________");
-                System.out.printf("| Buku ke-%-35s|\n", (j + 1));
-                System.out.printf("|   Kode buku                   : %-25s|\n", bukuArray[j][0]);
-                System.out.printf("|   Judul buku                  : %-25s|\n", bukuArray[j][1]);
-                System.out.printf("|   Penulis                     : %-25s|\n", bukuArray[j][2]);
-                System.out.printf("|   Tahun terbit                : %-25s|\n", bukuArray[j][3]);
-                System.out.printf("|   Jumlah buku  Awal           : %-25s|\n", bukuArray[j][4]);
-                System.out.printf("|   Jumlah buku  Bisa dipinjam  : %-25s|\n", bukuArray[j][5]);
-                System.out.println("|_________________________________________________________|");
+                System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+                System.out.printf("║      Buku ke-%-54s║\n", (j + 1));
+                System.out.printf("║   Kode buku                   : %-35s║\n", bukuArray[j][0]);
+                System.out.printf("║   Judul buku                  : %-35s║\n", bukuArray[j][1]);
+                System.out.printf("║   Penulis                     : %-35s║\n", bukuArray[j][2]);
+                System.out.printf("║   Tahun terbit                : %-35s║\n", bukuArray[j][3]);
+                System.out.printf("║   Jumlah buku  Awal           : %-35s║\n", bukuArray[j][4]);
+                System.out.printf("║   Jumlah buku  Bisa dipinjam  : %-35s║\n", bukuArray[j][5]);
+                System.out.println("╚════════════════════════════════════════════════════════════════════╝");
                 System.out.println();
-            
 
-            } System.out.println("cari buku? (ya/tidak)");
+            }
+            System.out.println("cari buku? (ya/tidak)");
             String pilih = scCari.nextLine();
-            if (pilih.equalsIgnoreCase("ya")){
-                
-                System.out.println(" 1.Cari berdasarkan judul Buku");
-                System.out.println(" 2.Cari berdasarkan kode buku");
-                System.out.println(" 3.Cari berdasarkan penulis");
-                System.out.println(" 4.Cari berdasarkan tahun terbit");
-                System.out.println(" 5.Cari buku yang sedang dipinjam ");
-                String pilih1=scCari.nextLine();
-                if(pilih1.equalsIgnoreCase("1")){
+            if (pilih.equalsIgnoreCase("ya")) {
+                System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+                System.out.println("║                 1. Cari berdasarkan judul buku                     ║");
+                System.out.println("║                 2. Cari berdasarkan kode buku                      ║");
+                System.out.println("║                 3. Cari berdasarkan penulis                        ║");
+                System.out.println("║                 4. Cari berdasarkan tahun terbit                   ║");
+                System.out.println("║                 5. Cari buku yang sedang dipinjam                  ║");
+                System.out.println("╚════════════════════════════════════════════════════════════════════╝");
+                System.out.print("   Masukkan pilihan anda: ");
+                String pilih1 = scCari.nextLine();
+                if (pilih1.equalsIgnoreCase("1")) {
                     System.out.println("Masukkan judul buku yang ingin dicari");
-                    cariJudul= scCari.nextLine();
+                    cariJudul = scCari.nextLine();
                     cariBukuJudul();
-                }else if(pilih1.equalsIgnoreCase("2")){
+                } else if (pilih1.equalsIgnoreCase("2")) {
                     System.out.println("Masukkan kode buku yang ingin dicari");
-                    cariKodeBuku=scCari.nextLine();
+                    cariKodeBuku = scCari.nextLine();
                     cariKodeBuku();
-                }else if(pilih1.equalsIgnoreCase("3")){
+                } else if (pilih1.equalsIgnoreCase("3")) {
                     System.out.println("Masukkan nama penulis yang ingin dicari");
-                    cariPenulisBuku=scCari.nextLine();
+                    cariPenulisBuku = scCari.nextLine();
                     cariPenulisBuku();
-                }else if(pilih1.equalsIgnoreCase("4")){
+                } else if (pilih1.equalsIgnoreCase("4")) {
                     System.out.println("Masukkan tahun terbit buku yang ingin dicari");
-                    cariTahunBuku=scCari.nextLine();
+                    cariTahunBuku = scCari.nextLine();
                     cariTahunBuku();
-                }else if (pilih1.equalsIgnoreCase("5")){
+                } else if (pilih1.equalsIgnoreCase("5")) {
                     System.out.println("Data buku yang sedang dipinjam :");
                     cariBukuDiPinjam();
-                }else{
+                } else {
                     System.out.println("Masukkan pilihan dengan benar");
                 }
             }
         } else {
-            System.out.println("Data buku kosong ");
+            System.out.println("  Data buku kosong ");
         }
     }
 
@@ -1120,22 +1293,27 @@ public class PerpustakaanFINISH {
         if (membercount > 0) {
 
             for (int i = 0; i < membercount; i++) {
-                System.out.println(" ____________________________________________ ");
-                System.out.printf("| Member ke-%-33s|\n", (i + 1));
-                System.out.printf("|   NIM         : %-27s|\n", memberArray[i][0]);
-                System.out.printf("|   Nama        : %-27s|\n", memberArray[i][1]);
-                System.out.printf("|   Total Denda : %-27s|\n", memberArray[i][2]);
-                System.out.printf("|   Total Pinjam: %-27s|\n", memberArray[i][3]);
-                System.out.println("|____________________________________________|");
+                System.out.println();
+                System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+                System.out.printf("║      Member ke-%-53s║\n", (i + 1));
+                System.out.printf("║   NIM                         : %-35s║\n", bukuArray[i][0]);
+                System.out.printf("║   Nama                        : %-35s║\n", bukuArray[i][1]);
+                System.out.printf("║   Total denda                 : %-35s║\n", bukuArray[i][2]);
+                System.out.printf("║   Total pinjam                : %-35s║\n", bukuArray[i][3]);
+
+                System.out.println("╚════════════════════════════════════════════════════════════════════╝");
+
                 System.out.println();
 
-            } System.out.println("Ingin cari member? (y/t)");
+            }
+            System.out.println("Ingin cari member? (y/t)");
             String pilih = scCari.nextLine();
-            if (pilih.equalsIgnoreCase("y")){
+            if (pilih.equalsIgnoreCase("y")) {
                 cariMember();
-            }else if (pilih.equalsIgnoreCase("t"));
+            } else if (pilih.equalsIgnoreCase("t"))
+                ;
         } else {
-            System.out.println("Data member kosong");
+            System.out.println("   Data member kosong");
             System.out.println();
         }
     }
@@ -1154,7 +1332,7 @@ public class PerpustakaanFINISH {
             }
         }
         // if (nimketemu) {
-        //     
+        //
 
         // }
         if (!nimketemu) {
@@ -1175,99 +1353,113 @@ public class PerpustakaanFINISH {
             System.out.println("Data buku tidak ditemukan");
         }
     }
-    static void cariKodeBuku(){
+
+    static void cariKodeBuku() {
         boolean cariKodee = false;
-        for(int i=0;i<bukucount;i++){
-            if (bukuArray[i][0].equalsIgnoreCase(cariKodeBuku)){
-                cariKodee=true;
+        for (int i = 0; i < bukucount; i++) {
+            if (bukuArray[i][0].equalsIgnoreCase(cariKodeBuku)) {
+                cariKodee = true;
                 tampilBukuYangDiCari(i);
                 System.out.println("Tampilkan data peminjam buku? (ya/tidak)");
                 String pilih = scCari.nextLine();
-                if(pilih.equalsIgnoreCase("ya")){
+                if (pilih.equalsIgnoreCase("ya")) {
                     tampilPeminjam1(i);
-                }else if(pilih.equalsIgnoreCase("tidak")){
-                }else {
+                } else if (pilih.equalsIgnoreCase("tidak")) {
+                } else {
                     System.out.println("Masukkan pilihan dengan benar");
                 }
             }
-        }if(!cariKodee){
+        }
+        if (!cariKodee) {
             System.out.println("data buku tidak tersedia");
-        }  
+        }
     }
-    static void cariPenulisBuku(){
+
+    static void cariPenulisBuku() {
         boolean cariKodee = false;
-        for(int i=0;i<bukucount;i++){
-            if (bukuArray[i][2].equalsIgnoreCase(cariPenulisBuku)){
-                cariKodee=true;
+        for (int i = 0; i < bukucount; i++) {
+            if (bukuArray[i][2].equalsIgnoreCase(cariPenulisBuku)) {
+                cariKodee = true;
                 tampilBukuYangDiCari(i);
             }
-        }if(!cariKodee){
-            System.out.println("data buku tidak tersedia");
-        }  
+        }
+        if (!cariKodee) {
+            System.out.println("  Data buku tidak tersedia");
+        }
     }
-    static void cariTahunBuku(){
+
+    static void cariTahunBuku() {
         boolean cariKodee = false;
-        for(int i=0;i<bukucount;i++){
-            if (bukuArray[i][3].equalsIgnoreCase(cariTahunBuku)){
-                cariKodee=true;
+        for (int i = 0; i < bukucount; i++) {
+            if (bukuArray[i][3].equalsIgnoreCase(cariTahunBuku)) {
+                cariKodee = true;
                 tampilBukuYangDiCari(i);
             }
-        }if(!cariKodee){
-            System.out.println("data buku tidak tersedia");
-        }  
+        }
+        if (!cariKodee) {
+            System.out.println("  Data buku tidak tersedia");
+        }
     }
-    static void cariBukuDiPinjam(){
-        boolean cariDiPinjam=false;
-        for (int i=0;i<bukucount;i++){
-            if(Integer.parseInt(bukuArray[i][5])<Integer.parseInt(bukuArray[i][4])){
-                cariDiPinjam=true;
-                int totalDiPinjam =Integer.parseInt(bukuArray[i][4])-Integer.parseInt(bukuArray[i][5]);
-                System.out.println("|-------------------------------------------------------|");
-                System.out.println("                       buku ke-"+(i+1));
-                System.out.println("|-------------------------------------------------------|");
-                System.out.println("Kode buku               : "+ bukuArray[i][0]);
-                System.out.println("Judul buku              : "+ bukuArray[i][1]);
-                System.out.println("Total buku di pinjam    : "+String.valueOf(totalDiPinjam));
-                System.out.println("|-------------------------------------------------------|");
+
+    static void cariBukuDiPinjam() {
+        boolean cariDiPinjam = false;
+        for (int i = 0; i < bukucount; i++) {
+            if (Integer.parseInt(bukuArray[i][5]) < Integer.parseInt(bukuArray[i][4])) {
+                cariDiPinjam = true;
+                int totalDiPinjam = Integer.parseInt(bukuArray[i][4]) - Integer.parseInt(bukuArray[i][5]);
+                System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+                System.out.printf("║      Buku ke-%-54s║\n", (i + 1));
+                System.out.printf("║   Kode buku                   : %-35s║\n", bukuArray[i][0]);
+                System.out.printf("║   Judul buku                  : %-35s║\n", bukuArray[i][1]);
+                System.out.printf("║   Total buku di pinjam        : %-35s║\n", String.valueOf(totalDiPinjam));
+
+                System.out.println("╚════════════════════════════════════════════════════════════════════╝");
+
             }
             System.out.println("Tampilkan peminjam? (ya/tidak)");
             String pilih = scCari.nextLine();
-            if(pilih.equalsIgnoreCase("ya")){
+            if (pilih.equalsIgnoreCase("ya")) {
                 tampilPeminjam1(i);
-            }else if(pilih.equalsIgnoreCase("tidak")){
-            }else{
+            } else if (pilih.equalsIgnoreCase("tidak")) {
+            } else {
                 System.out.println("Masukkan pilihan dengan benar!");
             }
-            
-        }if(!cariDiPinjam){
+
+        }
+        if (!cariDiPinjam) {
             System.out.println("Tidak ada buku yang sedang dipinjam");
         }
     }
-    static void tampilBukuYangDiCari(int index){
-                System.out.println();
-                System.out.println(" _________________________________________________________");
-                System.out.printf("|                                                         |\n");
-                System.out.printf("|  Kode buku                   : %-25s|\n", bukuArray[index][0]);
-                System.out.printf("|  Judul buku                  : %-25s|\n", bukuArray[index][1]);
-                System.out.printf("|  Penulis                     : %-25s|\n", bukuArray[index][2]);
-                System.out.printf("|  Tahun terbit                : %-25s|\n", bukuArray[index][3]);
-                System.out.printf("|  Jumlah buku  Awal           : %-25s|\n", bukuArray[index][4]);
-                System.out.printf("|  Jumlah buku  Bisa dipinjam  : %-25s|\n", bukuArray[index][5]);
-                System.out.println("|_________________________________________________________|");
-                System.out.println();
+
+    static void tampilBukuYangDiCari(int index) {
+        System.out.println();
+        System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+        System.out.printf("║   Kode buku                   : %-35s║\n", bukuArray[index][0]);
+        System.out.printf("║   Judul buku                  : %-35s║\n", bukuArray[index][1]);
+        System.out.printf("║   Penulis                     : %-35s║\n", bukuArray[index][2]);
+        System.out.printf("║   Tahun terbit                : %-35s║\n", bukuArray[index][3]);
+        System.out.printf("║   Jumlah buku  Awal           : %-35s║\n", bukuArray[index][4]);
+        System.out.printf("║   Jumlah buku  Bisa dipinjam  : %-35s║\n", bukuArray[index][5]);
+        System.out.println("╚════════════════════════════════════════════════════════════════════╝");
+        System.out.println();
+        System.out.println();
     }
-    static void tampilPeminjam1(int i){
-        boolean cocokPeminjam = false; 
-            for (int j=0;j<peminjamanCount;j++){
-                if(bukuArray[i][0].equalsIgnoreCase(peminjamArray[j][2])){
-                    System.out.println("                      Data peminjam");
-                    System.out.println("|-------------------------------------------------------|");
-                    System.out.println("Nim peminjam buku       : "+peminjamArray[j][0]);
-                    System.out.println("Nama peminjam buku      : "+peminjamArray[j][1]);
-                    System.out.println("Banyaknya meminjam buku : "+ peminjamArray[j][10]);
-                    System.out.println("|-------------------------------------------------------|");
-                }
+
+    static void tampilPeminjam1(int i) {
+        boolean cocokPeminjam = false;
+        for (int j = 0; j < peminjamanCount; j++) {
+            if (bukuArray[i][0].equalsIgnoreCase(peminjamArray[j][2])) {
+                System.out.println();
+                System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+                System.out.println("║                            Data peminjam                           ║");
+                System.out.printf("║   NIM peminjam buku           : %-35s║\n", peminjamArray[j][0]);
+                System.out.printf("║   Nama peminjam buku          : %-35s║\n", peminjamArray[j][1]);
+                System.out.printf("║   Banyaknya meminjam buku     : %-35s║\n", peminjamArray[j][10]);
+                System.out.println("╚════════════════════════════════════════════════════════════════════╝");
+                System.out.println();
+
             }
+        }
     }
 
     static void cariBukuKode(int indexNim) {
@@ -1302,22 +1494,22 @@ public class PerpustakaanFINISH {
                 System.out.println("Transaksi peminjaman Berhasil! ");
                 status = "Dipinjam";
                 String NomorPeminjaman = String.valueOf(kodePinjam);
-                boolean cocokanNim=false;
+                boolean cocokanNim = false;
                 for (int j = 0; j < memberArray.length; j++) {
                     if (peminjamArray[indexNim][0].equalsIgnoreCase(memberArray[j][0])) {
-                        cocokanNim=true;
+                        cocokanNim = true;
                         int totalPinjamMember = Integer.parseInt(memberArray[j][3]);
                         totalPinjamMember += Integer.parseInt(jmlPinjam);
                         memberArray[j][3] = String.valueOf(totalPinjamMember);
                     }
-                }if (!cocokanNim){
+                }
+                if (!cocokanNim) {
                     System.out.println("Tidak bisa di hubungkan");
                 }
                 peminjamArray[peminjamanCount][2] = bukuArray[b][0]; // Kode Buku
                 peminjamArray[peminjamanCount][3] = bukuArray[b][1]; // Judul Buku
                 peminjamArray[peminjamanCount][4] = bukuArray[b][2]; // Nama Penulis
                 peminjamArray[peminjamanCount][5] = bukuArray[b][3]; // Tahun Terbit
-                // peminjamArray[peminjamanCount][6] = bukuArray[b][4]; // Stok Buku
                 peminjamArray[peminjamanCount][6] = jmlPinjam; // Jumlah yang Dipinjam
                 peminjamArray[peminjamanCount][7] = tenggat.toString(); // Tanggal Tenggat
                 peminjamArray[peminjamanCount][8] = status;
@@ -1336,9 +1528,9 @@ public class PerpustakaanFINISH {
             }
         }
         if (!cariCode) {
-            System.out.println("|============================|");
-            System.out.println("|    Buku tidak ditemukan!   |");
-            System.out.println("|============================|");
+
+            System.out.println("    Buku tidak ditemukan!   ");
+
         }
     }
 
@@ -1362,15 +1554,15 @@ public class PerpustakaanFINISH {
         for (int i = 0; i < bukucount; i++) {
             if (bukuArray[i][0].equalsIgnoreCase(kodeTambahBuku)) {
                 carikodetambah = true;
-
-                System.out.println("|=============================================|");
-                System.out.printf("|   Kode buku                   : %-25s|\n", bukuArray[i][0]);
-                System.out.printf("|   Judul buku                  : %-25s|\n", bukuArray[i][1]);
-                System.out.printf("|   Penulis                     : %-25s|\n", bukuArray[i][2]);
-                System.out.printf("|   Tahun terbit                : %-25s|\n", bukuArray[i][3]);
-                System.out.printf("|   Jumlah buku Awal            : %-25s|\n", bukuArray[i][4]);
-                System.out.printf("|   Jumlah buku Bisa dipinjam   : %-25s|\n", bukuArray[i][5]);
-                System.out.println("|=============================================|");
+                System.out.println();
+                System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+                System.out.printf("║   Kode buku                   : %-35s║\n", bukuArray[i][0]);
+                System.out.printf("║   Judul buku                  : %-35s║\n", bukuArray[i][1]);
+                System.out.printf("║   Penulis                     : %-35s║\n", bukuArray[i][2]);
+                System.out.printf("║   Tahun terbit                : %-35s║\n", bukuArray[i][3]);
+                System.out.printf("║   Jumlah buku  Awal           : %-35s║\n", bukuArray[i][4]);
+                System.out.printf("║   Jumlah buku  Bisa dipinjam  : %-35s║\n", bukuArray[i][5]);
+                System.out.println("╚════════════════════════════════════════════════════════════════════╝");
                 System.out.println();
 
                 System.out.print("Masukkan jumlah stok yang ingin ditambahkan: ");
@@ -1385,15 +1577,15 @@ public class PerpustakaanFINISH {
                 } else {
                     System.out.println("Input jumlah stok tidak valid!");
                 }
-    
+
                 // Keluar dari loop setelah menemukan buku
                 break;
             }
         }
         if (!carikodetambah) {
-            System.out.println("|========================|");
-            System.out.println("|  Buku tidak ditemukan  |");
-            System.out.println("|========================|");
+
+            System.out.println("   Buku tidak ditemukan!");
+
         }
     }
 
@@ -1410,46 +1602,46 @@ public class PerpustakaanFINISH {
     }
 
     static void cetakStruk() {
-
-        System.out.println("|==========================================================|");
-        System.out.printf("| Kode peminjaman : %-39s|\n", peminjamArray[peminjamanCount][9]);
-        System.out.printf("| Nim peminjam    : %-39s|\n", peminjamArray[peminjamanCount][0]);
-        System.out.printf("| Nama peminjam   : %-39s|\n", peminjamArray[peminjamanCount][1]);
-        System.out.printf("| Kode buku       : %-39s|\n", peminjamArray[peminjamanCount][2]);
-        System.out.printf("| Judul buku      : %-39s|\n", peminjamArray[peminjamanCount][3]);
-        System.out.printf("| Nama Penulis    : %-39s|\n", peminjamArray[peminjamanCount][4]);
-        System.out.printf("| Tahun terbit    : %-39s|\n", peminjamArray[peminjamanCount][5]);
-        System.out.printf("| Jumlah          : %-39s|\n", peminjamArray[peminjamanCount][6]);
-        System.out.printf("| Tanggal pinjam  : %-39s|\n", peminjamArray[peminjamanCount][7]);
-        System.out.println("|==========================================================|");
+        System.out.println();
+        System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+        System.out.printf("║   Kode peminjaman             : %-35s║\n", peminjamArray[peminjamanCount][9]);
+        System.out.printf("║   NIM peminjaman              : %-35s║\n", peminjamArray[peminjamanCount][0]);
+        System.out.printf("║   Nama peminjaman             : %-35s║\n", peminjamArray[peminjamanCount][1]);
+        System.out.printf("║   Kode buku                   : %-35s║\n", peminjamArray[peminjamanCount][2]);
+        System.out.printf("║   Judul buku                  : %-35s║\n", peminjamArray[peminjamanCount][3]);
+        System.out.printf("║   Nama penulis                : %-35s║\n", peminjamArray[peminjamanCount][4]);
+        System.out.printf("║   Tahun terbit                : %-35s║\n", peminjamArray[peminjamanCount][5]);
+        System.out.printf("║   Jumlah                      : %-35s║\n", peminjamArray[peminjamanCount][6]);
+        System.out.printf("║   Tanggal pinjam              : %-35s║\n", peminjamArray[peminjamanCount][7]);
+        System.out.println("╚════════════════════════════════════════════════════════════════════╝");
         System.out.println();
 
     }
 
     static void laporanPeminjaman() {
-        System.out.println("|=============================================|");
-        System.out.println("|              Data Peminjaman                |");
-        System.out.println("|=============================================|");
+        System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+        System.out.println("║                          Data peminjaman                           ║");
+        System.out.println("╚════════════════════════════════════════════════════════════════════╝");
+
         if (peminjamanCount > 0) {
 
             for (int l = 0; l < peminjamanCount; l++) {
                 if (peminjamArray[l][0] != null) {
-                    System.out.println("|==============================================|");
-                    System.out.printf("|   Data peminjaman ke-%-24s|\n", (l + 1));
-                    System.out.println("|==============================================|");
-                    System.out.printf("| Kode Pinjam    : %-28s|\n", peminjamArray[l][9]);
-                    System.out.printf("| Nim            : %-28s|\n", peminjamArray[l][0]);
-                    System.out.printf("| Nama           : %-28s|\n", peminjamArray[l][1]);
-                    System.out.printf("| Kode Buku      : %-28s|\n", peminjamArray[l][2]);
-                    System.out.printf("| Judul          : %-28s|\n", peminjamArray[l][3]);
-                    System.out.printf("| Penulis        : %-28s|\n", peminjamArray[l][4]);
-                    System.out.printf("| Tahun Terbit   : %-28s|\n", peminjamArray[l][5]);
-                    System.out.printf("| Jumlah         : %-28s|\n", peminjamArray[l][6]);
-                    System.out.printf("| sisa tanggungan: %-28s|\n", peminjamArray[l][10]);
-                    System.out.printf("| Tanggal        : %-28s|\n", peminjamArray[l][7]);
-                    System.out.printf("| Status         : %-28s|\n", peminjamArray[l][8]);
-
-                    System.out.println("|==============================================|");
+                    System.out.println();
+                    System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+                    System.out.printf("║      Data peminjaman ke-%-43s║\n", (l + 1));
+                    System.out.printf("║   Kode pinjam                 : %-35s║\n", peminjamArray[l][9]);
+                    System.out.printf("║   NIM  peminjam               : %-35s║\n", peminjamArray[l][0]);
+                    System.out.printf("║   Nama peminjam               : %-35s║\n", peminjamArray[l][1]);
+                    System.out.printf("║   Kode buku                   : %-35s║\n", peminjamArray[l][2]);
+                    System.out.printf("║   Judul buku                  : %-35s║\n", peminjamArray[l][3]);
+                    System.out.printf("║   Penulis buku                : %-35s║\n", peminjamArray[l][4]);
+                    System.out.printf("║   Tahun terbit                : %-35s║\n", peminjamArray[l][5]);
+                    System.out.printf("║   Jumlah                      : %-35s║\n", peminjamArray[l][6]);
+                    System.out.printf("║   Sisa tanggungan             : %-35s║\n", peminjamArray[l][10]);
+                    System.out.printf("║   Tanggal                     : %-35s║\n", peminjamArray[l][7]);
+                    System.out.printf("║   Status                      : %-35s║\n", peminjamArray[l][8]);
+                    System.out.println("╚════════════════════════════════════════════════════════════════════╝");
                     System.out.println();
 
                 } else {
@@ -1460,9 +1652,9 @@ public class PerpustakaanFINISH {
             System.out.println();
 
         } else if (peminjamanCount == 0) {
-            System.out.println("|=============================================|");
-            System.out.println("|        Data Peminjaman Tidak Tersedia       |");
-            System.out.println("|=============================================|");
+            System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+            System.out.println("║                    Data peminjaman tidak tersedia                  ║");
+            System.out.println("╚════════════════════════════════════════════════════════════════════╝");
         }
     }
 
@@ -1507,18 +1699,19 @@ public class PerpustakaanFINISH {
                     long selisihHari = hitungSelisihHari(tanggalPinjam, tanggalKembali);
 
                     if (selisihHari <= 7) {
-                        System.out.println("|===========================================|");
-                        System.out.println("|  Buku berhasil dikembalikan tepat waktu.  |");
-                        System.out.println("|===========================================|");
+                        System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+                        System.out.println("║                Buku berhasil dikembalikan tepat waktu              ║");
+                        System.out.println("╚════════════════════════════════════════════════════════════════════╝");
+
                     } else if (selisihHari > 7) {
                         System.out.println();
                         System.out.println("Berapa lama hari dipinjam adalah: " + selisihHari + " hari");
                         long totalDenda = (selisihHari - 7) * 1000;
-                        System.out.println("--------------------------------------------------------");
-                        System.out.println("       Note!           ");
-                        System.out.println("    Lama hari terlambat: " + (selisihHari - 7) + " hari");
-                        System.out.println("    Denda yang harus dibayar: Rp " + totalDenda);
-                        System.out.println("--------------------------------------------------------");
+                        System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+                        System.out.println("║      Note!                                                         ║");
+                        System.out.printf("║   Lama hari terlambat         : ", (selisihHari - 7), "%-29s hari║\n");
+                        System.out.printf("║  Denda yang harus dibayar     : Rp.%-32s║\n", totalDenda);
+                        System.out.println("╚════════════════════════════════════════════════════════════════════╝");
 
                         for (int j = 0; j < memberArray.length; j++) {
                             if (peminjamArray[i][0].equalsIgnoreCase(memberArray[j][0])) {
@@ -1562,37 +1755,35 @@ public class PerpustakaanFINISH {
         }
         if (!nimpengembalian) {
             System.out.println();
-            System.out.println("|===================================================|");
-            System.out.println("|     Kode peminjaman tersebut tidak terdaftar      |");
-            System.out.println("|    Mohon periksa ulang kode peminjaman tersebut   |");
-            System.out.println("|===================================================|");
+            System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+            System.out.println("║              Kode peminjaman tersebut tidak terdaftar              ║");
+            System.out.println("║            Mohon periksa ulang kode peminjaman tersebut            ║");
+            System.out.println("╚════════════════════════════════════════════════════════════════════╝");
             System.out.println();
         }
 
     }
 
     static void laporanPengembalian() {
-        System.out.println("|=============================================|");
-        System.out.println("|              Data Pengembalian              |");
-        System.out.println("|=============================================|");
+        System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+        System.out.println("║                         Data Pengembalian                          ║");
+        System.out.println("╚════════════════════════════════════════════════════════════════════╝");
         if (pengembaliCount > 0) {
             for (int m = 0; m < pengembaliCount; m++) {
                 if (pengembaliArray[m][0] != null) {
-                    System.out.println("|==============================================|");
-                    System.out.printf("| Data Pengembalian ke-%-24s|\n", (m + 1));
-                    System.out.println("|==============================================|");
-                    System.out.printf("| Nim            : %-28s|\n", pengembaliArray[m][0]);
-                    System.out.printf("| Nama           : %-28s|\n", pengembaliArray[m][1]);
-                    System.out.printf("| Kode Buku      : %-28s|\n", pengembaliArray[m][2]);
-                    System.out.printf("| Judul          : %-28s|\n", pengembaliArray[m][3]);
-                    System.out.printf("| Penulis        : %-28s|\n", pengembaliArray[m][4]);
-                    System.out.printf("| Tahun Terbit   : %-28s|\n", pengembaliArray[m][5]);
-                    System.out.printf("| Jumlah kembali : %-28s|\n", pengembaliArray[m][10]);// jumlah kembalinya buku
-                    System.out.printf("| Tanggal        : %-28s|\n", pengembaliArray[m][7]);// tanggal dikembalikannya buku.
-                    System.out.printf("| Status         : %-28s|\n", pengembaliArray[m][8]);
-                    System.out.printf("| Kode Pinjam    : %-28s|\n", pengembaliArray[m][9]);
-
-                    System.out.println("|==============================================|");
+                    System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+                    System.out.printf("║      Data peminjaman ke-%-43s║\n", (m + 1));
+                    System.out.printf("║   NIM                         : %-35s║\n", peminjamArray[m][0]);
+                    System.out.printf("║   Nama                        : %-35s║\n", peminjamArray[m][1]);
+                    System.out.printf("║   Kode Buku                   : %-35s║\n", peminjamArray[m][2]);
+                    System.out.printf("║   Judul                       : %-35s║\n", peminjamArray[m][3]);
+                    System.out.printf("║   Penulis                     : %-35s║\n", peminjamArray[m][4]);
+                    System.out.printf("║   Tahun terbit                : %-35s║\n", peminjamArray[m][5]);
+                    System.out.printf("║   Jumlah kembali              : %-35s║\n", peminjamArray[m][10]);
+                    System.out.printf("║   Tanggal                     : %-35s║\n", peminjamArray[m][7]);
+                    System.out.printf("║   Status                      : %-35s║\n", peminjamArray[m][8]);
+                    System.out.printf("║   Kode pinjam                 : %-35s║\n", peminjamArray[m][9]);
+                    System.out.println("╚════════════════════════════════════════════════════════════════════╝");
                     System.out.println();
                 } else {
                     break;
@@ -1600,33 +1791,35 @@ public class PerpustakaanFINISH {
 
             }
         } else if (pengembaliCount == 0) {
-            System.out.println("|=============================================|");
-            System.out.println("|       Data Pengembalian Tidak Tersedia      |");
-            System.out.println("|=============================================|");
+            System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+            System.out.println("║                  Data Pengembalian Tidak Tersedia                  ║");
+            System.out.println("╚════════════════════════════════════════════════════════════════════╝");
         }
     }
 
     static void laporanPembayaranDenda() {
-        System.out.println("|=============================================|");
-        System.out.println("|            Data Pembayaran Denda            |");
-        System.out.println("|=============================================|");
+        System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+        System.out.println("║                       Data Pembayaran Denda                        ║");
+        System.out.println("╚════════════════════════════════════════════════════════════════════╝");
         if (dendaCount > 0) {
             for (int i = 0; i < dendaArray.length; i++) {
                 if (dendaArray[i][0] != null) {
-                    System.out.println("Laporan pembayaran denda ke-" + (i + 1));
-                    System.out.println("|==========================================================|");
-                    System.out.println("    Nim Pembayar Denda          : " + dendaArray[i][0]);
-                    System.out.println("    Nama Pembayar Denda         : " + dendaArray[i][1]);
-                    System.out.println("    Nominal Denda Harus dibayar : " + dendaArray[i][2]);
-                    System.out.println("    Nominal Denda yang dibayar  : " + dendaArray[i][3]);
-                    System.out.println("    Sisa denda setelah dibayar  : " + dendaArray[i][4]);
-                    System.out.println("|==========================================================|");
+                    System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+                    System.out.printf("║      Laporan pembayaran denda ke-%-34s║\n", (i + 1));
+                    System.out.println("║====================================================================║");
+                    System.out.printf("║   NIM pembayar denda          : %-35s║\n", dendaArray[i][0]);
+                    System.out.printf("║   Nama pembayar denda         : %-35s║\n", dendaArray[i][1]);
+                    System.out.printf("║   Nominal denda harus dibayar : %-35s║\n", dendaArray[i][2]);
+                    System.out.printf("║   Nominal denda yang dibayar  : %-35s║\n", dendaArray[i][3]);
+                    System.out.printf("║   Sisa denda setelah dibayar  : %-35s║\n", dendaArray[i][4]);
+                    System.out.println("╚════════════════════════════════════════════════════════════════════╝");
+
                 }
             }
         } else if (dendaCount == 0) {
-            System.out.println("|======================================|");
-            System.out.println("|  Data pembayaran denda belum terisi  |");
-            System.out.println("|======================================|");
+            System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+            System.out.println("║                     Data Pembayaran Denda Kosong                   ║");
+            System.out.println("╚════════════════════════════════════════════════════════════════════╝");
         }
     }
 
@@ -1654,10 +1847,13 @@ public class PerpustakaanFINISH {
         String search = pengembaliHuruf.nextLine();
         for (int i = 0; i < memberArray.length; i++) {
             if (search.equalsIgnoreCase(memberArray[i][0])) {
-                System.out.println("NIM     : " + memberArray[i][0]);
-                System.out.println("Nama    : " + memberArray[i][1]);
-                System.out.println("Denda   : " + memberArray[i][2]);
-                System.out.print("Masukkan nominal pembayaran: ");
+                System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+                System.out.printf("║   NIM                         : %-35s║\n", memberArray[i][0]);
+                System.out.printf("║   Nama                        : %-35s║\n", memberArray[i][1]);
+                System.out.printf("║   Denda                       : %-35s║\n", memberArray[i][2]);
+                System.out.println("╚════════════════════════════════════════════════════════════════════╝");
+
+                System.out.print("   Masukkan nominal pembayaran: ");
                 int bayar = pengembaliAngka.nextInt();
                 int dendaBayar = Integer.parseInt(memberArray[i][2]);
                 int hasilBayar = dendaBayar - bayar;
@@ -1715,11 +1911,14 @@ public class PerpustakaanFINISH {
     static void PencarianPeminjaMemilikiTanggungan() {
         for (int i = 0; i < peminjamanCount; i++) {
             if (peminjamArray[i][8].equalsIgnoreCase("Memiliki tanggungan buku kembali")) {
-                System.out.println("Nim pemilik tanggungan              : " + peminjamArray[i][0]);
-                System.out.println("Nama pemilik tanggungan             : " + peminjamArray[i][1]);
-                System.out.println("Banyak buku yang dipinjam           : " + peminjamArray[i][6]);
-                System.out.println("Banyak buku yang belum dikembalikan : " + peminjamArray[i][10]);
-                System.out.println("Status                              : " + peminjamArray[i][8]);
+                System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+                System.out.printf("║   NIM pemilik tanggungan      : %-35s║\n", memberArray[i][0]);
+                System.out.printf("║   Nama pemilik tanggungan     : %-35s║\n", memberArray[i][1]);
+                System.out.printf("║   Banyak buku yang dipinjam   : %-35s║\n", memberArray[i][6]);
+                System.out.printf("║   Banyak buku belum kembali   : %-35s║\n", memberArray[i][10]);
+                System.out.printf("║   Status                      : %-35s║\n", memberArray[i][8]);
+                System.out.println("╚════════════════════════════════════════════════════════════════════╝");
+
             } else if (!peminjamArray[i][8].equalsIgnoreCase("Memiliki tanggungan buku kembali")) {
                 System.out.println();
             }
@@ -1736,23 +1935,28 @@ public class PerpustakaanFINISH {
             }
         }
         if (!cariKodeTanggungan) {
-            System.out.println("tidak ada yang memiliki tanggungan");
+            System.out.println("Tidak ada yang memiliki tanggungan");
         }
     }
-    static void cariMember(){
-        if(memberArray!=null){
+
+    static void cariMember() {
+        if (memberArray != null) {
             System.out.println("Masukkan nama member yang ingin di cari : ");
             String CariNama = scCari.nextLine();
-            boolean cocokNama= false;
-            for(int i =0;i<membercount;i++){
-            if (memberArray[i][1].equalsIgnoreCase(CariNama)){
-                cocokNama=true;
-                System.out.println("Nim : "+memberArray[i][0]);
-                System.out.println("nama : "+memberArray[i][1]);
-                System.out.println("Total denda : "+memberArray[i][2]);
-                System.out.println("Total buku dipinjam : "+memberArray[i][3]);
+            boolean cocokNama = false;
+            for (int i = 0; i < membercount; i++) {
+                if (memberArray[i][1].equalsIgnoreCase(CariNama)) {
+                    cocokNama = true;
+                    System.out.println("╔════════════════════════════════════════════════════════════════════╗");
+                    System.out.printf("║   NIM                         : %-35s║\n", memberArray[i][0]);
+                    System.out.printf("║   Nama                        : %-35s║\n", memberArray[i][1]);
+                    System.out.printf("║   Total denda                 : %-35s║\n", memberArray[i][2]);
+                    System.out.printf("║   Total buku dipinjam         : %-35s║\n", memberArray[i][3]);
+                    System.out.println("╚════════════════════════════════════════════════════════════════════╝");
+
+                }
             }
-            } if (!cocokNama){
+            if (!cocokNama) {
                 System.out.println("Nim tidak ditemukan!");
             }
         }
