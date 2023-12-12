@@ -1375,7 +1375,6 @@ public class PerpustakaanFINISH {
 
                 System.out.print("Masukkan jumlah stok yang ingin ditambahkan: ");
                 String jumlahTmbhStok = tambahStokHuruf.nextLine();
-
                 if (jumlahTmbhStok != null && !jumlahTmbhStok.isEmpty()) {
                     // Update stok buku
                     int stokAkhir1 = jumlahTmbhStok1(Integer.parseInt(jumlahTmbhStok), i);
@@ -1386,6 +1385,8 @@ public class PerpustakaanFINISH {
                 } else {
                     System.out.println("Input jumlah stok tidak valid!");
                 }
+    
+                // Keluar dari loop setelah menemukan buku
                 break;
             }
         }
@@ -1646,6 +1647,34 @@ public class PerpustakaanFINISH {
         int joemlahPinjam = Integer.parseInt(peminjamArray[index][10]);
         joemlahPinjam -= jumlahBoekoe;
         return joemlahPinjam;
+    }
+
+    static void bayarDenda() {
+        System.out.println("Masukkan NIM: ");
+        String search = pengembaliHuruf.nextLine();
+        for (int i = 0; i < memberArray.length; i++) {
+            if (search.equalsIgnoreCase(memberArray[i][0])) {
+                System.out.println("NIM     : " + memberArray[i][0]);
+                System.out.println("Nama    : " + memberArray[i][1]);
+                System.out.println("Denda   : " + memberArray[i][2]);
+                System.out.print("Masukkan nominal pembayaran: ");
+                int bayar = pengembaliAngka.nextInt();
+                int dendaBayar = Integer.parseInt(memberArray[i][2]);
+                int hasilBayar = dendaBayar - bayar;
+
+                if (hasilBayar == 0) {
+                    System.out.println("Denda berhasil dibayar!");
+
+                } else {
+                    System.out.println("Denda berhasil dibayar, denda tersisa Rp. " + hasilBayar);
+                }
+                memberArray[i][2] = String.valueOf(hasilBayar);
+
+            } else {
+                System.out.println("Data tidak ditemukan!");
+                break;
+            }
+        }
     }
 
     public static Date masukkanTanggal(Scanner tanggalDenda) {

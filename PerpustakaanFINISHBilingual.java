@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import javax.management.StringValueExp;
 
-public class PerpustakaanFINISH {
+public class PerpustakaanFINISHBilingual {
 
     static Scanner peminjamHuruf = new Scanner(System.in);
     static Scanner pengembaliAngka = new Scanner(System.in);
