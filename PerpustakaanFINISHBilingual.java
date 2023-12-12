@@ -1740,12 +1740,12 @@ public class PerpustakaanFINISHBilingual {
                     System.out.println("Total denda : " + memberArray[i][2]);
                     System.out.println("Total buku dipinjam : " + memberArray[i][3]);
                 }
-                System.out.println("Tampilkan data peminjaman Member"+memberArray[i][1]+"?");
+                System.out.println("Tampilkan data peminjaman Member "+memberArray[i][1]+"?");
                 String Pilih = scCari.nextLine();
                 if(Pilih.equalsIgnoreCase("ya")){
                     boolean cocokLagi = false;
                     for(int j=0;j<peminjamanCount;j++){
-                        if(peminjamArray[j][0].equalsIgnoreCase(memberArray[i][0])){
+                        if(memberArray[i][0].equalsIgnoreCase(peminjamArray[j][0])){
                             cocokLagi=true;
                             System.out.println("|==========================================================|");
         System.out.printf("| Kode peminjaman : %-39s|\n", peminjamArray[j][9]);
