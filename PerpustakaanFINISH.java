@@ -406,7 +406,7 @@ public class PerpustakaanFINISH {
                                         System.out.println(
                                                 "╔════════════════════════════════════════════════════════════════════╗");
                                         System.out.println(
-                                                "║                 Pilih Akses Data Pengembalian (1/2/3)               ║");
+                                                "║                 Pilih Akses Data Pengembalian (1/2/3)              ║");
                                         System.out.println(
                                                 "║====================================================================║");
                                         System.out.println(
@@ -1713,7 +1713,7 @@ public class PerpustakaanFINISH {
                         long totalDenda = (selisihHari - 7) * 1000;
                         System.out.println("╔════════════════════════════════════════════════════════════════════╗");
                         System.out.println("║      Note!                                                         ║");
-                        System.out.printf("║   Lama hari terlambat         : ", (selisihHari - 7), "%-29s hari║\n");
+                        System.out.printf("║   Lama hari terlambat         : %-20s hari          ║\n", (selisihHari - 7));
                         System.out.printf("║  Denda yang harus dibayar     : Rp.%-32s║\n", totalDenda);
                         System.out.println("╚════════════════════════════════════════════════════════════════════╝");
 
@@ -1949,7 +1949,7 @@ public class PerpustakaanFINISH {
             String CariNim = scCari.nextLine();
             boolean cocokNama = false;
             for (int i = 0; i < membercount; i++) {
-                if (memberArray[i][0].equalsIgnoreCase(cariNim)) {
+                if (memberArray[i][0].equalsIgnoreCase(CariNim)) {
                     cocokNama = true;
                     System.out.println("╔════════════════════════════════════════════════════════════════════╗");
                     System.out.printf("║   NIM                         : %-35s║\n", memberArray[i][0]);
@@ -1997,9 +1997,11 @@ public class PerpustakaanFINISH {
                     System.out.println("╚════════════════════════════════════════════════════════════════════╝");
                     System.out.println();
             }
-        }
-        }if(!cocokLagi){
+            if(!cocokLagi){
             System.out.println("Data tidak sama");
+            break;
+        }
+        }
         }
     }
 }
