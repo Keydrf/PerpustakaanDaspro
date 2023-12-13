@@ -135,7 +135,7 @@ public class PerpustakaanFINISH {
                     levelPengguna = pilLevel.nextLine();
                     System.out.println();
 
-                    if (levelPengguna.equalsIgnoreCase("admin")) {
+                    if (levelPengguna.equalsIgnoreCase("admin") || levelPengguna.equalsIgnoreCase("1")) {
                         System.out.println("╔════════════════════════════════════════════════════════════════════╗");
                         System.out.println("║                   Silahkan login terlebih dahulu                   ║");
                         System.out.println("╚════════════════════════════════════════════════════════════════════╝");
@@ -356,10 +356,10 @@ public class PerpustakaanFINISH {
                                                     for (int i = 0; i < peminjamArray.length;) {
 
                                                         System.out
-                                                                .print("   Apakah sudah terdaftar sebagai member?(y/t): ");
+                                                                .print("   Apakah sudah terdaftar sebagai member?(ya/tidak): ");
                                                         String tanyaDaftar = peminjamHuruf.nextLine();
                                                         System.out.println();
-                                                        if (tanyaDaftar.equalsIgnoreCase("y")) {
+                                                        if (tanyaDaftar.equalsIgnoreCase("ya")) {
                                                             do {
                                                                 System.out.print("Masukkan NIM peminjaman: ");
                                                                 cariNim = peminjamHuruf.nextLine();
@@ -368,8 +368,11 @@ public class PerpustakaanFINISH {
                                                                 break;
                                                             } while (true);
 
-                                                        } else {
+                                                        } else if (tanyaDaftar.equalsIgnoreCase("tidak")) {
                                                             System.out.println("Silahkan daftar terlebih dahulu");
+                                                            break;
+                                                        } else {
+                                                            System.out.println("Inputan yang anda masukkan salah!");
                                                             break;
                                                         }
                                                         break;
@@ -599,11 +602,11 @@ public class PerpustakaanFINISH {
                                     }
 
                                 } else if (menu.equals("8")) {
-                                    System.out.println("Apakah anda yakin akan keluar? (y/t): ");
+                                    System.out.println("Apakah anda yakin akan keluar? (ya/tidak): ");
                                     String keluar = pengembaliHuruf.nextLine();
-                                    if (keluar.equalsIgnoreCase("y")) {
+                                    if (keluar.equalsIgnoreCase("ya")) {
                                         break;
-                                    } else if (keluar.equalsIgnoreCase("t")) {
+                                    } else if (keluar.equalsIgnoreCase("tidak")) {
                                         System.out.println();
                                         continue;
                                     } else {
@@ -626,7 +629,7 @@ public class PerpustakaanFINISH {
                             System.out.println("Username dan password salah silahkan login kembali!");
                             System.out.println();
                         }
-                    } else if (levelPengguna.equalsIgnoreCase("pengguna")) {
+                    } else if (levelPengguna.equalsIgnoreCase("pengguna") || levelPengguna.equalsIgnoreCase("2")) {
                         System.out.println();
                         System.out.println(
                                 "╔════════════════════════════════════════════════════════════════════╗");
@@ -723,7 +726,7 @@ public class PerpustakaanFINISH {
                             }
                         }
 
-                    } else if (levelPengguna.equalsIgnoreCase("Keluar")) {
+                    } else if (levelPengguna.equalsIgnoreCase("Keluar") || levelPengguna.equalsIgnoreCase("3")) {
                         System.out.print("Keluar ke menu utama? ya/tidak: ");
                         String pilih1 = peminjamHuruf.nextLine();
                         if (pilih1.equalsIgnoreCase("ya")) {
@@ -748,7 +751,7 @@ public class PerpustakaanFINISH {
                     levelPengguna = pilLevel.nextLine();
                     System.out.println();
 
-                    if (levelPengguna.equalsIgnoreCase("admin")) {
+                    if (levelPengguna.equalsIgnoreCase("admin") || levelPengguna.equalsIgnoreCase("1")) {
                         System.out.println("╔════════════════════════════════════════════════════════════════════╗");
                         System.out.println("║                          Please login first                        ║");
                         System.out.println("╚════════════════════════════════════════════════════════════════════╝");
@@ -1138,7 +1141,8 @@ public class PerpustakaanFINISH {
                                             System.out.println();
                                         }
                                     }
-                                }if(menu.equals("7")){
+                                }
+                                if (menu.equals("7")) {
 
                                     System.out.println(
                                             "╔════════════════════════════════════════════════════════════════════╗");
@@ -1183,7 +1187,7 @@ public class PerpustakaanFINISH {
                                         }
 
                                     }
-                                }else if (menu.equals("8")) {
+                                } else if (menu.equals("8")) {
                                     System.out.println("Are you sure you will come out? (y/n): ");
                                     String keluar = pengembaliHuruf.nextLine();
                                     if (keluar.equalsIgnoreCase("y")) {
@@ -1213,14 +1217,14 @@ public class PerpustakaanFINISH {
                                     System.out.println();
 
                                 }
-                                
+
                             } while (true);
 
                         } else {
                             System.out.println("Incorrect username and password please login again!");
                             System.out.println();
                         }
-                    } else if (levelPengguna.equalsIgnoreCase("user")) {
+                    } else if (levelPengguna.equalsIgnoreCase("user") || levelPengguna.equalsIgnoreCase("2")) {
                         System.out.println(
                                 "╔════════════════════════════════════════════════════════════════════╗");
                         System.out.println(
@@ -1272,7 +1276,8 @@ public class PerpustakaanFINISH {
                                             String pilih1 = penggunaHuruf.nextLine();
 
                                             if (pilih1.equalsIgnoreCase("1")) {
-                                                System.out.println("  Enter the title of the book you want to search: ");
+                                                System.out
+                                                        .println("  Enter the title of the book you want to search: ");
                                                 cariJudul = judul.nextLine();
                                                 cariBukuJudulEnglish();
 
@@ -1403,11 +1408,11 @@ public class PerpustakaanFINISH {
                 System.out.println();
 
             }
-            System.out.println("Ingin cari member? (y/t)");
+            System.out.println("Ingin cari member? (ya/tidak)");
             String pilih = scCari.nextLine();
-            if (pilih.equalsIgnoreCase("y")) {
+            if (pilih.equalsIgnoreCase("ya")) {
                 cariMember();
-            } else if (pilih.equalsIgnoreCase("t")) {
+            } else if (pilih.equalsIgnoreCase("tidak")) {
 
             } else {
                 System.out.println("Masukkan pilihan dengan benar!");
@@ -1616,10 +1621,10 @@ public class PerpustakaanFINISH {
                 peminjamArray[peminjamanCount][8] = status;
                 peminjamArray[peminjamanCount][9] = NomorPeminjaman;
                 peminjamArray[peminjamanCount][10] = peminjamArray[peminjamanCount][6];
-                System.out.print("Apakah anda ingin cetak struk (y/t)?: ");
+                System.out.print("Apakah anda ingin cetak struk (ya/tidak)?: ");
                 String kondisi = peminjamHuruf.nextLine();
                 System.out.println();
-                if (kondisi.equalsIgnoreCase("y")) {
+                if (kondisi.equalsIgnoreCase("ya")) {
                     cetakStruk();
                 } else {
 
@@ -2054,26 +2059,28 @@ public class PerpustakaanFINISH {
                 System.out.printf("║   Total denda                 : %-35s║\n", memberArray[i][2]);
                 System.out.printf("║   Total buku dipinjam         : %-35s║\n", memberArray[i][3]);
                 System.out.println("╚════════════════════════════════════════════════════════════════════╝");
-            System.out.println("Tampilkan data peminjaman member ? (Ya/Tidak)");
-            System.out.print("Ketik pilihan anda : ");
-            String pilih = scCari.nextLine();
-            if (pilih.equalsIgnoreCase("ya")) {
-                tampilPeminjamanMember(i);
-            }else if(pilih.equalsIgnoreCase("tidak")){
+                System.out.println("Tampilkan data peminjaman member ? (Ya/Tidak)");
+                System.out.print("Ketik pilihan anda : ");
+                String pilih = scCari.nextLine();
+                if (pilih.equalsIgnoreCase("ya")) {
+                    tampilPeminjamanMember(i);
+                } else if (pilih.equalsIgnoreCase("tidak")) {
 
-            }else {
-                System.out.println("Masukkan pilihan dengan benar!");
+                } else {
+                    System.out.println("Masukkan pilihan dengan benar!");
+                }
             }
-            }
-        }if (!cocokNama) {
+        }
+        if (!cocokNama) {
             System.out.println("Nim tidak ditemukan!");
         }
-}
-static void tampilPeminjamanMember(int index){
-    boolean cocokLagi=false;
-    for (int j=0;j<peminjamanCount;j++){
-        if(memberArray[index][0].equalsIgnoreCase(peminjamArray[j][0])){
-            System.out.println();
+    }
+
+    static void tampilPeminjamanMember(int index) {
+        boolean cocokLagi = false;
+        for (int j = 0; j < peminjamanCount; j++) {
+            if (memberArray[index][0].equalsIgnoreCase(peminjamArray[j][0])) {
+                System.out.println();
                 System.out.println("╔════════════════════════════════════════════════════════════════════╗");
                 System.out.printf("║      Data peminjaman ke-%-43s║\n", (j + 1));
                 System.out.printf("║   Kode pinjam                 : %-35s║\n", peminjamArray[j][9]);
@@ -2088,10 +2095,10 @@ static void tampilPeminjamanMember(int index){
                 System.out.printf("║   Tanggal                     : %-35s║\n", peminjamArray[j][7]);
                 System.out.printf("║   Status                      : %-35s║\n", peminjamArray[j][8]);
                 System.out.println("╚════════════════════════════════════════════════════════════════════╝");
-                System.out.println();       
+                System.out.println();
+            }
         }
     }
-}
 
     static void tampilBukuEnglish() {
         if (bukuArray != null) {
@@ -2819,26 +2826,28 @@ static void tampilPeminjamanMember(int index){
                 System.out.printf("║   Total fines                 : %-35s║\n", memberArray[i][2]);
                 System.out.printf("║   Total books borrowed        : %-35s║\n", memberArray[i][3]);
                 System.out.println("╚════════════════════════════════════════════════════════════════════╝");
-            System.out.println("Display member loan data? (Yes/No)");
-            System.out.print("Type your choice : ");
-            String pilih = scCari.nextLine();
-            if (pilih.equalsIgnoreCase("yes")) {
-                tampilPeminjamanMemberEnglish(i);
-            }else if(pilih.equalsIgnoreCase("no")){
+                System.out.println("Display member loan data? (Yes/No)");
+                System.out.print("Type your choice : ");
+                String pilih = scCari.nextLine();
+                if (pilih.equalsIgnoreCase("yes")) {
+                    tampilPeminjamanMemberEnglish(i);
+                } else if (pilih.equalsIgnoreCase("no")) {
 
-            }else {
-                System.out.println("Enter the selection correctly!");
+                } else {
+                    System.out.println("Enter the selection correctly!");
+                }
             }
-            }
-        }if (!cocokNama) {
+        }
+        if (!cocokNama) {
             System.out.println("Nim not found!");
         }
-}
-static void tampilPeminjamanMemberEnglish(int index){
-    boolean cocokLagi=false;
-    for (int j=0;j<peminjamanCount;j++){
-        if(memberArray[index][0].equalsIgnoreCase(peminjamArray[j][0])){
-            System.out.println();
+    }
+
+    static void tampilPeminjamanMemberEnglish(int index) {
+        boolean cocokLagi = false;
+        for (int j = 0; j < peminjamanCount; j++) {
+            if (memberArray[index][0].equalsIgnoreCase(peminjamArray[j][0])) {
+                System.out.println();
                 System.out.println("╔════════════════════════════════════════════════════════════════════╗");
                 System.out.printf("║        Loan data to-%-43s║\n", (j + 1));
                 System.out.printf("║   Borrow code                 : %-35s║\n", peminjamArray[j][9]);
@@ -2853,8 +2862,8 @@ static void tampilPeminjamanMemberEnglish(int index){
                 System.out.printf("║   Date                        : %-35s║\n", peminjamArray[j][7]);
                 System.out.printf("║   Status                      : %-35s║\n", peminjamArray[j][8]);
                 System.out.println("╚════════════════════════════════════════════════════════════════════╝");
-                System.out.println();       
+                System.out.println();
+            }
         }
     }
-}
 }
