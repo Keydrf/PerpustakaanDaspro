@@ -2041,7 +2041,6 @@ public class PerpustakaanFINISH {
     }
 
     static void cariMember() {
-        if (memberArray != null) {
             System.out.println("Masukkan Nim member yang ingin di cari : ");
             String CariNim = scCari.nextLine();
             boolean cocokNama = false;
@@ -2054,34 +2053,26 @@ public class PerpustakaanFINISH {
                     System.out.printf("║   Total denda                 : %-35s║\n", memberArray[i][2]);
                     System.out.printf("║   Total buku dipinjam         : %-35s║\n", memberArray[i][3]);
                     System.out.println("╚════════════════════════════════════════════════════════════════════╝");
-                }
-                if (cocokNama) {
-                    System.out.println("Tampilkan data peminjaman member ? (Ya/Tidak)");
-                    System.out.print("Ketik pilihan anda : ");
-                    String pilih = scCari.nextLine();
-                    if (pilih.equalsIgnoreCase("ya")) {
-                        tampilPeminjamanMember(i);
-                    } else if (pilih.equalsIgnoreCase("tidak")) {
+                System.out.println("Tampilkan data peminjaman member ? (Ya/Tidak)");
+                System.out.print("Ketik pilihan anda : ");
+                String pilih = scCari.nextLine();
+                if (pilih.equalsIgnoreCase("ya")) {
+                    tampilPeminjamanMember(i);
+                }else if(pilih.equalsIgnoreCase("tidak")){
 
-                    } else {
-                        System.out.println("Masukkan pilihan dengan benar!");
-                    }
+                }else {
+                    System.out.println("Masukkan pilihan dengan benar!");
                 }
-            }
-            if (!cocokNama) {
+                }
+            }if (!cocokNama) {
                 System.out.println("Nim tidak ditemukan!");
             }
-        }
     }
-
-    static void tampilPeminjamanMember(int index) {
-        boolean cocokLagi = false;
-        for (int j = 0; j < peminjamanCount; j++) {
-            if (memberArray[index][0].equalsIgnoreCase(peminjamArray[j][0])) {
-                
-                
-                    cocokLagi = true;
-                    System.out.println();
+    static void tampilPeminjamanMember(int index){
+        boolean cocokLagi=false;
+        for (int j=0;j<peminjamanCount;j++){
+            if(memberArray[index][0].equalsIgnoreCase(peminjamArray[j][0])){
+                System.out.println();
                     System.out.println("╔════════════════════════════════════════════════════════════════════╗");
                     System.out.printf("║      Data peminjaman ke-%-43s║\n", (j + 1));
                     System.out.printf("║   Kode pinjam                 : %-35s║\n", peminjamArray[j][9]);
@@ -2096,18 +2087,8 @@ public class PerpustakaanFINISH {
                     System.out.printf("║   Tanggal                     : %-35s║\n", peminjamArray[j][7]);
                     System.out.printf("║   Status                      : %-35s║\n", peminjamArray[j][8]);
                     System.out.println("╚════════════════════════════════════════════════════════════════════╝");
-                    System.out.println();
-                    // break;
-                // if (!cocokLagi) {
-                //     cocokLagi = false;
-                //     System.out.println("Data tidak sama");
-                //     break;
-                // }
-            } else if (!cocokLagi) {
-                    cocokLagi = false;
-                    System.out.println("Data tidak sama");
-                    break;
-                }
+                    System.out.println();       
+            }
         }
     }
     
@@ -2825,7 +2806,6 @@ public class PerpustakaanFINISH {
     }
 
     static void cariMember2() {
-        if (memberArray != null) {
             System.out.println("Masukkan Nim member yang ingin di cari : ");
             String CariNim = scCari.nextLine();
             boolean cocokNama = false;
@@ -2838,7 +2818,6 @@ public class PerpustakaanFINISH {
                     System.out.printf("║   Total denda                 : %-35s║\n", memberArray[i][2]);
                     System.out.printf("║   Total buku dipinjam         : %-35s║\n", memberArray[i][3]);
                     System.out.println("╚════════════════════════════════════════════════════════════════════╝");
-                }if(cocokNama){
                 System.out.println("Tampilkan data peminjaman member ? (Ya/Tidak)");
                 System.out.print("Ketik pilihan anda : ");
                 String pilih = scCari.nextLine();
@@ -2849,18 +2828,15 @@ public class PerpustakaanFINISH {
                 }else {
                     System.out.println("Masukkan pilihan dengan benar!");
                 }
-            }
+                }
             }if (!cocokNama) {
                 System.out.println("Nim tidak ditemukan!");
             }
-        }
     }
     static void tampilPeminjamanMember2(int index){
         boolean cocokLagi=false;
         for (int j=0;j<peminjamanCount;j++){
             if(memberArray[index][0].equalsIgnoreCase(peminjamArray[j][0])){
-                cocokLagi=true;
-                if(cocokLagi){
                 System.out.println();
                     System.out.println("╔════════════════════════════════════════════════════════════════════╗");
                     System.out.printf("║      Data peminjaman ke-%-43s║\n", (j + 1));
@@ -2876,13 +2852,8 @@ public class PerpustakaanFINISH {
                     System.out.printf("║   Tanggal                     : %-35s║\n", peminjamArray[j][7]);
                     System.out.printf("║   Status                      : %-35s║\n", peminjamArray[j][8]);
                     System.out.println("╚════════════════════════════════════════════════════════════════════╝");
-                    System.out.println();
+                    System.out.println();       
             }
-            if(!cocokLagi){
-            System.out.println("Data tidak sama");
-            break;
-        }
-        }
         }
     }
 }
