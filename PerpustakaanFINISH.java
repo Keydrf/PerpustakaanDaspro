@@ -1138,6 +1138,7 @@ public class PerpustakaanFINISH {
                                             System.out.println();
                                         }
                                     }
+                                }if(menu.equals("7")){
 
                                     System.out.println(
                                             "╔════════════════════════════════════════════════════════════════════╗");
@@ -1182,8 +1183,7 @@ public class PerpustakaanFINISH {
                                         }
 
                                     }
-
-                                } else if (menu.equals("8")) {
+                                }else if (menu.equals("8")) {
                                     System.out.println("Are you sure you will come out? (y/n): ");
                                     String keluar = pengembaliHuruf.nextLine();
                                     if (keluar.equalsIgnoreCase("y")) {
@@ -1213,6 +1213,7 @@ public class PerpustakaanFINISH {
                                     System.out.println();
 
                                 }
+                                
                             } while (true);
 
                         } else {
@@ -1874,16 +1875,16 @@ public class PerpustakaanFINISH {
                 if (pengembaliArray[m][0] != null) {
                     System.out.println("╔════════════════════════════════════════════════════════════════════╗");
                     System.out.printf("║      Data peminjaman ke-%-43s║\n", (m + 1));
-                    System.out.printf("║   Kode pinjam                 : %-35s║\n", peminjamArray[m][9]);
-                    System.out.printf("║   NIM                         : %-35s║\n", peminjamArray[m][0]);
-                    System.out.printf("║   Nama                        : %-35s║\n", peminjamArray[m][1]);
-                    System.out.printf("║   Kode Buku                   : %-35s║\n", peminjamArray[m][2]);
-                    System.out.printf("║   Judul                       : %-35s║\n", peminjamArray[m][3]);
-                    System.out.printf("║   Penulis                     : %-35s║\n", peminjamArray[m][4]);
-                    System.out.printf("║   Tahun terbit                : %-35s║\n", peminjamArray[m][5]);
-                    System.out.printf("║   Jumlah kembali              : %-35s║\n", peminjamArray[m][10]);
-                    System.out.printf("║   Tanggal                     : %-35s║\n", peminjamArray[m][7]);
-                    System.out.printf("║   Status                      : %-35s║\n", peminjamArray[m][8]);
+                    System.out.printf("║   Kode pinjam                 : %-35s║\n", pengembaliArray[m][9]);
+                    System.out.printf("║   NIM                         : %-35s║\n", pengembaliArray[m][0]);
+                    System.out.printf("║   Nama                        : %-35s║\n", pengembaliArray[m][1]);
+                    System.out.printf("║   Kode Buku                   : %-35s║\n", pengembaliArray[m][2]);
+                    System.out.printf("║   Judul                       : %-35s║\n", pengembaliArray[m][3]);
+                    System.out.printf("║   Penulis                     : %-35s║\n", pengembaliArray[m][4]);
+                    System.out.printf("║   Tahun terbit                : %-35s║\n", pengembaliArray[m][5]);
+                    System.out.printf("║   Jumlah kembali              : %-35s║\n", pengembaliArray[m][10]);
+                    System.out.printf("║   Tanggal                     : %-35s║\n", pengembaliArray[m][7]);
+                    System.out.printf("║   Status                      : %-35s║\n", pengembaliArray[m][8]);
                     System.out.println("╚════════════════════════════════════════════════════════════════════╝");
                     System.out.println();
                 } else {
@@ -2013,11 +2014,11 @@ public class PerpustakaanFINISH {
         for (int i = 0; i < peminjamanCount; i++) {
             if (peminjamArray[i][8].equalsIgnoreCase("Memiliki tanggungan buku kembali")) {
                 System.out.println("╔════════════════════════════════════════════════════════════════════╗");
-                System.out.printf("║   NIM pemilik tanggungan      : %-35s║\n", memberArray[i][0]);
-                System.out.printf("║   Nama pemilik tanggungan     : %-35s║\n", memberArray[i][1]);
-                System.out.printf("║   Banyak buku yang dipinjam   : %-35s║\n", memberArray[i][6]);
-                System.out.printf("║   Banyak buku belum kembali   : %-35s║\n", memberArray[i][10]);
-                System.out.printf("║   Status                      : %-35s║\n", memberArray[i][8]);
+                System.out.printf("║   NIM pemilik tanggungan      : %-35s║\n", peminjamArray[i][0]);
+                System.out.printf("║   Nama pemilik tanggungan     : %-35s║\n", peminjamArray[i][1]);
+                System.out.printf("║   Banyak buku yang dipinjam   : %-35s║\n", peminjamArray[i][6]);
+                System.out.printf("║   Banyak buku belum kembali   : %-35s║\n", peminjamArray[i][10]);
+                System.out.printf("║   Status                      : %-35s║\n", peminjamArray[i][8]);
                 System.out.println("╚════════════════════════════════════════════════════════════════════╝");
 
             } else if (!peminjamArray[i][8].equalsIgnoreCase("Memiliki tanggungan buku kembali")) {
@@ -2639,16 +2640,16 @@ static void tampilPeminjamanMember(int index){
                 if (pengembaliArray[m][0] != null) {
                     System.out.println("╔════════════════════════════════════════════════════════════════════╗");
                     System.out.printf("║      Borrowing data of-%-44s║\n", (m + 1));
-                    System.out.printf("║   Borrow code                 : %-35s║\n", peminjamArray[m][9]);
-                    System.out.printf("║   NIM                         : %-35s║\n", peminjamArray[m][0]);
-                    System.out.printf("║   Name                        : %-35s║\n", peminjamArray[m][1]);
-                    System.out.printf("║   Book code                   : %-35s║\n", peminjamArray[m][2]);
-                    System.out.printf("║   Title book                  : %-35s║\n", peminjamArray[m][3]);
-                    System.out.printf("║   Author                      : %-35s║\n", peminjamArray[m][4]);
-                    System.out.printf("║   Published year              : %-35s║\n", peminjamArray[m][5]);
-                    System.out.printf("║   REturn amount               : %-35s║\n", peminjamArray[m][10]);
-                    System.out.printf("║   Date                        : %-35s║\n", peminjamArray[m][7]);
-                    System.out.printf("║   Status                      : %-35s║\n", peminjamArray[m][8]);
+                    System.out.printf("║   Borrow code                 : %-35s║\n", pengembaliArray[m][9]);
+                    System.out.printf("║   NIM                         : %-35s║\n", pengembaliArray[m][0]);
+                    System.out.printf("║   Name                        : %-35s║\n", pengembaliArray[m][1]);
+                    System.out.printf("║   Book code                   : %-35s║\n", pengembaliArray[m][2]);
+                    System.out.printf("║   Title book                  : %-35s║\n", pengembaliArray[m][3]);
+                    System.out.printf("║   Author                      : %-35s║\n", pengembaliArray[m][4]);
+                    System.out.printf("║   Published year              : %-35s║\n", pengembaliArray[m][5]);
+                    System.out.printf("║   REturn amount               : %-35s║\n", pengembaliArray[m][10]);
+                    System.out.printf("║   Date                        : %-35s║\n", pengembaliArray[m][7]);
+                    System.out.printf("║   Status                      : %-35s║\n", pengembaliArray[m][8]);
                     System.out.println("╚════════════════════════════════════════════════════════════════════╝");
                     System.out.println();
                 } else {
@@ -2778,11 +2779,11 @@ static void tampilPeminjamanMember(int index){
         for (int i = 0; i < peminjamanCount; i++) {
             if (peminjamArray[i][8].equalsIgnoreCase("Has dependent books back")) {
                 System.out.println("╔════════════════════════════════════════════════════════════════════╗");
-                System.out.printf("║   NIM of the depedent owner         : %-29s║\n", memberArray[i][0]);
-                System.out.printf("║   Nama of the depedent owner        : %-29s║\n", memberArray[i][1]);
-                System.out.printf("║   Many books borrowed               : %-29s║\n", memberArray[i][6]);
-                System.out.printf("║   Many books have not been returned : %-29s║\n", memberArray[i][10]);
-                System.out.printf("║   Status                            : %-29s║\n", memberArray[i][8]);
+                System.out.printf("║   NIM of the depedent owner         : %-29s║\n", peminjamArray[i][0]);
+                System.out.printf("║   Nama of the depedent owner        : %-29s║\n", peminjamArray[i][1]);
+                System.out.printf("║   Many books borrowed               : %-29s║\n", peminjamArray[i][6]);
+                System.out.printf("║   Many books have not been returned : %-29s║\n", peminjamArray[i][10]);
+                System.out.printf("║   Status                            : %-29s║\n", peminjamArray[i][8]);
                 System.out.println("╚════════════════════════════════════════════════════════════════════╝");
 
             } else if (!peminjamArray[i][8].equalsIgnoreCase("Has dependent book back")) {
